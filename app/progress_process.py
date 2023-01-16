@@ -11,8 +11,8 @@ class Loadingpage():
         prog.geometry('530x400+416+165')
         prog.title('Loading Page')
         img = PhotoImage(file='/home/kenneth/Desktop/desktop_ap/app/icons/AA.png')
-        
         prog.tk.call('wm', 'iconphoto', prog._w, img)
+
 
         p1 = customtkinter.CTkProgressBar(prog, orientation=HORIZONTAL, 
                                             mode='determinate', 
@@ -26,7 +26,7 @@ class Loadingpage():
 
 
         prog_lable = customtkinter.CTkLabel(prog, text='Please wait.....', 
-        font=customtkinter.CTkFont("Times", 25))
+                                            font=customtkinter.CTkFont("Times", 25))
         prog_lable.place(x=210, y=320)
 
 
