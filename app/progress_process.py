@@ -10,7 +10,7 @@ class Loadingpage():
         prog = customtkinter.CTk()
         prog.geometry('530x400+416+165')
         prog.title('Loading Page')
-        img = PhotoImage(file='app/icons/AA.png')
+        img = PhotoImage(file='/home/kenneth/Desktop/desktop_ap/app/icons/AA.png')
         
         prog.tk.call('wm', 'iconphoto', prog._w, img)
 
