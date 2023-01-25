@@ -19,7 +19,7 @@ img = PhotoImage(file='app/icons/AA.png')
 window.tk.call('wm', 'iconphoto', window._w, img)
 
 
-
+"""This script is use to configure the window"""
 window.columnconfigure(0, weight=1)
 window.columnconfigure(1, weight=0)
 window.rowconfigure(0, weight=1)
@@ -35,7 +35,6 @@ label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
 progress_label = customtkinter.CTkLabel(master = window, text = 'Please Wait....', 
                                 font = ('Times', 23))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
-
 
 
 progress = customtkinter.CTkProgressBar(master = window, width = 480, 
@@ -54,7 +53,6 @@ def user_login():
     window.destroy()
 
 
-
 counter = 0
 def progressload(value):
     """This function is responsible for loading the page"""
@@ -69,11 +67,6 @@ def progressload(value):
         user_login()
 
 progressload(0)
-
-
-
-
-
 
 
 
