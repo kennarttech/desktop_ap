@@ -55,21 +55,19 @@ def user_login():
 
 
 counter = 0
-def progressload(value):
-    """This function is responsible for loading the page"""
+def loading_progress_bar(value):
+    """This function loads the page!! Refere to (README2.md) """
     progress.set(value)
-    result = progress.get()
-    print(result)
     global counter
     if counter <= 10:
         test = 'Please Wait.... ' + (str(10 * counter) + '%')
         progress_label.configure(text=test)
-        window.after(1000, progressload, value + 1/10)
+        progress.after(1000, loading_progress_bar, value + 1/10)
         counter += 1
     else:
         user_login()
 
-progressload(0)
+loading_progress_bar(0)
 
 
 
