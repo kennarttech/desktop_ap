@@ -1,44 +1,61 @@
-from tkinter import *
+
 import customtkinter
-import tkinter as tk 
-from tkinter import ttk
+class App(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("500x300")
+        self.title("small example app")
+        self.minsize(300, 200)
+        # create 2x2 grid system
+
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure((0, 1), weight=1)
+
+        self.textbox = customtkinter.CTkTextbox(master=self)
+        self.textbox.grid(row=0, column=0, columnspan=2, padx=20, pady=(20, 0), sticky="nsew")
+
+        self.combobox = customtkinter.CTkComboBox(master=self, values=["Sample text 1", "Text 2"])
+        self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+
+             
+        self.button = customtkinter.CTkButton(master=self, command=self.button_callback, text="Insert Text")
+        self.button.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
+
+
+    def button_callback(self):
+        self.textbox.insert("insert", self.combobox.get() + "\n")
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
 
 
 
-root = Tk()
-root.geometry('500x500')
+import tkinter as tk
 
-s = ttk.Style()
-s.configure('mainframe.TFrame', background='black')
+root = tk.Tk()
 
-mainframe = ttk.Frame(root, width=50, height=500, style='mainframe.TFrame')
-mainframe.grid(row=0, column=0)
-# mainframe.grid(row=0, column=3, rowspan=1, columnspan=1, sticky=W)
-
-
-# fram2 = Frame(root, width=200, height=200)
-# fram2.grid(row=1, column=0, sticky='WENS')
-# fram2.config(bg='#579BB1')
+label1 = tk.Button(root, bg='teal', text="Label 1")
+label2 = tk.Button(root, bg='#820000', text="Label 2")
+label3 = tk.Button(root, bg='#251749', text="Label 3")
+label4 = tk.Button(root, bg='#562B08', text="Label 4")
+label5 = tk.Button(root, bg='#FEC260', text="Label 5")
+label6 = tk.Button(root, bg='#42032C', text="Label 6")
 
 
-# fram3 = Frame(root, width=250, height=250)
-# fram3.grid(row=0, column=1, sticky='snwe')
-# fram2.config(bg='teal')
-
-
-# fram4 = Frame(root, width=250, height=250)
-# fram4.grid(row=1, column=1, sticky='NSEW')
-# fram4.config(bg='red')
+label1.grid(row=0, column=0)
+label2.grid(row=0, column=1)
+label3.grid(row=0, column=2)
+label4.grid(row=1, column=0)
+label5.grid(row=1, column=1)
+label6.grid(row=1, column=2)
 
 
 root.columnconfigure(0, weight=1)
-root.columnconfigure(1, weight=2)
-root.columnconfigure(2, weight=3)
-root.rowconfigure(1, weight=2)
-root.rowconfigure(2, weight=2)
+root.columnconfigure(1, weight=1)
+root.columnconfigure(2, weight=1)
+root.rowconfigure(0, weight=1)
+root.rowconfigure(1, weight=1)
 
 
-
-
-# root.resizable(width=1, height=1)
 root.mainloop()
