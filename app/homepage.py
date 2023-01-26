@@ -4,24 +4,39 @@ import customtkinter
 
 
 
+class Homepage(customtkinter.CTk):
+    """This is class loads the home page when it is been called"""
+    customtkinter.set_appearance_mode('')
 
-customtkinter.set_appearance_mode('dark')
+    def __init__(self, master) -> None:
+        self.master = master
 
-root = customtkinter.CTk()
-root.geometry('800x500+300+130')
-root.title('Home Page')
-
-root.columnconfigure(0, weight=1)
-root.columnconfigure(1, weight=0)
-root.rowconfigure(0, weight=1)
-root.rowconfigure(1, weight=0)
-
-
-
-label = customtkinter.CTkLabel(master=root, text='Welcome to DS Enterprice', font=('Times', 40))
-label.grid()
+        self.master.columnconfigure(0, weight=1)
+        self.master.columnconfigure(1, weight=0)
+        self.master.rowconfigure(0, weight=1)
+        self.master.rowconfigure(1, weight=0)
 
 
 
+        label = customtkinter.CTkLabel(self.master, text='Welcome to DS Enterprice',
+                                     font=('Times', 40))
+        label.grid()
 
-root.mainloop()
+
+
+
+
+def main():
+    home = customtkinter.CTk()
+    app = Homepage(home)
+    home.title('Home Page')
+    home.geometry('800x500+300+130')
+    home.mainloop()
+
+
+if __name__ == "__main__":
+    app = main()
+
+    
+
+    
