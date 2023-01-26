@@ -6,7 +6,12 @@ from tkinter import ttk
 
 
 
-"""window.geometry(1366x768)"""
+
+WIDTH: int=1366
+HEIGHT: int=768
+WIDTH: int=540
+HEIGHT: int=400
+
 customtkinter.set_appearance_mode('dark')
 
 
@@ -14,7 +19,7 @@ window = customtkinter.CTk()
 window.resizable(0, 0)
 window.minsize(500, 400)
 window.title('Loading Progress')
-window.geometry('530x400+416+165')
+window.geometry(f'{WIDTH}x{HEIGHT}+{416}+{165}')
 img = PhotoImage(file='app/icons/AA.png')
 window.tk.call('wm', 'iconphoto', window._w, img)
 
@@ -46,12 +51,12 @@ progress.set(0.0)
 
 
 
-
 def user_login():
     """This function defines user login page after ProgressBar finish loading"""
     window.withdraw()
     os.system("python app/login.py")
     window.destroy()
+
 
 
 counter = 0
