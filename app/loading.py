@@ -7,23 +7,24 @@ from tkinter import ttk
 
 
 
-WIDTH: int=1366
-HEIGHT: int=768
 WIDTH: int=540
 HEIGHT: int=400
+WIDTH_LARGE_SCREEN: int=1366
+HEIGHT_LARGE_SCREEN: int=768
+
 
 
 main_window = customtkinter.CTk()
 main_window.resizable(0, 0)
 main_window.minsize(500, 400)
 main_window.title('Loading Progress')
-customtkinter.set_appearance_mode('light')
+customtkinter.set_appearance_mode('dark')
 main_window.geometry(f'{WIDTH}x{HEIGHT}+{416}+{165}')
 
 
-
-icon_img = PhotoImage(file='app/icons/AA.png')
-main_window.tk.call('wm', 'iconphoto', main_window._w, icon_img)
+"""This set the windows icon"""
+icon_image = PhotoImage(file='app/icons/AA.png')
+main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 
 
 """This script is use to configure the main_window"""
@@ -54,7 +55,7 @@ progress_bar.set(0.0)
 
 
 def user_homepage():
-    """This function is call user user_homepage after ProgressBar finish loading"""
+    """This function call user_homepage after ProgressBar finish loading"""
     main_window.withdraw()
     os.system("python app/homepage.py")
     main_window.destroy()
@@ -62,7 +63,7 @@ def user_homepage():
 
 
 counter = 0
-def loading_progress_bar(value):
+def loading_progress_bar(value) -> str:
     """This function loads the page!! Refere to (README2.md) """
     progress_bar.set(value)
     global counter
