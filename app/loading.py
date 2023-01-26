@@ -38,7 +38,7 @@ label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
 
 
 progress_label = customtkinter.CTkLabel(master = window, text = 'Please Wait....', 
-                                font = ('Roboto', 18))
+                                        font = ('Roboto', 18))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
 
 
@@ -54,7 +54,7 @@ progress.set(0.0)
 def user_login():
     """This function defines user login page after ProgressBar finish loading"""
     window.withdraw()
-    os.system("python app/login.py")
+    os.system("python app/homepage.py")
     window.destroy()
 
 
