@@ -15,9 +15,9 @@ class Homepage(customtkinter.CTk):
     def __init__(self, master) -> None:
         self.master = master
         self.master.columnconfigure(0, weight = 1)
-        self.master.columnconfigure(1, weight = 0)
+        self.master.columnconfigure(1, weight = 0, uniform='a')
         self.master.rowconfigure(1, weight = 1)
-        # self.master.rowconfigure(1, weight=0)
+
 
 
         top_frame = customtkinter.CTkFrame(self.master, 
@@ -25,7 +25,7 @@ class Homepage(customtkinter.CTk):
                                             border_color ='gray10',
                                             height = 60,
                                             corner_radius = 3)
-        top_frame.grid(row = 0, column = 0, sticky = NSEW)
+        top_frame.grid(row = 0, column = 0, ipady=(2), sticky = NSEW)
         top_frame.grid_columnconfigure(0, weight = 1)
 
 
@@ -39,33 +39,35 @@ class Homepage(customtkinter.CTk):
 
 
         logo_label = customtkinter.CTkLabel(top_frame, text = 'DS ENTERPRISE', 
-                                            font=('Roboto', 18))
-        logo_label.grid(row = 0, column=0, padx=(20, 100), pady=(20, 10), sticky=W)
+                                            font=('Roboto', 15))
+        logo_label.grid(row = 0, column=0, padx=(20, 100), pady=(15, 10), sticky=W)
 
 
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=25, 
-                                                font=('Roboto', 18), width=80, 
-                                                hover_color=("gray70", "gray30"))
+                                                font=('Roboto', 15), width=80, 
+                                                hover_color=("gray70", "gray30"),
+                                                corner_radius=5)
         home_button1.grid(row=0, column=0, padx=(1, 120), pady=(15, 0), sticky=N)
 
 
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
-                                                font=('Roboto', 18), width=100, 
-                                                height=25, hover_color=("gray70", "gray30"))
+                                                font=('Roboto', 15), width=110, 
+                                                height=25, hover_color=("gray70", "gray30"),
+                                                corner_radius=5)
         daily_record_button.grid(row=0, column=0, padx=(100, 8), pady=(15, 0), sticky=N)
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
-                                            font=customtkinter.CTkFont('Roboto', 20),
-                                            hover_color=("gray70", "gray30"), 
+                                            font=customtkinter.CTkFont('Roboto', 15),
+                                            hover_color=("gray70", "gray30"), corner_radius=5, 
                                             width=65, height=25, command=self.about_page)
-        about_button.grid(row=0, column=0, padx=(300, 8), pady=(15, 0), sticky=N)
+        about_button.grid(row=0, column=0, padx=(293, 8), pady=(15, 0), sticky=N)
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
-                                            font=('Roboto', 18), height=25,
+                                            font=('Roboto', 15), height=25, corner_radius=5,
                                             width=65, hover_color=("gray70", "gray30"))
-        login_button.grid(row=0, column=0, padx=(5, 40), pady=(0, 0), sticky=E)
+        login_button.grid(row=0, column=0, padx=(5, 20), pady=(2, 0), sticky=E)
 
 
 
@@ -82,12 +84,10 @@ def main():
     home = customtkinter.CTk()
     app = Homepage(home)
     home.title('Home Page')
-    home.minsize(700, 500)
-    home.state('normal')
-    home.geometry('1240x600+50+40')
+    # home.minsize(645, 500)
+    home.geometry('1340x650+50+40')
     icon_image = PhotoImage(file='app/icons/AA.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
-
     home.mainloop()
 
 
