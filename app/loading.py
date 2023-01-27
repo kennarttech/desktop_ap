@@ -1,6 +1,7 @@
 import os
 import customtkinter
 from tkinter import *
+from PIL import Image
 from tkinter import ttk
 
 
@@ -17,8 +18,8 @@ HEIGHT_LARGE_SCREEN: int=768
 main_window = customtkinter.CTk()
 main_window.resizable(0, 0)
 main_window.minsize(500, 400)
-main_window.title('Loading Progress')
-customtkinter.set_appearance_mode('dark')
+main_window.title('Loading Page')
+customtkinter.set_appearance_mode('#241f31')
 main_window.geometry(f'{WIDTH}x{HEIGHT}+{416}+{165}')
 
 
@@ -27,6 +28,10 @@ icon_image = PhotoImage(file='app/icons/AA.png')
 main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 
 
+image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
+logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo.png")), size=(166, 165))
+
+   
 """This script is use to configure the main_window"""
 main_window.columnconfigure(0, weight=1)
 main_window.columnconfigure(1, weight=0)
@@ -40,7 +45,11 @@ label = customtkinter.CTkLabel(master=main_window, text = 'Welcome To DS Enterpr
 label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
 
 
-progress_label = customtkinter.CTkLabel(master = main_window, text = 'Please Wait....', 
+progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_image)
+progress_logo.grid(row=0, column=0, padx=20, pady=10)
+
+
+progress_label = customtkinter.CTkLabel(master = main_window, text = '', 
                                         font = ('Roboto', 18))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
 
@@ -68,7 +77,7 @@ def loading_progress_bar(value) -> str:
     progress_bar.set(value)
     global counter
     if counter <= 10:
-        test = 'Please Wait.... ' + (str(10 * counter) + '%')
+        test = 'Please Wait....⌛ ' + (str(10 * counter) + '%')
         progress_label.configure(text=test)
         progress_bar.after(1000, loading_progress_bar, value + 1/10)
         counter += 1
