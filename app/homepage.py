@@ -10,6 +10,7 @@ class Homepage(customtkinter.CTk):
     """This is class loads the home page when it is been called"""
 
     customtkinter.set_appearance_mode('system')
+    customtkinter.set_default_color_theme("green")
     customtkinter.set_window_scaling(1)
     
     def __init__(self, master) -> None:
@@ -33,43 +34,43 @@ class Homepage(customtkinter.CTk):
         footer_frame = customtkinter.CTkFrame(self.master, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
-                                            height = 30,
+                                            height = 1,
                                             fg_color='gray25',
                                             corner_radius = 3)
-        footer_frame.grid(row = 2, column = 0, pady=(20, 0), sticky=EW)
+        footer_frame.grid(row = 2, column = 0, sticky=EW)
         footer_frame.grid_rowconfigure(0, weight = 1)
 
 
         logo_label = customtkinter.CTkLabel(top_frame, text = 'DS ENTERPRISE', 
-                                            font=('Roboto', 15))
-        logo_label.grid(row = 0, column=0, padx=(20, 100), pady=(15, 10), sticky=W)
+                                            font=('Roboto', 13))
+        logo_label.grid(row = 0, column=0, padx=(20, 100), pady=(10, 10), sticky=W)
 
 
-        home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=25, 
-                                                font=('Roboto', 15), width=80, 
+        home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
+                                                font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"),
                                                 corner_radius=5)
-        home_button1.grid(row=0, column=0, padx=(1, 120), pady=(15, 0), sticky=N)
+        home_button1.grid(row=0, column=0, padx=(1, 120), pady=(12, 0), sticky=N)
 
 
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
-                                                font=('Roboto', 15), width=110, 
-                                                height=25, hover_color=("gray70", "gray30"),
+                                                font=('Roboto', 13), width=83, 
+                                                height=20, hover_color=("gray70", "gray30"),
                                                 corner_radius=5)
-        daily_record_button.grid(row=0, column=0, padx=(100, 8), pady=(15, 0), sticky=N)
+        daily_record_button.grid(row=0, column=0, padx=(35, 8), pady=(12, 0), sticky=N)
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
-                                            font=customtkinter.CTkFont('Roboto', 15),
+                                            font=customtkinter.CTkFont('Roboto', 13),
                                             hover_color=("gray70", "gray30"), corner_radius=5, 
-                                            width=65, height=25, command=self.about_page)
-        about_button.grid(row=0, column=0, padx=(293, 8), pady=(15, 0), sticky=N)
+                                            width=50, height=20, command=self.about_page)
+        about_button.grid(row=0, column=0, padx=(180, 8), pady=(12, 0), sticky=N)
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
-                                            font=('Roboto', 15), height=25, corner_radius=5,
+                                            font=('Roboto', 13), height=20, corner_radius=5,
                                             width=65, hover_color=("gray70", "gray30"))
-        login_button.grid(row=0, column=0, padx=(5, 20), pady=(2, 0), sticky=E)
+        login_button.grid(row=0, column=0, padx=(5, 20), pady=(0, 0), sticky=E)
 
 
         footer_text = customtkinter.CTkLabel(footer_frame, text='About Us', 
@@ -98,8 +99,8 @@ def main():
     home = customtkinter.CTk()
     app = Homepage(home)
     home.title('Home Page')
-    # home.minsize(620, 500)
-    home.geometry('1340x650+50+40')
+    home.minsize(620, 500)
+    home.geometry('1364x690+7+10')
     icon_image = PhotoImage(file='app/icons/AA.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
     home.mainloop()
