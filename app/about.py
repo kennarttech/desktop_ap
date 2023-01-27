@@ -40,7 +40,10 @@ class Aboutpage(customtkinter.CTk):
                                                 height=20, 
                                                 font=('Roboto', 13), width=80, 
                                                 hover_color=("gray70", "gray30"), 
-                                                corner_radius=5, command=self.backhome)
+                                                corner_radius=5, command=self.backhome,
+                                                fg_color="transparent", 
+                                                text_color=("gray10", "gray90"),
+                                                border_color='gray40',border_width=1)
         home_button1.grid(row=2, column=0, padx=(18, 25), pady=(12, 12), sticky=N)
 
 

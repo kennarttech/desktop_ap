@@ -13,13 +13,12 @@ class Homepage(customtkinter.CTk):
     customtkinter.set_default_color_theme("green")
     customtkinter.set_window_scaling(1)
     
+
     def __init__(self, master) -> None:
         self.master = master
         self.master.columnconfigure(0, weight = 1)
         self.master.columnconfigure(1, weight = 0, uniform='a')
         self.master.rowconfigure(1, weight = 1)
-
-
 
 
         top_frame = customtkinter.CTkFrame(self.master, 
@@ -49,27 +48,39 @@ class Homepage(customtkinter.CTk):
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
                                                 font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"),
-                                                corner_radius=5)
+                                                corner_radius=5,
+                                                fg_color="transparent", 
+                                                text_color=("gray10", "gray90"),
+                                                border_color='gray40',border_width=1)
         home_button1.grid(row=0, column=0, padx=(1, 120), pady=(12, 0), sticky=N)
 
 
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
                                                 font=('Roboto', 13), width=83, 
                                                 height=20, hover_color=("gray70", "gray30"),
-                                                corner_radius=5)
+                                                corner_radius=5,fg_color="transparent", 
+                                                text_color=("gray10", "gray90"),
+                                                border_color='gray40',border_width=1)
         daily_record_button.grid(row=0, column=0, padx=(35, 8), pady=(12, 0), sticky=N)
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
                                             font=customtkinter.CTkFont('Roboto', 13),
                                             hover_color=("gray70", "gray30"), corner_radius=5, 
-                                            width=50, height=20, command=self.about_page)
+                                            width=50, height=20, fg_color="transparent", 
+                                            text_color=("gray10", "gray90"),
+                                            border_color='gray40',border_width=1,
+                                            hover=False, command=self.about_page)
         about_button.grid(row=0, column=0, padx=(180, 8), pady=(12, 0), sticky=N)
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
                                             font=('Roboto', 13), height=20, corner_radius=5,
-                                            width=65, hover_color=("gray70", "gray30"))
+                                            width=65, hover_color=("gray70", "gray30"),
+                                            fg_color="transparent", 
+                                            text_color=("gray10", "gray90"),
+                                            border_color='gray40',border_width=1,
+                                            hover=True)
         login_button.grid(row=0, column=0, padx=(5, 20), pady=(0, 0), sticky=E)
 
 
