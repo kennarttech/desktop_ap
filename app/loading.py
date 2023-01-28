@@ -29,7 +29,8 @@ main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 
 
 image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
-logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo.png")), size=(166, 165))
+logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_05.png")), 
+size=(166, 165))
 
    
 """This script is use to configure the main_window"""
@@ -40,13 +41,13 @@ main_window.rowconfigure(1, weight=0)
 
 
 
-label = customtkinter.CTkLabel(master=main_window, text = 'Welcome To DS Enterprise', 
-                                font=('Times', 22), )
-label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
+# label = customtkinter.CTkLabel(master=main_window, text = 'Welcome To DS Enterprise', 
+#                                 font=('Times', 22), )
+# label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
 
 
 progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_image)
-progress_logo.grid(row=0, column=0, padx=20, pady=10)
+progress_logo.grid(row=0, column=0, padx=20, pady=105)
 
 
 progress_label = customtkinter.CTkLabel(master = main_window, text = '', 

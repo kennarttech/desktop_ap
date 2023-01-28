@@ -52,7 +52,7 @@ class Aboutpage(customtkinter.CTk):
                                                     scrollbar_button_color=('teal'),
                                                     scrollbar_button_hover_color=('red'))
         default_textbox.grid(row=1, column=0, padx=(2, 0), pady=(80, 30), sticky="nsew")
-        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ "The printing press is a machine that was invented in the 15th century by Johannes Gutenberg, a German blacksmith and goldsmith. It revolutionized the way books were produced by allowing for the mass production of printed materials. Prior to the invention of the printing press, books were hand-copied by monks, which made them expensive and rare.\n\nGutenberg's printing press used movable type, which allowed for individual letters and characters to be set into a frame and then pressed onto paper, creating a printed page. This process was much faster and more efficient than hand-copying, and it made books and other printed materials more affordable and widely available.\n\nThe printing press quickly spread throughout Europe and soon the world, and it played a significant role in the spread of knowledge, ideas, and information during the Renaissance and beyond. Today, the printing press continues to be an important tool for the production of books, newspapers, magazines, and other printed materials.")
+        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ "The printing press is a machine that was invented in the 15th century by Johannes Gutenberg, newspapers, magazines, and other printed materials.")
         default_textbox.configure(state='disable')
 
 
