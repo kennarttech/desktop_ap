@@ -1,5 +1,4 @@
 import os
-# import random 
 from tkinter import *
 import customtkinter
 
@@ -15,6 +14,7 @@ class Aboutpage(customtkinter.CTk):
 
 
     TEXT_FILE_PATH = "app/history.txt"
+
     with open(file=TEXT_FILE_PATH, mode='r') as rf:
         for i in rf.read():
             result = i
@@ -63,8 +63,6 @@ class Aboutpage(customtkinter.CTk):
                                             corner_radius = 3)
         footer_frame.grid(row = 2, column = 0, sticky=EW)
         footer_frame.grid_rowconfigure(0, weight = 1)
-
-
 
 
 

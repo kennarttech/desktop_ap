@@ -70,7 +70,7 @@ class Homepage(customtkinter.CTk):
                                             width=50, height=20, fg_color="transparent", 
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
-                                            hover=False, command=self.about_page)
+                                            command=self.about_page)
         about_button.grid(row=0, column=0, padx=(180, 8), pady=(12, 0), sticky=N)
 
 
@@ -110,7 +110,7 @@ def main():
     home = customtkinter.CTk()
     app = Homepage(home)
     home.title('Home Page')
-    home.minsize(620, 500)
+    home.minsize(460, 500)
     home.geometry('1364x690+7+10')
     icon_image = PhotoImage(file='app/icons/AA.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
