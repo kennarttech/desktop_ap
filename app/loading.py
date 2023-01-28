@@ -56,7 +56,7 @@ progress_label.grid(row=1, column=0,  sticky=NSEW)
 
 
 progress_bar = customtkinter.CTkProgressBar(master = main_window, width = 480, 
-                                    height = 18, mode='determinate', 
+                                    height = 15, mode='determinate', corner_radius=7,
                                     orientation='horizontal', determinate_speed= 2,
                                     border_width=1, progress_color='#16CF13')
 progress_bar.grid(row=2, column=0, padx=20, pady=20, sticky=EW)
