@@ -11,7 +11,7 @@ class Homepage(customtkinter.CTk):
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
-    customtkinter.set_window_scaling(1)
+    # customtkinter.set_window_scaling(1)
     
 
     def __init__(self, master) -> None:
@@ -108,10 +108,12 @@ class Homepage(customtkinter.CTk):
 
 def main():
     home = customtkinter.CTk()
+
     app = Homepage(home)
     home.title('Home Page')
     home.minsize(460, 500)
     home.geometry('1364x690+7+10')
+    # home.geometry('{}x{}+7+10'.format(home.winfo_screenwidth(), home.winfo_screenheight()))
     icon_image = PhotoImage(file='app/icons/AA.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
     home.mainloop()
