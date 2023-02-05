@@ -3,6 +3,7 @@ import customtkinter
 from tkinter import *
 from PIL import Image
 from tkinter import ttk
+# from homepage import Homepage
 
 
 
@@ -10,9 +11,8 @@ from tkinter import ttk
 
 WIDTH: int=540
 HEIGHT: int=400
-WIDTH_LARGE_SCREEN: int=1366
-HEIGHT_LARGE_SCREEN: int=768
-
+WIDTH_CENTER_POSITION: int=416
+HEIGHT_CENTER_POSITION: int=165
 
 
 main_window = customtkinter.CTk()
@@ -20,14 +20,15 @@ main_window.resizable(0, 0)
 main_window.minsize(500, 400)
 main_window.title('Loading Page')
 customtkinter.set_appearance_mode('#241f31')
-main_window.geometry(f'{WIDTH}x{HEIGHT}+{416}+{165}')
+main_window.geometry(f'{WIDTH}x{HEIGHT}+{WIDTH_CENTER_POSITION}+{HEIGHT_CENTER_POSITION}')
 
 
-"""This set the windows icon"""
-icon_image = PhotoImage(file='app/icons/AA.png')
+"""This is script is use to get the path of the icons"""
+icon_image = PhotoImage(file='app/icons/logo_03.png')
 main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 
 
+"""This is script is use to get the path of the icons"""
 image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
 logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_05.png")), 
 size=(166, 165))
@@ -41,17 +42,12 @@ main_window.rowconfigure(1, weight=0)
 
 
 
-# label = customtkinter.CTkLabel(master=main_window, text = 'Welcome To DS Enterprise', 
-#                                 font=('Times', 22), )
-# label.grid(row=0, column=0, ipady=30, ipadx=30, sticky=N)
-
-
 progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_image)
 progress_logo.grid(row=0, column=0, padx=20, pady=105)
 
 
 progress_label = customtkinter.CTkLabel(master = main_window, text = '', 
-                                        font = ('Roboto', 18))
+                                        font = ('Sans', 18))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
 
 
@@ -78,7 +74,7 @@ def loading_progress_bar(value) -> str:
     progress_bar.set(value)
     global counter
     if counter <= 10:
-        test = 'Please Wait....⌛ ' + (str(10 * counter) + '%')
+        test = 'Please wait, loading your homepage ....⌛ [' + (str(10 * counter) + '%]')
         progress_label.configure(text=test)
         progress_bar.after(1000, loading_progress_bar, value + 1/10)
         counter += 1

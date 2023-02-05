@@ -51,3 +51,10 @@ menu_button3.grid(row=3, column=0, sticky='nswe',columnspan=3, )
 
 
 os.mainloop()
+
+
+
+
+
+
+

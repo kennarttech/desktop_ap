@@ -2,6 +2,8 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
+from login import User
+
 
 
 
@@ -12,6 +14,9 @@ class Homepage(customtkinter.CTk):
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
     # customtkinter.set_window_scaling(1)
+
+    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
+    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_07.png")), size=(17, 17))
     
 
     def __init__(self, master) -> None:
@@ -32,7 +37,8 @@ class Homepage(customtkinter.CTk):
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
                                                 font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"),
-                                                corner_radius=5,
+                                                corner_radius=5, image=self.home_logo, 
+                                                compound='left',
                                                 fg_color="transparent", 
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
@@ -64,10 +70,15 @@ class Homepage(customtkinter.CTk):
                                             fg_color="transparent", 
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
-                                            hover=True)
+                                            hover=True, command=self.create_account)
         login_button.grid(row=0, column=4, padx=(0, 20), pady=(7, 0), sticky=E)
 
 
+
+
+
+    def create_account(self):
+        User()
 
 
 
@@ -92,7 +103,7 @@ def main():
     # home.minsize(460, 500)
     home.geometry('1364x690+7+10')
     # home.geometry('{}x{}+7+10'.format(home.winfo_screenwidth(), home.winfo_screenheight()))
-    icon_image = PhotoImage(file='app/icons/AA.png')
+    icon_image = PhotoImage(file='app/icons/logo_04.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
     home.mainloop()
 
