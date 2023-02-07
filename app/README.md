@@ -6,4 +6,5 @@
 1. this App is to enable them or help them to keep daily record, sales etc.
 
 
-2. 
+### this script is responsible for either zooming the window to the fullest
+2. root.attributes ("alpha": must be -alpha, -topmost, -zoomed, -fullscreen, or -type)

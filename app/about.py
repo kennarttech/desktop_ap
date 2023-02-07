@@ -83,7 +83,7 @@ def main():
     about.geometry('1240x800+300+100')
     icon_image = PhotoImage(file='app/icons/AA.png')
     about.tk.call('wm', 'iconphoto', about._w, icon_image)
-    about.mainloop()
+    # about.mainloop()
 
 
 if __name__ == "__main__":

@@ -2,7 +2,8 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
-from login import User
+from login import LoginUser
+# from about import Aboutpage
 
 
 
@@ -13,7 +14,8 @@ class Homepage(customtkinter.CTk):
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
-    # customtkinter.set_window_scaling(1)
+    customtkinter.set_window_scaling(1)
+
 
     image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
     home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_07.png")), size=(17, 17))
@@ -50,7 +52,8 @@ class Homepage(customtkinter.CTk):
                                                 height=20, hover_color=("gray70", "gray30"),
                                                 corner_radius=5,fg_color="transparent", 
                                                 text_color=("gray10", "gray90"),
-                                                border_color='gray40',border_width=1)
+                                                border_color='gray40',border_width=1,
+                                                command=None)
         daily_record_button.grid(row=0, column=2, padx=(0, 0), pady=(7, 0), sticky=N)
 
 
@@ -60,7 +63,7 @@ class Homepage(customtkinter.CTk):
                                             width=50, height=20, fg_color="transparent", 
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
-                                            command=self.about_page)
+                                            command=None)
         about_button.grid(row=0, column=2, padx=(150, 0), pady=(7, 0), sticky=N)
 
 
@@ -78,18 +81,15 @@ class Homepage(customtkinter.CTk):
 
 
     def create_account(self):
-        User()
-
-
-
-
+        LoginUser()
 
 
 
     def about_page(self):
-        self.master.withdraw()
-        os.system('python app/about.py')
-        self.master.destroy()
+        # self.master.withdraw()
+        # Aboutpage()
+        # self.master.destroy()
+        pass
 
 
 
@@ -100,9 +100,9 @@ def main():
 
     app = Homepage(home)
     home.title('Home Page')
-    # home.minsize(460, 500)
-    home.geometry('1364x690+7+10')
-    # home.geometry('{}x{}+7+10'.format(home.winfo_screenwidth(), home.winfo_screenheight()))
+    home.minsize(440, 400)
+    home.geometry('500x500+400+100')
+    home.attributes('-zoomed', True)
     icon_image = PhotoImage(file='app/icons/logo_04.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)
     home.mainloop()
@@ -110,3 +110,6 @@ def main():
 
 if __name__ == "__main__":
     app = main()
+    print('run directly')
+else:
+    print('run from somewhere else')
