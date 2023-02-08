@@ -1,8 +1,9 @@
 import os
+import login
 from tkinter import *
 import customtkinter
 from PIL import Image
-from newframes import LoginU
+
 
 
 
@@ -16,6 +17,7 @@ class UserSignup(customtkinter.CTk):
         self.register.geometry('500x500+400+100')
         icon_image_ = PhotoImage(file='app/icons/logo_02.png')
         self.register.tk.call('wm', 'iconphoto', self.register._w, icon_image_)
+
 
         self.register.columnconfigure(0, weight=1, uniform='a')
         self.register.rowconfigure(1, weight=0, uniform='a')
@@ -41,20 +43,23 @@ class UserSignup(customtkinter.CTk):
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Username',
-                                            font=('Sans', 14))
+                                            font=('Sans', 14)
+                                            )
         user_name.place(x=53, y=70)
         user_name.focus()
 
 
         user_password = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Password', 
-                                            show='....', font=('Sans', 14))
+                                            show='....', font=('Sans', 14)
+                                            )
         user_password.place(x=53, y=130)
 
 
         comfirm_password = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Comfirm_password', 
-                                            show='....', font=('Sans', 14))
+                                            show='....', font=('Sans', 14)
+                                            )
         comfirm_password.place(x=53, y=190)
 
 
@@ -64,11 +69,12 @@ class UserSignup(customtkinter.CTk):
                                                 hover_color=('#3CCF4E'),
                                                 fg_color='transparent',
                                                 border_color='gray40',
-                                                border_width=0.6)
+                                                border_width=0.6
+                                                )
         register_btn.place(x=54, y=245)
 
 
-        forgot_password = customtkinter.CTkButton(frame, text='Already have account? Login', 
+        forgot_password = customtkinter.CTkButton(frame, text='Already have account? Login.', 
                                                 height=20, width=100, corner_radius=5,
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('gray70', 'gray30'),
@@ -79,14 +85,14 @@ class UserSignup(customtkinter.CTk):
         forgot_password.place(x=65, y=285)
 
 
-
         alternative_btn = customtkinter.CTkButton(frame, text='Register using google', width=220, 
                                                 height=30,corner_radius=5, image=logimage,
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('#3CCF4E'), compound='left',
                                                 fg_color=('gray7', 'gray30'),
                                                 border_color='gray40',
-                                                border_width=0.6)
+                                                border_width=0.6
+                                                )
         alternative_btn.place(x=54, y=320)
 
 
@@ -96,18 +102,12 @@ class UserSignup(customtkinter.CTk):
 
     def login_function(self):
         self.register.withdraw()
-        LoginU()
-        self.register.destroy()
-        
+        login.LoginUser()
+        self.register.deiconify()
 
 
-
-        
 
 
 
 if __name__ == "__main__":
     app = UserSignup()
-    print('run directly ')
-else:
-    print('run from somewhere else')

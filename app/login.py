@@ -2,8 +2,7 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
-from register import UserSignup
-
+import register
 
 
 
@@ -29,8 +28,6 @@ class LoginUser(customtkinter.CTk):
         size=(900, 600))
 
 
-        
-
         frame = customtkinter.CTkFrame(self.login, width=320, height=400, 
                                         corner_radius=10, 
                                         border_color='gray50')
@@ -44,20 +41,23 @@ class LoginUser(customtkinter.CTk):
 
 
         title_lable = customtkinter.CTkLabel(frame, text='Login into your account',
-                                            font=customtkinter.CTkFont('Sans', 20))
+                                            font=customtkinter.CTkFont('Sans', 20)
+                                            )
         title_lable.place(x=45, y=30)
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Username',
-                                            font=('Sans', 14))
+                                            font=('Sans', 14)
+                                            )
         user_name.place(x=53, y=90)
         user_name.focus()
 
 
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Password',
-                                            show='....', font=('Sans', 14))
+                                            show='....', font=('Sans', 14)
+                                            )
         user_name.place(x=53, y=150)
 
 
@@ -88,7 +88,8 @@ class LoginUser(customtkinter.CTk):
                                                 hover_color=('#3CCF4E'),
                                                 fg_color='transparent',
                                                 border_color='gray40',
-                                                border_width=0.6)
+                                                border_width=0.6
+                                                )
         login_btn.place(x=54, y=250)
 
 
@@ -99,9 +100,9 @@ class LoginUser(customtkinter.CTk):
                                                 hover_color=('#3CCF4E'), compound='left',
                                                 fg_color=('gray7', 'gray30'),
                                                 border_color='gray40',
-                                                border_width=0.6)
+                                                border_width=0.6
+                                                )
         alternative_btn.place(x=54, y=300)
-
 
         # self.login.mainloop()
 
@@ -109,13 +110,8 @@ class LoginUser(customtkinter.CTk):
 
     def create_account(self):
         self.login.withdraw()
-        UserSignup()
+        register.UserSignup()
         self.login.destroy()
-
-
-
-        
-
 
 
 
@@ -123,6 +119,3 @@ class LoginUser(customtkinter.CTk):
 
 if __name__ == "__main__":
     app = LoginUser()
-    print('run directly ')
-else:
-    print('run from somewhere else')

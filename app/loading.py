@@ -3,9 +3,6 @@ import customtkinter
 from tkinter import *
 from PIL import Image
 from tkinter import ttk
-# from homepage import Homepage
-
-
 
 
 
@@ -70,7 +67,7 @@ def user_homepage():
 
 counter = 0
 def loading_progress_bar(value) -> str:
-    """This function loads the page!! Refere to (README2.md) """
+    """This function loads the page!! Refer to (README2.md in the package folder) """
     progress_bar.set(value)
     global counter
     if counter <= 10:

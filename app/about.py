@@ -1,7 +1,7 @@
 import os
 from tkinter import *
 import customtkinter
-
+import homepage
 
 
 
@@ -10,7 +10,6 @@ class Aboutpage(customtkinter.CTk):
     """This is class loads the about page when it is been called"""
 
     customtkinter.set_appearance_mode('system')
-    customtkinter.set_window_scaling(0.6)
 
 
     TEXT_FILE_PATH = "app/history.txt"
@@ -21,19 +20,31 @@ class Aboutpage(customtkinter.CTk):
             # print(result, end='')
 
 
-    def __init__(self, master) -> None:
-        self.master = master
-        self.master.columnconfigure(0, weight = 1, uniform='a')
-        self.master.columnconfigure(1, weight = 0)
-        self.master.rowconfigure(1, weight = 1)
+
+    def __init__(self) -> None:
+        # self.about = customtkinter.CTk()
+        self.about = customtkinter.CTkToplevel()
+        self.about.title('About Page')
+        self.about.attributes('-zoomed', True)
+        self.about.geometry('900x500+250+100')
+        icon_image = PhotoImage(file='app/icons/AA.png')
+        self.about.tk.call('wm', 'iconphoto', self.about._w, icon_image)
+      
 
 
-        about_top_frame = customtkinter.CTkFrame(self.master, 
+        self.about.columnconfigure(0, weight = 1, uniform='a')
+        self.about.columnconfigure(1, weight = 0)
+        self.about.rowconfigure(1, weight = 1)
+
+
+
+        about_top_frame = customtkinter.CTkFrame(self.about, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
                                             corner_radius = 3)
         about_top_frame.grid(row = 0, column = 0, sticky = NSEW)
         about_top_frame.grid_columnconfigure(0, weight = 1)
+
 
 
         home_button1 = customtkinter.CTkButton(about_top_frame, text='Back home /Exit', 
@@ -47,7 +58,8 @@ class Aboutpage(customtkinter.CTk):
         home_button1.grid(row=2, column=0, padx=(18, 25), pady=(12, 12), sticky=N)
 
 
-        default_textbox = customtkinter.CTkTextbox(self.master, width=250, font=('Times', 20),
+
+        default_textbox = customtkinter.CTkTextbox(self.about, width=250, font=('Times', 20),
                                                     text_color=('gray80'), corner_radius=10,
                                                     scrollbar_button_color=('teal'),
                                                     scrollbar_button_hover_color=('red'))
@@ -56,7 +68,7 @@ class Aboutpage(customtkinter.CTk):
         default_textbox.configure(state='disable')
 
 
-        footer_frame = customtkinter.CTkFrame(self.master, 
+        footer_frame = customtkinter.CTkFrame(self.about, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
                                             height = 30, fg_color='gray25',
@@ -64,31 +76,18 @@ class Aboutpage(customtkinter.CTk):
         footer_frame.grid(row = 2, column = 0, sticky=EW)
         footer_frame.grid_rowconfigure(0, weight = 1)
 
+        self.about.mainloop()
+
 
 
 
     def backhome(self):
-        self.master.withdraw()
-        os.system('python app/homepage.py')
-        self.master.destroy()
+        self.about.withdraw()
+        homepage.Homepage()
+        self.about.deiconify()
 
 
-
-
-def main():
-    about = customtkinter.CTk()
-    app = Aboutpage(about)
-    about.title('About Page')
-    about.resizable(0, 0)
-    about.geometry('1240x800+300+100')
-    icon_image = PhotoImage(file='app/icons/AA.png')
-    about.tk.call('wm', 'iconphoto', about._w, icon_image)
-    # about.mainloop()
 
 
 if __name__ == "__main__":
-    app = main()
-
-    
-
-    
+    app = Aboutpage()
