@@ -14,3 +14,7 @@
 6. This code is used to display a loading bar with a percentage and a message that shows the user that the system is working on something and is not stuck.
 
 7. It's important to note that the above code is just a fragment of a larger program, and it may have dependencies on other functions, widgets or modules that should be defined and imported before running this function.
+
+
+### this script is responsible for either expanding the window to the fullest
+2. root.attributes ("alpha": must be -alpha, -topmost, -zoomed, -fullscreen, or -type)

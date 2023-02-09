@@ -85,17 +85,16 @@ class Homepage(customtkinter.CTk):
 
 
     def create_account(self):
-        self.master.deiconify()
-        login.LoginUser()
-        self.master.iconify()
         self.master.withdraw()
-
+        login.LoginUser()
+        self.master.withdraw()
+        login.deiconify()
 
 
 
     def about_page(self):
-        self.master.withdraw()
         about.Aboutpage()
+        self.master.withdraw()
         self.master.deiconify()
 
 

@@ -12,7 +12,7 @@ class Aboutpage(customtkinter.CTk):
     customtkinter.set_appearance_mode('system')
 
 
-    TEXT_FILE_PATH = "app/history.txt"
+    TEXT_FILE_PATH = "app/readme_reference/history.txt"
 
     with open(file=TEXT_FILE_PATH, mode='r') as rf:
         for i in rf.read():
@@ -76,7 +76,7 @@ class Aboutpage(customtkinter.CTk):
         footer_frame.grid(row = 2, column = 0, sticky=EW)
         footer_frame.grid_rowconfigure(0, weight = 1)
 
-        self.about.mainloop()
+        # self.about.mainloop()
 
 
 
