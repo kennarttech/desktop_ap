@@ -95,15 +95,12 @@ class UserSignup(customtkinter.CTk):
                                                 )
         alternative_btn.place(x=54, y=320)
 
-
         # self.register.mainloop()
 
 
-
     def login_function(self):
-        self.register.withdraw()
         login.LoginUser()
-        self.register.deiconify()
+        self.register.destroy()
 
 
 

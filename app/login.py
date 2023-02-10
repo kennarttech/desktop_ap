@@ -2,7 +2,7 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
-import register
+import register, forget_password, dashboard
 
 
 
@@ -67,7 +67,7 @@ class LoginUser(customtkinter.CTk):
                                                 hover_color=('gray70', 'gray30'),
                                                 fg_color='transparent',
                                                 border_color='gray40',
-                                                )
+                                                command=self.forgot_password_)
         forgot_password.place(x=155, y=203)
 
 
@@ -88,7 +88,8 @@ class LoginUser(customtkinter.CTk):
                                                 hover_color=('#3CCF4E'),
                                                 fg_color='transparent',
                                                 border_color='gray40',
-                                                border_width=0.6
+                                                border_width=0.6,
+                                                command=self.user_dashboard
                                                 )
         login_btn.place(x=54, y=250)
 
@@ -109,10 +110,18 @@ class LoginUser(customtkinter.CTk):
 
 
     def create_account(self):
-        self.login.withdraw()
         register.UserSignup()
         self.login.destroy()
 
+
+    def forgot_password_(self):
+        self.login.destroy()
+        forget_password.Passwordreset()
+
+
+    def user_dashboard(self):
+        dashboard.Dashboard()
+        self.login.destroy()
 
 
 

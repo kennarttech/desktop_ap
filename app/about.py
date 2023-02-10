@@ -25,12 +25,10 @@ class Aboutpage(customtkinter.CTk):
         # self.about = customtkinter.CTk()
         self.about = customtkinter.CTkToplevel()
         self.about.title('About Page')
-        self.about.attributes('-zoomed', True)
         self.about.geometry('900x500+250+100')
         icon_image = PhotoImage(file='app/icons/AA.png')
         self.about.tk.call('wm', 'iconphoto', self.about._w, icon_image)
       
-
 
         self.about.columnconfigure(0, weight = 1, uniform='a')
         self.about.columnconfigure(1, weight = 0)
@@ -47,7 +45,7 @@ class Aboutpage(customtkinter.CTk):
 
 
 
-        home_button1 = customtkinter.CTkButton(about_top_frame, text='Back home /Exit', 
+        home_button1 = customtkinter.CTkButton(about_top_frame, text='Exit', 
                                                 height=20, 
                                                 font=('Roboto', 13), width=80, 
                                                 hover_color=("gray70", "gray30"), 
@@ -82,9 +80,8 @@ class Aboutpage(customtkinter.CTk):
 
 
     def backhome(self):
-        self.about.withdraw()
-        homepage.Homepage()
-        self.about.deiconify()
+        homepage.Homepage(self.about)
+        self.about.destroy()
 
 
 

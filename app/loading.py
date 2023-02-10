@@ -2,7 +2,6 @@ import os
 import customtkinter
 from tkinter import *
 from PIL import Image
-from tkinter import ttk
 
 
 

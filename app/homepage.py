@@ -2,8 +2,7 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
-import login 
-import about
+import login, about
 
 
 
@@ -14,7 +13,6 @@ class Homepage(customtkinter.CTk):
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
-    customtkinter.set_window_scaling(1)
 
 
     image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
@@ -85,17 +83,14 @@ class Homepage(customtkinter.CTk):
 
 
     def create_account(self):
-        self.master.withdraw()
         login.LoginUser()
-        self.master.withdraw()
-        login.deiconify()
+
 
 
 
     def about_page(self):
         about.Aboutpage()
-        self.master.withdraw()
-        self.master.deiconify()
+
 
 
 
