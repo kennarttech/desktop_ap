@@ -23,9 +23,17 @@ class UserSignup(customtkinter.CTk):
         self.register.rowconfigure(1, weight=0, uniform='a')
 
 
-        image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 'icons')
-        logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'Google__G__Logo.svg.webp')),
+        image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
+                                                                'icons')
+        logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                    'Google__G__Logo.svg.webp')),
         size=(17, 17))
+
+
+        self.background_image = PhotoImage(file='app/icons/pattern.png')
+        self.background_label = Label(self.register, image=self.background_image)
+        self.background_label.place(relwidth=1, relheight=1)
+
 
 
         frame = customtkinter.CTkFrame(self.register, width=320, height=400, 

@@ -1,5 +1,6 @@
 from tkinter import *
 import customtkinter
+import homepage
 
 
 
@@ -14,6 +15,14 @@ class Dashboard():
 
         self.dash.columnconfigure(0, weight=1, uniform='a')
         self.dash.rowconfigure(0, weight=0, uniform='a')
+        
+
+
+
+
+
+
+
         # self.dash.mainloop()
 
 

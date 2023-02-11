@@ -25,7 +25,6 @@ class Homepage(customtkinter.CTk):
         self.master.rowconfigure(1, weight = 0, uniform='a')
 
 
-
         top_frame = customtkinter.CTkFrame(self.master, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
@@ -33,7 +32,6 @@ class Homepage(customtkinter.CTk):
                                             corner_radius = 3)
         top_frame.grid(row = 0, column = 0, ipady=(3), sticky = NSEW)
         top_frame.grid_columnconfigure((0,1,2,3,4), weight = 1)
-
 
 
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
@@ -47,7 +45,6 @@ class Homepage(customtkinter.CTk):
         home_button1.grid(row=0, column=0, padx=(20, 10), pady=(7, 0), sticky=W)
 
 
-
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
                                                 font=('Roboto', 13), width=83, 
                                                 height=20, hover_color=("gray70", "gray30"),
@@ -58,7 +55,6 @@ class Homepage(customtkinter.CTk):
         daily_record_button.grid(row=0, column=2, padx=(0, 0), pady=(7, 0), sticky=N)
 
 
-
         about_button = customtkinter.CTkButton(top_frame, text='About', 
                                             font=customtkinter.CTkFont('Roboto', 13),
                                             hover_color=("gray70", "gray30"), corner_radius=5, 
@@ -67,7 +63,6 @@ class Homepage(customtkinter.CTk):
                                             border_color='gray40',border_width=1,
                                             command=self.about_page)
         about_button.grid(row=0, column=2, padx=(150, 0), pady=(7, 0), sticky=N)
-
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
@@ -81,10 +76,9 @@ class Homepage(customtkinter.CTk):
 
 
 
-
     def create_account(self):
         login.LoginUser()
-
+        self.master.iconify()
 
 
 

@@ -15,9 +15,9 @@ class Aboutpage(customtkinter.CTk):
     TEXT_FILE_PATH = "app/readme_reference/history.txt"
 
     with open(file=TEXT_FILE_PATH, mode='r') as rf:
-        for i in rf.read():
-            result = i
-            # print(result, end='')
+        long_decription = rf.read()
+        # print(long_decription, end='')
+        # print(dir(long_decription))
 
 
 
@@ -26,7 +26,7 @@ class Aboutpage(customtkinter.CTk):
         self.about = customtkinter.CTkToplevel()
         self.about.title('About Page')
         self.about.geometry('900x500+250+100')
-        icon_image = PhotoImage(file='app/icons/AA.png')
+        icon_image = PhotoImage(file='app/icons/logo_04.png')
         self.about.tk.call('wm', 'iconphoto', self.about._w, icon_image)
       
 
@@ -62,7 +62,7 @@ class Aboutpage(customtkinter.CTk):
                                                     scrollbar_button_color=('teal'),
                                                     scrollbar_button_hover_color=('red'))
         default_textbox.grid(row=1, column=0, padx=(2, 0), pady=(80, 30), sticky="nsew")
-        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ "The printing press is a machine that was invented in the 15th century by Johannes Gutenberg, newspapers, magazines, and other printed materials.")
+        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ '\n' + self.long_decription)
         default_textbox.configure(state='disable')
 
 
@@ -78,10 +78,10 @@ class Aboutpage(customtkinter.CTk):
 
 
 
-
     def backhome(self):
         homepage.Homepage(self.about)
         self.about.destroy()
+
 
 
 

@@ -43,7 +43,7 @@ progress_logo.grid(row=0, column=0, padx=20, pady=105)
 
 
 progress_label = customtkinter.CTkLabel(master = main_window, text = '', 
-                                        font = ('Sans', 18))
+                                        font = ('Sans', 16))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
 
 
@@ -70,7 +70,7 @@ def loading_progress_bar(value) -> str:
     progress_bar.set(value)
     global counter
     if counter <= 10:
-        test = 'Please wait, loading your homepage ....⌛ [' + (str(10 * counter) + '%]')
+        test = 'Please wait, While we load your homepage ....⌛ [' + (str(10 * counter) + '%]')
         progress_label.configure(text=test)
         progress_bar.after(1000, loading_progress_bar, value + 1/10)
         counter += 1

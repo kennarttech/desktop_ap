@@ -21,11 +21,19 @@ class Passwordreset(customtkinter.CTk):
         self.password_reset.rowconfigure(1, weight=0, uniform='a')
 
 
-        image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 'icons')
-        logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'Google__G__Logo.svg.webp')),
+        image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
+                                                'icons')
+        logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                        'Google__G__Logo.svg.webp')),
         size=(17, 17))
-        background_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'pattern.png')),
+        background_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                'pattern.png')),
         size=(900, 600))
+
+
+        self.background_image = PhotoImage(file='app/icons/pattern.png')
+        self.background_label = Label(self.password_reset, image=self.background_image)
+        self.background_label.place(relwidth=1, relheight=1)
 
 
         frame = customtkinter.CTkFrame(self.password_reset, width=320, height=400, 
@@ -34,10 +42,6 @@ class Passwordreset(customtkinter.CTk):
         frame.pack(pady=60, anchor='center')
         frame.grid_columnconfigure((0,1,2), weight=0)
         frame.grid_rowconfigure((0,1,2), weight=1)
-
-
-        bg_image = customtkinter.CTkLabel(self.password_reset, text="", image=background_image)
-        bg_image.pack()
 
 
         title_lable = customtkinter.CTkLabel(frame, text='Reset password',
