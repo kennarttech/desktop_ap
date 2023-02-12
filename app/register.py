@@ -8,7 +8,8 @@ from PIL import Image
 
 
 
-class UserSignup(customtkinter.CTk):
+class UserSignup(customtkinter.CTkToplevel):
+    """This class returns the register or registration page whenever it is been called"""
     def __init__(self):
         # self.register = customtkinter.CTk()
         self.register = customtkinter.CTkToplevel()
@@ -33,7 +34,6 @@ class UserSignup(customtkinter.CTk):
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.register, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
-
 
 
         frame = customtkinter.CTkFrame(self.register, width=320, height=400, 

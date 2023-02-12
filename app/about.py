@@ -1,14 +1,13 @@
-import os
 from tkinter import *
+import tkinter as tk
 import customtkinter
 import homepage
 
 
 
 
-class Aboutpage(customtkinter.CTk):
-    """This is class loads the about page when it is been called"""
-
+class Aboutpage(customtkinter.CTkToplevel):
+    """This class loads the about page when it is been called"""
     customtkinter.set_appearance_mode('system')
 
 
@@ -17,8 +16,6 @@ class Aboutpage(customtkinter.CTk):
     with open(file=TEXT_FILE_PATH, mode='r') as rf:
         long_decription = rf.read()
         # print(long_decription, end='')
-        # print(dir(long_decription))
-
 
 
     def __init__(self) -> None:
@@ -35,49 +32,54 @@ class Aboutpage(customtkinter.CTk):
         self.about.rowconfigure(1, weight = 1)
 
 
-
-        about_top_frame = customtkinter.CTkFrame(self.about, 
+        top_frame = customtkinter.CTkFrame(self.about, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
-                                            corner_radius = 3)
-        about_top_frame.grid(row = 0, column = 0, sticky = NSEW)
-        about_top_frame.grid_columnconfigure(0, weight = 1)
+                                            corner_radius = 3,
+                                            )
+        top_frame.grid(row = 0, column = 0, ipady=3, sticky = NSEW)
+        top_frame.grid_columnconfigure(0, weight = 1)
 
 
-
-        home_button1 = customtkinter.CTkButton(about_top_frame, text='Exit', 
-                                                height=20, 
-                                                font=('Roboto', 13), width=80, 
+        home_button1 = customtkinter.CTkButton(top_frame, text='Exit', 
+                                                height=20, fg_color="transparent", 
+                                                font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"), 
                                                 corner_radius=5, command=self.backhome,
-                                                fg_color="transparent", 
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
-        home_button1.grid(row=2, column=0, padx=(18, 25), pady=(12, 12), sticky=N)
+        home_button1.grid(row=2, column=0, padx=(20, 10), pady=(7, 0), sticky=N)
 
 
-
-        default_textbox = customtkinter.CTkTextbox(self.about, width=250, font=('Times', 20),
+        default_textbox = customtkinter.CTkTextbox(self.about, width=200, font=('Times', 20),
                                                     text_color=('gray80'), corner_radius=10,
-                                                    scrollbar_button_color=('teal'),
-                                                    scrollbar_button_hover_color=('red'))
-        default_textbox.grid(row=1, column=0, padx=(2, 0), pady=(80, 30), sticky="nsew")
+                                                    # scrollbar_button_color=('white'),
+                                                    scrollbar_button_hover_color=('#16FF00'))
+        default_textbox.grid(row=1, column=0, padx=(30, 30), pady=(30, 40), sticky="nsew")
         default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ '\n' + self.long_decription)
         default_textbox.configure(state='disable')
 
 
-        footer_frame = customtkinter.CTkFrame(self.about, 
-                                            border_width = 0.6, 
+        footer_frame = customtkinter.CTkFrame(self.about, border_width = 0.6, 
                                             border_color ='gray10',
-                                            height = 30, fg_color='gray25',
-                                            corner_radius = 3)
-        footer_frame.grid(row = 2, column = 0, sticky=EW)
-        footer_frame.grid_rowconfigure(0, weight = 1)
+                                            fg_color='gray25', 
+                                            corner_radius = 3,
+                                            )
+        footer_frame.grid(row = 2, column = 0, ipady=1, sticky=EW)
+        
+        footer_frame.grid_columnconfigure((0,1,2), weight = 1)
+
+
+        footer_text = customtkinter.CTkLabel(footer_frame, text='Develop by [Kennart Tech]',
+                                            font=customtkinter.CTkFont('Sans', 12),
+                                            )
+        footer_text.grid(row=0, column=1, pady=2)
 
         # self.about.mainloop()
 
 
 
+    """This methods  returns the homepage when the button is press"""
     def backhome(self):
         homepage.Homepage(self.about)
         self.about.destroy()
@@ -87,4 +89,5 @@ class Aboutpage(customtkinter.CTk):
 
 
 if __name__ == "__main__":
+    """this returns True if the script is run directly else it return False"""
     app = Aboutpage()

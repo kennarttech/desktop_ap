@@ -15,8 +15,11 @@ class Homepage(customtkinter.CTk):
     customtkinter.set_default_color_theme("green")
 
 
-    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
-    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_07.png")), size=(17, 17))
+    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 
+                                "icons")
+    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                    "logo_07.png")), 
+    size=(17, 17))
     
 
     def __init__(self, master) -> None:
@@ -52,7 +55,7 @@ class Homepage(customtkinter.CTk):
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1,
                                                 command=None)
-        daily_record_button.grid(row=0, column=2, padx=(0, 0), pady=(7, 0), sticky=N)
+        daily_record_button.grid(row=0, column=2, padx=(0, 35), pady=(7, 0), sticky=N)
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
@@ -62,7 +65,7 @@ class Homepage(customtkinter.CTk):
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
                                             command=self.about_page)
-        about_button.grid(row=0, column=2, padx=(150, 0), pady=(7, 0), sticky=N)
+        about_button.grid(row=0, column=2, padx=(150, 35), pady=(7, 0), sticky=N)
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 

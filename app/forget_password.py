@@ -1,12 +1,13 @@
 import os
+import login
 from tkinter import *
 import customtkinter
 from PIL import Image
-import register, login
 
 
 
-class Passwordreset(customtkinter.CTk):
+
+class Passwordreset(customtkinter.CTkToplevel):
     def __init__(self):
         # self.password_reset = customtkinter.CTk()
         self.password_reset = customtkinter.CTkToplevel()
@@ -26,10 +27,7 @@ class Passwordreset(customtkinter.CTk):
         logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
                                         'Google__G__Logo.svg.webp')),
         size=(17, 17))
-        background_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
-                                                'pattern.png')),
-        size=(900, 600))
-
+        
 
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.password_reset, image=self.background_image)

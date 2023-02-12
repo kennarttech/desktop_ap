@@ -19,12 +19,12 @@ customtkinter.set_appearance_mode('#241f31')
 main_window.geometry(f'{WIDTH}x{HEIGHT}+{WIDTH_CENTER_POSITION}+{HEIGHT_CENTER_POSITION}')
 
 
-"""This is script is use to get the path of the icons"""
+"""This script is use to set windows icons"""
 icon_image = PhotoImage(file='app/icons/logo_03.png')
 main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 
 
-"""This is script is use to get the path of the icons"""
+"""This script returns the path of the icons"""
 image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
 logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_05.png")), 
 size=(166, 165))
@@ -50,7 +50,7 @@ progress_label.grid(row=1, column=0,  sticky=NSEW)
 progress_bar = customtkinter.CTkProgressBar(master = main_window, width = 480, 
                                     height = 15, mode='determinate', corner_radius=7,
                                     orientation='horizontal', determinate_speed= 2,
-                                    border_width=1, progress_color='#16CF13')
+                                    border_width=1, progress_color='#16FF00')
 progress_bar.grid(row=2, column=0, padx=20, pady=20, sticky=EW)
 progress_bar.set(0.0)
 

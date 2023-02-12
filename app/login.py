@@ -6,7 +6,7 @@ import register, forget_password, dashboard
 
 
 
-class LoginUser(customtkinter.CTk):
+class LoginUser(customtkinter.CTkToplevel):
     def __init__(self):
         # self.login = customtkinter.CTk()
         self.login = customtkinter.CTkToplevel()
@@ -26,9 +26,6 @@ class LoginUser(customtkinter.CTk):
         logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path,
                                                                 'Google__G__Logo.svg.webp')),
         size=(17, 17))
-        background_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
-                                                                'pattern.png')),
-        size=(900, 600))
 
 
         self.background_image = PhotoImage(file='app/icons/pattern.png')
