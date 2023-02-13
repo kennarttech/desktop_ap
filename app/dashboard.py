@@ -3,7 +3,7 @@ import homepage
 from tkinter import *
 import customtkinter
 from PIL import Image
-
+from tkinter import messagebox
 
 
 class Dashboard(customtkinter.CTkToplevel):
@@ -89,7 +89,8 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    hover_color=("gray70", "gray30"), 
                                                    height=30, width=100, anchor='S',
                                                    corner_radius=4, border_width=1,
-                                                   font=('Roboto', 18),image=back_home)
+                                                   font=('Roboto', 18),image=back_home,
+                                                   command=self.dashexit)
         exit_button.grid(row=5,  padx=1, pady=50, sticky='s')
 
 
@@ -100,13 +101,15 @@ class Dashboard(customtkinter.CTkToplevel):
                        ipadx=(400), ipady=(0), sticky=NSEW)
         top_frame.grid_columnconfigure(1, weight=1)
         
-        
-        
-
-
 
         # self.dash.mainloop()
 
+
+    def dashexit(self):
+        homepage.Homepage(self.dash)
+        self.dash.destroy()
+        sys.exit()
+        
 
 
 

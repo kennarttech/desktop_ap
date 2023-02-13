@@ -81,7 +81,7 @@ class Homepage(customtkinter.CTk):
 
     def create_account(self):
         login.LoginUser()
-        self.master.iconify()
+        self.master.withdraw()
 
 
 
