@@ -1,7 +1,8 @@
+import homepage
 from tkinter import *
 import tkinter as tk
 import customtkinter
-import homepage
+from tktooltip import ToolTip
 
 
 
@@ -13,7 +14,7 @@ class Aboutpage(customtkinter.CTkToplevel):
 
     TEXT_FILE_PATH = "app/readme_reference/history.txt"
 
-    with open(file=TEXT_FILE_PATH, mode='r') as rf:
+    with open(file=TEXT_FILE_PATH, mode='r', encoding='utf-8') as rf:
         long_decription = rf.read()
         # print(long_decription, end='')
 

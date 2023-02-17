@@ -3,7 +3,9 @@ import homepage
 from tkinter import *
 import customtkinter
 from PIL import Image
+from tktooltip import ToolTip
 from tkinter import messagebox
+
 
 
 class Dashboard(customtkinter.CTkToplevel):
@@ -12,8 +14,9 @@ class Dashboard(customtkinter.CTkToplevel):
     customtkinter.set_default_color_theme('green')
 
     def __init__(self) -> None:
-        # self.dash = customtkinter.CTk()
-        self.dash = customtkinter.CTkToplevel()
+        self.dash = customtkinter.CTk()
+        # self.dash = customtkinter.CTkToplevel()
+        self.dash.minsize(400, 430)
         self.dash.attributes('-zoomed', True)
         self.dash.geometry('1000x600+155+50')
         self.dash.title('Dashboard')
@@ -50,66 +53,118 @@ class Dashboard(customtkinter.CTkToplevel):
                                             # width=500
                                             )
         left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
-        left_frame.grid_rowconfigure(5, weight=1)
+        left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
 
         user_profile = customtkinter.CTkLabel(master=left_frame, 
                                               text='\n\n\n\nProfile',      image=user_profile_logo,
                                               font=customtkinter.CTkFont('Roboto', 18),
                                               text_color='gray12')
-        user_profile.grid(row=0, column=0, padx=20, pady=5, sticky=NSEW)
+        user_profile.grid(row=0, column=0, padx=20, pady=1, sticky=NSEW)
 
 
         status_label = customtkinter.CTkLabel(master=left_frame, text='Welcome,\n[00121]',
                                               font=customtkinter.CTkFont('Roboto', 20),
                                               text_color='#16FF00')
-        status_label.grid(row=1, column=0, padx=30, pady=10, sticky=EW)     
+        status_label.grid(row=1, column=0, padx=30, ipady=2, sticky=EW)     
 
 
         new_frame_button = customtkinter.CTkButton(master=left_frame, text='New Frames',
                                                    text_color=("gray10", "gray90"), fg_color='transparent',
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=30, width=30,
+                                                   height=25, width=30,
                                                    corner_radius=4, border_width=1,
                                                    image=new_frames, anchor='w')
-        new_frame_button.grid(row=2, column=0, padx=10, pady=25, sticky=EW)
+        new_frame_button.grid(row=2, column=0, padx=10, pady=2, sticky=EW)
+        ToolTip(new_frame_button, msg='Upload new frames', fg='white', bg='gray15', delay=0)
 
 
         daily_sales_button = customtkinter.CTkButton(master=left_frame, text='Daily Sales',
                                                    text_color=("gray10", "gray90"), fg_color='transparent',
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=30, width=30,
+                                                   height=25, width=30,
                                                    corner_radius=4, border_width=1,
                                                    image=daily_sales, anchor='w')
         daily_sales_button.grid(row=3, column=0, padx=10, pady=0, sticky=EW)
+        ToolTip(daily_sales_button, msg='New daily sales', fg='white', bg='gray15', delay=0)
 
 
         exit_button = customtkinter.CTkButton(master=left_frame, text='  Exit',
-                                                   text_color=("gray10", "gray90"), fg_color='transparent',
+                                                   text_color=("white"), fg_color='#FF5B00',
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=30, width=100, anchor='S',
+                                                   height=25, width=100, anchor='S',
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 18),image=back_home,
                                                    command=self.dashexit)
-        exit_button.grid(row=5,  padx=1, pady=50, sticky='s')
+        exit_button.grid(row=4,  padx=1, pady=50, sticky='s')
+        ToolTip(exit_button, msg='Exit the program', fg='white', bg='gray15', delay=0)
 
 
-        top_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
-                                           border_color='gray10', fg_color='gray25',
-                                           corner_radius=3, height=40)
-        top_frame.grid(row=0, column=1, columnspan=2, padx=(0, 0), pady=(0, 400), 
-                       ipadx=(400), ipady=(0), sticky=NSEW)
-        top_frame.grid_columnconfigure(1, weight=1)
+        """This column downwards defines top, middle and down frames"""
+        menu_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
+                                           border_color='gray10', fg_color='gray28',
+                                           corner_radius=5, width=1200, height=40)
+        menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(0, 12), sticky=N)
+        menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
+        menu_frame.columnconfigure(0, weight=0)
+
+
+        middle_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
+                                           border_color='gray10', fg_color='gray28',
+                                           corner_radius=5, width=1200, height=100)
+        middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(60, 60), sticky=NSEW)
+        middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
+
+
+        buttom_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
+                                              border_color='gray10', fg_color='gray24',
+                                              corner_radius=4, width=1200, height=25)
+        buttom_frame.grid(row=0, column=1, columnspan=5, pady=(0, 0), sticky=S)
+        buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
+        """End of the frames"""
+
+        menu_frame_label = customtkinter.CTkLabel(master=menu_frame, 
+                                                  text='DS Data Collection System',
+                                                  text_color='orange', font=('Sans', 15),
+                                                  )
+        menu_frame_label.place(x=40, y=20, anchor='w')
+
+
+        search_box = customtkinter.CTkEntry(master=menu_frame, 
+                                            placeholder_text='Search for item',
+                                            width=220)
+        search_box.place(x=560, y=20, anchor='e')
+        ToolTip(search_box, msg='Search for anything', delay=0)
+
+        
+        search_button = customtkinter.CTkButton(master=menu_frame, text='Search',
+                                                width=30, height=27, corner_radius=5,
+                                                font=customtkinter.CTkFont('Sans', 13),
+                                                hover_color=('gray70', 'gray30'),
+                                                fg_color='transparent',
+                                                border_color='gray40',border_width=1,)
+        search_button.place(x=620, y=20, anchor='e')
+        ToolTip(search_button, msg='Click to search', delay=0)
+
+
+
+
+
+
+        
         
 
-        # self.dash.mainloop()
+        self.dash.mainloop()
 
 
     def dashexit(self):
-        homepage.Homepage(self.dash)
-        self.dash.destroy()
-        sys.exit()
-        
+        if messagebox.askyesno('Logout', 'Please remember to save\nyour works\nDo you want to exit', icon='warning'):
+            homepage.Homepage(self.dash)
+            self.dash.destroy()
+            sys.exit()
+        else:
+            self.dash = self.dash
+            return
 
 
 
@@ -119,4 +174,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
 if __name__ == "__main__":
     app = Dashboard()
+    
+    
 
+    

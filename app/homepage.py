@@ -3,6 +3,7 @@ from tkinter import *
 import customtkinter
 from PIL import Image
 import login, about
+from tktooltip import ToolTip
 
 
 
@@ -46,6 +47,7 @@ class Homepage(customtkinter.CTk):
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
         home_button1.grid(row=0, column=0, padx=(20, 10), pady=(7, 0), sticky=W)
+        # ToolTip(home_button1, msg='Home', delay=0)
 
 
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
@@ -56,6 +58,7 @@ class Homepage(customtkinter.CTk):
                                                 border_color='gray40',border_width=1,
                                                 command=None)
         daily_record_button.grid(row=0, column=2, padx=(0, 35), pady=(7, 0), sticky=N)
+        ToolTip(daily_record_button, fg='white', bg='gray15', msg='Daily record')
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
@@ -66,6 +69,7 @@ class Homepage(customtkinter.CTk):
                                             border_color='gray40',border_width=1,
                                             command=self.about_page)
         about_button.grid(row=0, column=2, padx=(150, 35), pady=(7, 0), sticky=N)
+        ToolTip(about_button, msg='About Us', fg='white', bg='gray15', delay=0)
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
@@ -76,6 +80,8 @@ class Homepage(customtkinter.CTk):
                                             border_color='gray40',border_width=1,
                                             hover=True, command=self.create_account)
         login_button.grid(row=0, column=4, padx=(0, 20), pady=(7, 0), sticky=E)
+        ToolTip(login_button, msg='Please Login or Signup', fg='white', bg='gray15')
+
 
 
 
