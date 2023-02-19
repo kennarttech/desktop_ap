@@ -16,7 +16,7 @@ class Dashboard(customtkinter.CTkToplevel):
     customtkinter.set_default_color_theme('green')
 
     """Using context manager to open the a json file"""
-    with open(file='app/config_files/names.json', mode='r') as settings_rf:
+    with open(file='app/config/names.json', mode='r') as settings_rf:
         user_data = json.load(settings_rf)
 
     def __init__(self) -> None:

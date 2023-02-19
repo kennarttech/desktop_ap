@@ -14,7 +14,7 @@ class Aboutpage(customtkinter.CTkToplevel):
 
 
     """Using contex manager to open txt file for reading mode"""
-    TEXT_FILE_PATH = "app/config_files/about.json"
+    TEXT_FILE_PATH = "app/config/about.json"
 
     with open(file=TEXT_FILE_PATH, mode='r', encoding='utf-8') as rf:
         long_decription = json.load(rf)

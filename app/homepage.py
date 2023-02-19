@@ -21,12 +21,6 @@ class Homepage(customtkinter.CTk):
     customtkinter.set_default_color_theme("green")
     
 
-    text_message = "app/readme_reference/msgs.txt"
-
-    with open(file=text_message, mode='r', encoding='utf-8') as rf:
-        txm = rf.read()
-
-
     image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 
                                 "icons")
     home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
@@ -67,7 +61,7 @@ class Homepage(customtkinter.CTk):
                                                 border_color='gray40',border_width=1,
                                                 command=self.dsales)
         daily_record_button.grid(row=0, column=2, padx=(0, 35), pady=(7, 0), sticky=N)
-        ToolTip(daily_record_button, fg='white', bg='gray15', msg=self.txm)
+        ToolTip(daily_record_button, fg='white', bg='gray15', msg='Daily record')
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
