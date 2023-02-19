@@ -1,3 +1,4 @@
+import json
 import homepage
 from tkinter import *
 import tkinter as tk
@@ -12,10 +13,11 @@ class Aboutpage(customtkinter.CTkToplevel):
     customtkinter.set_appearance_mode('system')
 
 
-    TEXT_FILE_PATH = "app/readme_reference/history.txt"
+    """Using contex manager to open txt file for reading mode"""
+    TEXT_FILE_PATH = "app/config_files/about.json"
 
     with open(file=TEXT_FILE_PATH, mode='r', encoding='utf-8') as rf:
-        long_decription = rf.read()
+        long_decription = json.load(rf)
         # print(long_decription, end='')
 
 
@@ -46,7 +48,7 @@ class Aboutpage(customtkinter.CTkToplevel):
                                                 height=20, fg_color="transparent", 
                                                 font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"), 
-                                                corner_radius=5, command=self.backhome,
+                                                corner_radius=5, command=self.aboutexit,
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
         home_button1.grid(row=2, column=0, padx=(20, 10), pady=(7, 0), sticky=N)
@@ -54,10 +56,9 @@ class Aboutpage(customtkinter.CTkToplevel):
 
         default_textbox = customtkinter.CTkTextbox(self.about, width=200, font=('Times', 20),
                                                     text_color=('gray80'), corner_radius=10,
-                                                    # scrollbar_button_color=('white'),
                                                     scrollbar_button_hover_color=('#16FF00'))
         default_textbox.grid(row=1, column=0, padx=(30, 30), pady=(30, 40), sticky="nsew")
-        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ '\n' + self.long_decription)
+        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ '\n' + self.long_decription['About'])
         default_textbox.configure(state='disable')
 
 
@@ -80,8 +81,8 @@ class Aboutpage(customtkinter.CTkToplevel):
 
 
 
-    """This methods  returns the homepage when the button is press"""
-    def backhome(self):
+    """This methods  returns or exit the about window when the button is press"""
+    def aboutexit(self):
         homepage.Homepage(self.about)
         self.about.destroy()
 

@@ -1,9 +1,14 @@
 import os
+import json
+import dashboard
+import login, about
 from tkinter import *
 import customtkinter
 from PIL import Image
-import login, about
 from tktooltip import ToolTip
+from tkinter import messagebox
+
+
 
 
 
@@ -14,6 +19,12 @@ class Homepage(customtkinter.CTk):
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
+    
+
+    text_message = "app/readme_reference/msgs.txt"
+
+    with open(file=text_message, mode='r', encoding='utf-8') as rf:
+        txm = rf.read()
 
 
     image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 
@@ -25,8 +36,8 @@ class Homepage(customtkinter.CTk):
 
     def __init__(self, master) -> None:
         self.master = master
-        self.master.columnconfigure(0, weight = 1, uniform='a')
-        self.master.rowconfigure(1, weight = 0, uniform='a')
+        self.master.columnconfigure((0), weight = 1, uniform='a')
+        self.master.rowconfigure((1,2,3), weight = 0, uniform='a')
 
 
         top_frame = customtkinter.CTkFrame(self.master, 
@@ -42,12 +53,10 @@ class Homepage(customtkinter.CTk):
                                                 font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"),
                                                 corner_radius=5, image=self.home_logo, 
-                                                compound='left',
-                                                fg_color="transparent", 
+                                                fg_color="transparent", compound='left',
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
         home_button1.grid(row=0, column=0, padx=(20, 10), pady=(7, 0), sticky=W)
-        # ToolTip(home_button1, msg='Home', delay=0)
 
 
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
@@ -56,9 +65,9 @@ class Homepage(customtkinter.CTk):
                                                 corner_radius=5,fg_color="transparent", 
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1,
-                                                command=None)
+                                                command=self.dsales)
         daily_record_button.grid(row=0, column=2, padx=(0, 35), pady=(7, 0), sticky=N)
-        ToolTip(daily_record_button, fg='white', bg='gray15', msg='Daily record')
+        ToolTip(daily_record_button, fg='white', bg='gray15', msg=self.txm)
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
@@ -73,15 +82,32 @@ class Homepage(customtkinter.CTk):
 
 
         login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
-                                            font=('Roboto', 13), height=20, corner_radius=5,
+                                            font=('Roboto', 13), corner_radius=5,
                                             width=65, hover_color=("gray70", "gray30"),
-                                            fg_color="transparent", 
+                                            fg_color="transparent", height=20, 
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
                                             hover=True, command=self.create_account)
         login_button.grid(row=0, column=4, padx=(0, 20), pady=(7, 0), sticky=E)
         ToolTip(login_button, msg='Please Login or Signup', fg='white', bg='gray15')
 
+
+        middle_frame = customtkinter.CTkFrame(self.master, border_width=0.6,
+                                              border_color='gray10', fg_color='gray20',
+                                              corner_radius=5, height=140)
+        middle_frame.grid(row=1, column=0, padx=(20, 20), ipady=200, pady=(50, 10), sticky='nsew')
+
+
+    def loginuser(self, username, password):
+        return username, password
+
+    
+
+    def dsales(self):
+        if messagebox.showinfo('Login', 'Please Signup/Login \nto acess this page', icon='info'):
+            login.LoginUser()
+        else:
+            return self.master 
 
 
 

@@ -26,7 +26,7 @@ menu_toggle1.pack(side='right', expand=True)
 
 
 entry = customtkinter.CTkEntry(main_frame)
-entry.place(relx=0.10, rely=0.5, anchor=W, width=150, height=35)
+# entry.place(relx=0.10, rely=0.5, anchor=W, width=150, height=35)
 entry.focus()
 
 

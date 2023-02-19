@@ -38,7 +38,7 @@ main_window.rowconfigure(1, weight=0)
 
 
 
-progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_image)
+progress_logo = customtkinter.CTkLabel(master=main_window, text="",)
 progress_logo.grid(row=0, column=0, padx=20, pady=105)
 
 
