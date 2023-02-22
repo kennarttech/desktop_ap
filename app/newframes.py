@@ -1,56 +1,64 @@
-import json
-import hashlib
-import tkinter as tk
-from tkinter import messagebox
+import customtkinter as ctk
+import customtkinter
 
 
 
-txt = 'app/users.json'
-def authenticate(username, password):
-    # Open the JSON file and load the contents into a dictionary
-    with open(file=txt, mode='r') as f:
-        users = json.load(f)
-    
-    # Check if the entered username exists in the dictionary
-    if username in users:
-        # Hash the entered password using SHA-256
-        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
-        # Check if the hashed password matches the value in the dictionary for the entered username
-        if hashed_password == users[username]:
-            return True
-    
-    return False
+class SlidePanel(ctk.CTkFrame):
+	def __init__(self, parent, start_pos, end_pos):
+		super().__init__(master = parent)
 
-def login():
-    # Retrieve the username and password entered by the user
-    username = username_entry.get()
-    password = password_entry.get()
-    
-    # Authenticate the user
-    if authenticate(username, password):
-        messagebox.showinfo("Login", "Login successful!")
-    else:
-        messagebox.showerror("Login", "Invalid username or password.")
-        
-# Create the main window
-root = tk.Tk()
-root.title("Login")
+		# general attributes 
+		self.start_pos = start_pos + 0.04
+		self.end_pos = end_pos - 0.06
+		self.width = abs(start_pos - end_pos)
 
-# Create the username label and entry field
-username_label = tk.Label(root, text="Username:")
-username_label.pack()
-username_entry = tk.Entry(root)
-username_entry.pack()
+		# animation logic
+		self.pos = self.start_pos
+		self.in_start_pos = True
 
-# Create the password label and entry field
-password_label = tk.Label(root, text="Password:")
-password_label.pack()
-password_entry = tk.Entry(root, show="*")
-password_entry.pack()
+		# layout
+		self.place(relx = self.start_pos, rely = 0.05, relwidth = self.width, relheight = 0.9)
 
-# Create the login button
-login_button = tk.Button(root, text="Login", command=login)
-login_button.pack()
+	def animate(self):
+		if self.in_start_pos:
+			self.animate_forward()
+		else:
+			self.animate_backwards()
+			
 
-# Start the main loop
-root.mainloop()
+	def animate_forward(self):
+		if self.pos > self.end_pos:
+			self.pos -= 0.008
+			self.place(relx = self.pos, rely = 0.05, relwidth = self.width, relheight = 0.9)
+			self.after(4, self.animate_forward)
+		else:
+			self.in_start_pos = False
+
+	def animate_backwards(self):
+		if self.pos < self.start_pos:
+			self.pos += 0.008
+			self.place(relx = self.pos, rely = 0.05, relwidth = self.width, relheight = 0.9)
+			self.after(4, self.animate_backwards)
+		else:
+			self.in_start_pos = True
+
+
+
+window = ctk.CTk()
+window.title('Animated Widgets')
+window.geometry('600x400')
+
+
+animated_panel = SlidePanel(window, 1.0, 0.10)    
+slide = ctk.CTkFrame(animated_panel, height=120, width=300, corner_radius = 0)
+slide.pack(pady = 10)
+
+entry = customtkinter.CTkEntry(master=slide, width=220, height=30, placeholder_text='just trying something')
+entry.place(x=60, y=50)
+
+
+button = ctk.CTkButton(window, text = 'toggle sidebar', command = animated_panel.animate)
+button.place(relx = 0.5, rely = 0.5, anchor = 'center')
+
+
+window.mainloop()
