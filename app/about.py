@@ -3,7 +3,6 @@ import homepage
 from tkinter import *
 import tkinter as tk
 import customtkinter
-from tktooltip import ToolTip
 
 
 
@@ -17,7 +16,7 @@ class Aboutpage(customtkinter.CTkToplevel):
     TEXT_FILE_PATH = "app/config/about.json"
 
     with open(file=TEXT_FILE_PATH, mode='r', encoding='utf-8') as rf:
-        long_decription = json.load(rf)
+        app_about = json.load(rf)
         # print(long_decription, end='')
 
 
@@ -25,7 +24,7 @@ class Aboutpage(customtkinter.CTkToplevel):
         # self.about = customtkinter.CTk()
         self.about = customtkinter.CTkToplevel()
         self.about.title('About Page')
-        self.about.geometry('900x500+250+100')
+        self.about.geometry('620x450+360+120')
         icon_image = PhotoImage(file='app/icons/logo_04.png')
         self.about.tk.call('wm', 'iconphoto', self.about._w, icon_image)
       
@@ -58,7 +57,9 @@ class Aboutpage(customtkinter.CTkToplevel):
                                                     text_color=('gray80'), corner_radius=10,
                                                     scrollbar_button_hover_color=('#16FF00'))
         default_textbox.grid(row=1, column=0, padx=(30, 30), pady=(30, 40), sticky="nsew")
-        default_textbox.insert(0.0, 'About DS Enterprise\n\n'+ '\n' + self.long_decription['About'])
+        default_textbox.insert(0.0, 'About the application\n'+ '\n' + 
+                               self.app_about['app_description']['appname']
+                               )
         default_textbox.configure(state='disable')
 
 
@@ -82,7 +83,7 @@ class Aboutpage(customtkinter.CTkToplevel):
 
 
     """This methods  returns or exit the about window when the button is press"""
-    def aboutexit(self):
+    def aboutexit(self) -> None:
         homepage.Homepage(self.about)
         self.about.destroy()
 

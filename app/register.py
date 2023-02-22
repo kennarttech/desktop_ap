@@ -106,7 +106,7 @@ class UserSignup(customtkinter.CTkToplevel):
         # self.register.mainloop()
 
 
-    def login_function(self):
+    def login_function(self)-> None:
         login.LoginUser()
         self.register.destroy()
 

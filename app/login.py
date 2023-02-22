@@ -110,17 +110,17 @@ class LoginUser(customtkinter.CTkToplevel):
 
 
 
-    def create_account(self):
+    def create_account(self)-> None:
         register.UserSignup()
         self.login.destroy()
 
 
-    def forgot_password_(self):
+    def forgot_password_(self)-> None:
         self.login.destroy()
         forget_password.Passwordreset()
 
 
-    def user_dashboard(self):
+    def user_dashboard(self)-> None:
         dashboard.Dashboard()
         self.login.destroy()
 

@@ -27,7 +27,7 @@ main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
 """This script returns the path of the icons"""
 image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
 logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_05.png")), 
-size=(166, 165))
+size=(300,300))
 
    
 """This script is use to configure the main_window"""
@@ -38,8 +38,8 @@ main_window.rowconfigure(1, weight=0)
 
 
 
-progress_logo = customtkinter.CTkLabel(master=main_window, text="",)
-progress_logo.grid(row=0, column=0, padx=20, pady=105)
+progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_image)
+progress_logo.grid(row=0, column=0, padx=20, pady=20)
 
 
 progress_label = customtkinter.CTkLabel(master = main_window, text = '', 
@@ -56,7 +56,7 @@ progress_bar.set(0.0)
 
 
 
-def user_homepage():
+def user_homepage()-> None:
     """This function call user_homepage after ProgressBar finish loading"""
     main_window.withdraw()
     os.system("python app/homepage.py")

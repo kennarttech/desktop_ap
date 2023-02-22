@@ -90,7 +90,7 @@ class Passwordreset(customtkinter.CTkToplevel):
 
 
 
-    def new_password(self):
+    def new_password(self)-> None:
         login.LoginUser()
         self.password_reset.destroy()
 

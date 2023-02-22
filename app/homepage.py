@@ -1,6 +1,5 @@
 import os
 import json
-import dashboard
 import login, about
 from tkinter import *
 import customtkinter
@@ -19,6 +18,13 @@ class Homepage(customtkinter.CTk):
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme("green")
+
+
+    Text = 'app/config/settings.json'
+
+    with open(file=Text, mode='r', encoding='utf-8') as rf:
+        text = json.load(rf)
+
     
 
     image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 
@@ -89,15 +95,19 @@ class Homepage(customtkinter.CTk):
         middle_frame = customtkinter.CTkFrame(self.master, border_width=0.6,
                                               border_color='gray10', fg_color='gray20',
                                               corner_radius=5, height=140)
-        middle_frame.grid(row=1, column=0, padx=(20, 20), ipady=200, pady=(50, 10), sticky='nsew')
+        middle_frame.grid(row=1, column=0, padx=(20, 20), ipady=240, pady=(50, 10), sticky='nsew')
+        middle_frame.grid_columnconfigure((0,1,2), weight=1)
 
 
-    def loginuser(self, username, password):
-        return username, password
+        welcome_label = customtkinter.CTkLabel(master=middle_frame, 
+                                               text=self.text['DS_Enterprise'],
+                                               font=('Sans', 26),
+                                               )
+        welcome_label.grid(row=0, column=1, ipadx=50, pady=30)
 
     
 
-    def dsales(self):
+    def dsales(self)-> None:
         if messagebox.showinfo('Login', 'Please Signup/Login \nto acess this page', icon='info'):
             login.LoginUser()
         else:
@@ -105,13 +115,13 @@ class Homepage(customtkinter.CTk):
 
 
 
-    def create_account(self):
+    def create_account(self)-> None:
         login.LoginUser()
         self.master.withdraw()
 
 
 
-    def about_page(self):
+    def about_page(self)-> None:
         about.Aboutpage()
 
 

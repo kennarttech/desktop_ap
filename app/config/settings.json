@@ -1,0 +1,17 @@
+{
+    "DS_Enterprise": "Welcome to DS Enterprise",
+    "default_font": "Arial 12",
+    "theme": "green",
+    "theme2": "gold",
+    
+    "dependencies": [
+        "tkinter",
+        "requests",
+        "pandas",
+        "numpy"
+    ],
+
+    "statusbar":{
+        "KT":"Kennart Tech"
+    }
+}
