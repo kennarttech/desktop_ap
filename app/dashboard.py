@@ -141,7 +141,7 @@ class Dashboard(customtkinter.CTkToplevel):
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(60, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
-        middle_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
+        middle_frame.grid_rowconfigure((1,2,3,4,5,6,7), weight=1)
 
 
         
@@ -229,7 +229,7 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 18),
                                                    command=None)
-        submit_button.grid(row=3, column=0, padx=(30, 10), pady=(40, 10), sticky='e')
+        submit_button.grid(row=7, column=3, padx=(30, 10), pady=(140, 10), sticky='e')
         ToolTip(submit_button, msg='Submit Record', fg='white', bg='gray15', delay=0)
 
 
@@ -291,7 +291,4 @@ class Dashboard(customtkinter.CTkToplevel):
 
 if __name__ == "__main__":
     app = Dashboard()
-    
-    
-
     
