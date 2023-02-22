@@ -26,8 +26,8 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        self.dash = customtkinter.CTk()
-        # self.dash = customtkinter.CTkToplevel()
+        # self.dash = customtkinter.CTk()
+        self.dash = customtkinter.CTkToplevel()
         self.dash.minsize(400, 430)
         self.dash.attributes('-zoomed', True)
         self.dash.geometry('1000x600+155+50')
@@ -164,10 +164,11 @@ class Dashboard(customtkinter.CTkToplevel):
                                                dropdown_fg_color='gray35', justify='left')
         item_combo.grid(row=0, column=0, padx=(0, 0), pady=(3, 0))
         item_combo.set('Item Sold')
+        ToolTip(item_combo, msg='Select frames', fg='white', bg='gray15', delay=0)
 
 
 
-        quantity_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
+        quantity_combo = customtkinter.CTkComboBox(master=top_frame, width=120, height=30,
                                                values=['0','1','2','3','4','5','6','7','8','9','10'],
                                                corner_radius=11, border_width=2, border_color='gray50',
                                                button_color='gray50', fg_color='gray25',
@@ -178,13 +179,14 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
 
-        amount_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
+        price_combo = customtkinter.CTkComboBox(master=top_frame, width=100, height=30,
                                                values=['45','50','70','80','120','200','180','65','100','85'],
                                                corner_radius=11, border_width=2, border_color='gray50',
                                                button_color='gray50', fg_color='gray25',
                                                button_hover_color=('gray70', 'gray30'), 
                                                dropdown_fg_color='gray35', justify='left')
-        amount_combo.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
+        price_combo.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
+        price_combo.set('price')
 
 
 
@@ -209,13 +211,13 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
 
-        date_ = DateEntry(master=top_frame, height=58, width=10)
+        date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
         date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
 
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
-                                               placeholder_text='Total amount',
+                                               placeholder_text='Total sales',
                                                 width=100, corner_radius=9)
         total.grid(row=0, column=7, padx=(0, 0), pady=(3, 0))
 
@@ -255,7 +257,7 @@ class Dashboard(customtkinter.CTkToplevel):
                                             placeholder_text='Search for deposite/name.....',
                                             width=220, corner_radius=9)
         search_box.place(x=560, y=20, anchor='e')
-        ToolTip(search_box, msg='Search for anything', delay=0)
+        ToolTip(search_box, msg='Search for record', delay=0)
 
         
         
@@ -271,7 +273,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
 
-        self.dash.mainloop()
+        # self.dash.mainloop()
 
 
     def dashexit(self)-> None:
