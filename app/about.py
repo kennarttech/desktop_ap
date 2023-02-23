@@ -29,9 +29,11 @@ class Aboutpage(customtkinter.CTkToplevel):
         self.about.tk.call('wm', 'iconphoto', self.about._w, icon_image)
       
 
+
         self.about.columnconfigure(0, weight = 1, uniform='a')
         self.about.columnconfigure(1, weight = 0)
         self.about.rowconfigure(1, weight = 1)
+
 
 
         top_frame = customtkinter.CTkFrame(self.about, 
@@ -41,6 +43,7 @@ class Aboutpage(customtkinter.CTkToplevel):
                                             )
         top_frame.grid(row = 0, column = 0, ipady=3, sticky = NSEW)
         top_frame.grid_columnconfigure(0, weight = 1)
+
 
 
         home_button1 = customtkinter.CTkButton(top_frame, text='Exit', 
@@ -53,14 +56,16 @@ class Aboutpage(customtkinter.CTkToplevel):
         home_button1.grid(row=2, column=0, padx=(20, 10), pady=(7, 0), sticky=N)
 
 
+
         default_textbox = customtkinter.CTkTextbox(self.about, width=200, font=('Times', 20),
                                                     text_color=('gray80'), corner_radius=10,
                                                     scrollbar_button_hover_color=('#16FF00'))
         default_textbox.grid(row=1, column=0, padx=(30, 30), pady=(30, 40), sticky="nsew")
-        default_textbox.insert(0.0, 'About the application\n'+ '\n' + 
+        default_textbox.insert(0.0, 'About the application\n*------------------------*'+ '\n\n' + 
                                self.app_about['app_description']['appname']
                                )
         default_textbox.configure(state='disable')
+
 
 
         footer_frame = customtkinter.CTkFrame(self.about, border_width = 0.6, 
@@ -69,11 +74,11 @@ class Aboutpage(customtkinter.CTkToplevel):
                                             corner_radius = 3,
                                             )
         footer_frame.grid(row = 2, column = 0, ipady=1, sticky=EW)
-        
         footer_frame.grid_columnconfigure((0,1,2), weight = 1)
 
 
-        footer_text = customtkinter.CTkLabel(footer_frame, text='Develop by [Kennart Tech]',
+
+        footer_text = customtkinter.CTkLabel(footer_frame, text=self.app_about['statusbar']['KT'],
                                             font=customtkinter.CTkFont('Sans', 12),
                                             )
         footer_text.grid(row=0, column=1, pady=2)

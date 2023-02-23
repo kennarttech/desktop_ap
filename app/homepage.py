@@ -1,11 +1,11 @@
 import os
 import json
-import login, about
 from tkinter import *
 import customtkinter
 from PIL import Image
 from tktooltip import ToolTip
 from tkinter import messagebox
+import login, about, admin_login
 
 
 
@@ -40,6 +40,7 @@ class Homepage(customtkinter.CTk):
         self.master.rowconfigure((1,2,3), weight = 0, uniform='a')
 
 
+
         top_frame = customtkinter.CTkFrame(self.master, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
@@ -47,6 +48,7 @@ class Homepage(customtkinter.CTk):
                                             corner_radius = 3)
         top_frame.grid(row = 0, column = 0, ipady=(3), sticky = NSEW)
         top_frame.grid_columnconfigure((0,1,2,3,4), weight = 1)
+
 
 
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
@@ -59,8 +61,9 @@ class Homepage(customtkinter.CTk):
         home_button1.grid(row=0, column=0, padx=(20, 10), pady=(7, 0), sticky=W)
 
 
+
         daily_record_button = customtkinter.CTkButton(top_frame, text='Daily Record', 
-                                                font=('Roboto', 13), width=83, 
+                                                font=('Roboto', 13), width=85, 
                                                 height=20, hover_color=("gray70", "gray30"),
                                                 corner_radius=5,fg_color="transparent", 
                                                 text_color=("gray10", "gray90"),
@@ -68,6 +71,7 @@ class Homepage(customtkinter.CTk):
                                                 command=self.dsales)
         daily_record_button.grid(row=0, column=2, padx=(0, 35), pady=(7, 0), sticky=N)
         ToolTip(daily_record_button, fg='white', bg='gray15', msg='Daily record')
+
 
 
         about_button = customtkinter.CTkButton(top_frame, text='About', 
@@ -81,15 +85,17 @@ class Homepage(customtkinter.CTk):
         ToolTip(about_button, msg='About Us', fg='white', bg='gray15', delay=0)
 
 
-        login_button = customtkinter.CTkButton(top_frame, text='Login/Signup', 
+
+        login_button = customtkinter.CTkButton(top_frame, text='Admin only', 
                                             font=('Roboto', 13), corner_radius=5,
-                                            width=65, hover_color=("gray70", "gray30"),
+                                            width=70, hover_color=("gray70", "gray30"),
                                             fg_color="transparent", height=20, 
                                             text_color=("gray10", "gray90"),
                                             border_color='gray40',border_width=1,
                                             hover=True, command=self.create_account)
-        login_button.grid(row=0, column=4, padx=(0, 20), pady=(7, 0), sticky=E)
+        login_button.grid(row=0, column=4, padx=(0, 18), pady=(7, 0), sticky=E)
         ToolTip(login_button, msg='Please Login or Signup', fg='white', bg='gray15')
+
 
 
         middle_frame = customtkinter.CTkFrame(self.master, border_width=0.6,
@@ -97,6 +103,7 @@ class Homepage(customtkinter.CTk):
                                               corner_radius=5, height=140)
         middle_frame.grid(row=1, column=0, padx=(20, 20), ipady=240, pady=(50, 10), sticky='nsew')
         middle_frame.grid_columnconfigure((0,1,2), weight=1)
+
 
 
         welcome_label = customtkinter.CTkLabel(master=middle_frame, 
@@ -116,7 +123,7 @@ class Homepage(customtkinter.CTk):
 
 
     def create_account(self)-> None:
-        login.LoginUser()
+        admin_login.Adminlogin()
         self.master.withdraw()
 
 

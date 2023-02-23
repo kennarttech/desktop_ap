@@ -1,17 +1,65 @@
 {
     "DS_Enterprise": "Welcome to DS Enterprise",
+    "Record": "New Records",
+    "master": "Welcome to Admin Dashboard",
     "default_font": "Arial 12",
-    "theme": "green",
-    "theme2": "gold",
-    
-    "dependencies": [
-        "tkinter",
-        "requests",
-        "pandas",
-        "numpy"
+    "theme": "brown",
+    "theme2": "green",
+    "theme3": "#0081B4",
+        
+    "Item_prices": [
+        "30",
+        "35",
+        "40",
+        "45",
+        "55",
+        "65",
+        "80",
+        "100",
+        "120",
+        "200",
+        "180",
+        "150"
     ],
 
-    "statusbar":{
-        "KT":"Kennart Tech"
-    }
+    "Item_prices_drive": [
+        "8gig = 35",
+        "16gig = 40",
+        "32gig = 45",
+        "32gig = 50",
+        "16gig = 55",
+        "None 60",
+        "None 65"
+    ],
+
+    "stationary":[
+        "Pen",
+        "Official paper",
+        "Exercise book",
+        "Maker",
+        "Brown paper",
+        "Paper glue",
+        "Pencil",
+        "Eraser",
+        "Shapner",
+        "Correction fluid",
+        "Ruler",
+        "Note book short",
+        "Full scap note",
+        "Calculator"
+    ],
+
+    "stationary_price":[
+        "20p",
+        "30p",
+        "40p",
+        "50p",
+        "60p",
+        "1gh",
+        "1.5gh",
+        "2gh",
+        "2.5gh",
+        "3gh",
+        "120p"
+    ]
 }

@@ -1,6 +1,7 @@
 import json
 import os, sys
 import homepage
+import newframes
 from tkinter import *
 import customtkinter
 from PIL import Image
@@ -21,8 +22,8 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     """Using context manager to open the a json file"""
-    with open(file='app/config/settings.json', mode='r') as settings_rf:
-        user_data = json.load(settings_rf)
+    with open(file='app/config/settings.json', mode='r') as _rf:
+        user_data = json.load(_rf)
 
 
     def __init__(self) -> None:
@@ -31,7 +32,7 @@ class Dashboard(customtkinter.CTkToplevel):
         self.dash.minsize(400, 430)
         self.dash.attributes('-zoomed', True)
         self.dash.geometry('1000x600+155+50')
-        self.dash.title('Dashboard')
+        self.dash.title('Welcome to DS Enterprise')
 
 
         self.icon_image = PhotoImage(file='app/icons/logo_03.png')
@@ -95,9 +96,9 @@ class Dashboard(customtkinter.CTkToplevel):
         new_frame_button = customtkinter.CTkButton(master=left_frame, text='New Frames',
                                                    text_color=("gray10", "gray90"), fg_color='transparent',
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=25, width=30,
-                                                   corner_radius=4, border_width=1,
-                                                   image=new_frames, anchor='w')
+                                                   height=25, width=30, anchor='w',
+                                                   corner_radius=5, border_width=1,
+                                                   image=new_frames, command=self.gotonewf)
         new_frame_button.grid(row=2, column=0, padx=10, pady=2, sticky=EW)
         ToolTip(new_frame_button, msg='Upload new frames', fg='white', bg='gray15', delay=0)
 
@@ -106,9 +107,9 @@ class Dashboard(customtkinter.CTkToplevel):
         daily_sales_button = customtkinter.CTkButton(master=left_frame, text='Daily Sales',
                                                    text_color=("gray10", "gray90"),
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=25, width=30,fg_color='transparent',
-                                                   corner_radius=4, border_width=1,
-                                                   image=daily_sales, anchor='w')
+                                                   height=25, width=30, border_width=1,fg_color='transparent',
+                                                   corner_radius=5, anchor='w',
+                                                   image=daily_sales, command=self.nothing)
         daily_sales_button.grid(row=3, column=0, padx=10, pady=0, sticky=EW)
         ToolTip(daily_sales_button, msg='New daily sales', fg='white', bg='gray15', delay=0)
 
@@ -119,8 +120,8 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    fg_color=self.user_data['theme'],
                                                    hover_color=("gray70", "gray30"), 
                                                    height=25, width=100, anchor='S',
-                                                   corner_radius=4, border_width=1,
-                                                   font=('Roboto', 18),image=back_home,
+                                                   corner_radius=5, border_width=1,
+                                                   font=('Roboto', 14),image=back_home,
                                                    command=self.dashexit)
         exit_button.grid(row=4,  padx=1, pady=50, sticky='s')
         ToolTip(exit_button, msg='Exit the program', fg='white', bg='gray15', delay=0)
@@ -155,9 +156,9 @@ class Dashboard(customtkinter.CTkToplevel):
         
         item_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
                                                values=['Local A4', 'Local A3', 'Foreign A3',
-                                                       'Foreign A5', 'Foreign A4', 'Arwork A3',
-                                                       'Artwork A2', 'Artwork A4', 'Canvas A3',
-                                                       'Canvas A3', 'Canvas A2', 'Canvas A4'],
+                                                       'Foreign A5', 'Foreign A4', 'Arwork   A3', 'Artwork A2', 'Artwork A4', 
+                                                       'Canvas A3', 'Canvas A3', 'Canvas A2',
+                                                        'Canvas A4', "Mug"],
                                                corner_radius=11, border_width=2, border_color='gray50',
                                                button_color='gray50', fg_color='gray25',
                                                button_hover_color=('gray70', 'gray30'), 
@@ -168,25 +169,28 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
 
-        quantity_combo = customtkinter.CTkComboBox(master=top_frame, width=120, height=30,
-                                               values=['0','1','2','3','4','5','6','7','8','9','10'],
+        item_quantity = customtkinter.CTkComboBox(master=top_frame, width=120, height=30,
+                                               values=['0','1','2','3','4','5',
+                                                       '6','7','8','9','10'],
                                                corner_radius=11, border_width=2, border_color='gray50',
                                                button_color='gray50', fg_color='gray25',
                                                button_hover_color=('gray70', 'gray30'), 
                                                dropdown_fg_color='gray35', justify='left')
-        quantity_combo.grid(row=0, column=1, padx=(0, 0), pady=(3, 0))
-        quantity_combo.set('Quantity')
+        item_quantity.grid(row=0, column=1, padx=(0, 0), pady=(3, 0))
+        item_quantity.set('Quantity')
+        ToolTip(item_quantity, msg='Item quantity', fg='white', bg='gray15', delay=0)
 
 
 
-        price_combo = customtkinter.CTkComboBox(master=top_frame, width=100, height=30,
-                                               values=['45','50','70','80','120','200','180','65','100','85'],
+        item_price = customtkinter.CTkComboBox(master=top_frame, width=100, height=30,
+                                               values=self.user_data["Item_prices"],
                                                corner_radius=11, border_width=2, border_color='gray50',
                                                button_color='gray50', fg_color='gray25',
                                                button_hover_color=('gray70', 'gray30'), 
                                                dropdown_fg_color='gray35', justify='left')
-        price_combo.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
-        price_combo.set('price')
+        item_price.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
+        item_price.set('price')
+        ToolTip(item_price, msg='Item price', fg='white', bg='gray15', delay=0)
 
 
 
@@ -208,29 +212,49 @@ class Dashboard(customtkinter.CTkToplevel):
                                                placeholder_text='Balance left',
                                                 width=100, corner_radius=9)
         balance.grid(row=0, column=5, padx=(0, 0), pady=(3, 0))
+        ToolTip(balance, msg='Deposit balance', fg='white', bg='gray15', delay=0)
 
 
 
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
         date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
+        ToolTip(date_, msg='Todays date', fg='white', bg='gray15', delay=0)
 
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
-                                               placeholder_text='Total sales',
+                                               placeholder_text='Total cost',
                                                 width=100, corner_radius=9)
         total.grid(row=0, column=7, padx=(0, 0), pady=(3, 0))
+        ToolTip(total, msg='Total cost', fg='white', bg='gray15', delay=0)
+
+
+        display_records = customtkinter.CTkLabel(master=middle_frame, 
+                                                 text='Nothing to display yet.....', 
+                                                 font=('Sans', 12))
+        display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
 
 
 
-        submit_button = customtkinter.CTkButton(master=middle_frame, text='Submit Record',
+        print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',
                                                    text_color=("white"), 
-                                                   fg_color=self.user_data['theme'],
+                                                   fg_color=self.user_data['theme3'],
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=25, width=100, anchor='S',
+                                                   height=30, width=106, anchor='S',
                                                    corner_radius=4, border_width=1,
-                                                   font=('Roboto', 18),
-                                                   command=None)
+                                                   font=('Roboto', 16),command=None)
+        print_data.grid(row=7, column=3, padx=(0, 130), pady=(140, 10), sticky='e')
+        ToolTip(print_data, msg='Print Record', fg='white', bg='gray15', delay=0)
+
+
+
+        submit_button = customtkinter.CTkButton(master=middle_frame, text='Save Record',
+                                                   text_color=("white"), 
+                                                   fg_color=self.user_data['theme2'],
+                                                   hover_color=("gray70", "gray30"), 
+                                                   height=30, width=106, anchor='S',
+                                                   corner_radius=4, border_width=1,
+                                                   font=('Roboto', 16),command=None)
         submit_button.grid(row=7, column=3, padx=(30, 10), pady=(140, 10), sticky='e')
         ToolTip(submit_button, msg='Submit Record', fg='white', bg='gray15', delay=0)
 
@@ -246,8 +270,9 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
-                                                  text='DS Collection System',
-                                                  text_color='orange', font=('Sans', 15),
+                                                  text='Daily Sales',
+                                                  text_color='orange', 
+                                                  font=('Sans', 15),
                                                   )
         menu_frame_label.place(x=40, y=20, anchor='w')
 
@@ -283,6 +308,24 @@ class Dashboard(customtkinter.CTkToplevel):
             sys.exit()
         else:
             self.dash = self.dash
+
+
+
+    def gotonewf(self):
+        if messagebox.askyesno('New frame', 'New frame!\nremember to save your work after you finish', icon='info'):
+            newframes.Newframe()
+            self.dash.destroy()
+        else:
+            self.dash = self.dash
+
+
+
+    def nothing(self):
+        if messagebox.showinfo('Dashbord', 'Already hear😀😀', icon='info'):
+            return self.dash
+
+
+
 
 
 

@@ -3,7 +3,7 @@
         "appname":"Desktop Application\n\nVersion 1.0\n\nAuthor Kennart Tech\n\nDescription: Data Collection System\n\nLicense @KT"
     },
 
-    "app_version":{
-        "version": "1.0"
+    "statusbar":{
+        "KT":"Develop by [Kennart Tech]"
     }
 }
