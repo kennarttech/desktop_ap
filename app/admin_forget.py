@@ -42,7 +42,7 @@ class Resetpassword(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-        title_lable = customtkinter.CTkLabel(frame, text='Reset password',
+        title_lable = customtkinter.CTkLabel(frame, text='Reset password.',
                                             font=customtkinter.CTkFont('Sans', 20)
                                             )
         title_lable.place(x=75, y=30)

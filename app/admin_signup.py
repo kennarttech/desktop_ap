@@ -44,9 +44,9 @@ class Adminignup(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-        title_lable = customtkinter.CTkLabel(frame, text='Create new account',
+        title_lable = customtkinter.CTkLabel(frame, text='Signup.',
                                             font=customtkinter.CTkFont('Sans', 20))
-        title_lable.place(x=60, y=30)
+        title_lable.place(x=130, y=30)
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,

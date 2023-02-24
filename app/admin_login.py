@@ -42,10 +42,10 @@ class Adminlogin(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-        title_lable = customtkinter.CTkLabel(frame, text='superlogin into your account',
+        title_lable = customtkinter.CTkLabel(frame, text='Login.',
                                             font=customtkinter.CTkFont('Sans', 20)
                                             )
-        title_lable.place(x=45, y=30)
+        title_lable.place(x=130, y=30)
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,

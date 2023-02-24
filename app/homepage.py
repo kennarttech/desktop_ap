@@ -27,18 +27,20 @@ class Homepage(customtkinter.CTk):
 
     
 
-    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 
-                                "icons")
-    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
-                                    "logo_07.png")), 
+    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
+    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_07.png")), 
     size=(17, 17))
-    
+
 
     def __init__(self, master) -> None:
         self.master = master
         self.master.columnconfigure((0), weight = 1, uniform='a')
-        self.master.rowconfigure((1,2,3), weight = 0, uniform='a')
+        self.master.rowconfigure((1,2,3,4), weight = 1, uniform='a')
 
+
+        self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
+        self.home_frame = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "logo_02.png")), 
+        size=(100, 100))
 
 
         top_frame = customtkinter.CTkFrame(self.master, 
@@ -51,6 +53,7 @@ class Homepage(customtkinter.CTk):
 
 
 
+
         home_button1 = customtkinter.CTkButton(top_frame, text='Home', height=20, 
                                                 font=('Roboto', 13), width=50, 
                                                 hover_color=("gray70", "gray30"),
@@ -59,6 +62,7 @@ class Homepage(customtkinter.CTk):
                                                 text_color=("gray10", "gray90"),
                                                 border_color='gray40',border_width=1)
         home_button1.grid(row=0, column=0, padx=(20, 10), pady=(7, 0), sticky=W)
+
 
 
 
@@ -74,6 +78,7 @@ class Homepage(customtkinter.CTk):
 
 
 
+
         about_button = customtkinter.CTkButton(top_frame, text='About', 
                                             font=customtkinter.CTkFont('Roboto', 13),
                                             hover_color=("gray70", "gray30"), corner_radius=5, 
@@ -83,6 +88,7 @@ class Homepage(customtkinter.CTk):
                                             command=self.about_page)
         about_button.grid(row=0, column=2, padx=(150, 35), pady=(7, 0), sticky=N)
         ToolTip(about_button, msg='About Us', fg='white', bg='gray15', delay=0)
+
 
 
 
@@ -98,24 +104,40 @@ class Homepage(customtkinter.CTk):
 
 
 
+
         middle_frame = customtkinter.CTkFrame(self.master, border_width=0.6,
-                                              border_color='gray10', fg_color='gray20',
-                                              corner_radius=5, height=140)
-        middle_frame.grid(row=1, column=0, padx=(20, 20), ipady=240, pady=(50, 10), sticky='nsew')
+                                              border_color='gray10', 
+                                              fg_color='gray20',
+                                              corner_radius=5)
+        middle_frame.grid(row=1, column=0, rowspan=4, padx=(40, 40),
+                          pady=(30, 30), sticky='nsew')
         middle_frame.grid_columnconfigure((0,1,2), weight=1)
+        middle_frame.grid_rowconfigure((0,1,2), weight=1)
+
+
+
+
+        frame_profile = customtkinter.CTkLabel(master=middle_frame, 
+                                               text='', compound='center',
+                                            #   image=self.home_frame, 
+                                              font=('Roboto', 18),)
+        frame_profile.grid(row=1, column=1, padx=20, pady=10, sticky=NSEW)
+
 
 
 
         welcome_label = customtkinter.CTkLabel(master=middle_frame, 
                                                text=self.text['DS_Enterprise'],
-                                               font=('Sans', 26),
-                                               )
-        welcome_label.grid(row=0, column=1, ipadx=50, pady=30)
+                                               font=('Sans', 26),)
+        welcome_label.grid(row=0, column=1, ipadx=50, pady=10)
 
     
 
+
     def dsales(self)-> None:
-        if messagebox.showinfo('Login', 'Please Signup/Login \nto acess this page', icon='info'):
+        if messagebox.showinfo('Login', 'Please Signup/Login \nto acess this page', 
+                               icon='info'):
+            self.master.withdraw()
             login.LoginUser()
         else:
             return self.master 
@@ -139,8 +161,8 @@ def main():
     home = customtkinter.CTk()
     app = Homepage(home)
     home.title('Home Page')
-    home.minsize(440, 400)
-    home.geometry('500x500+400+100')
+    home.minsize(900, 500)
+    home.geometry('500x500+200+100')
     home.attributes('-zoomed', True)
     icon_image = PhotoImage(file='app/icons/logo_04.png')
     home.tk.call('wm', 'iconphoto', home._w, icon_image)

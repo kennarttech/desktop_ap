@@ -1,11 +1,13 @@
 {
     "DS_Enterprise": "Welcome to DS Enterprise",
     "Record": "New Records",
-    "master": "Welcome to Admin Dashboard",
+    "master": "Welcome to Admin Dashboard[  ]",
     "default_font": "Arial 12",
     "theme": "brown",
     "theme2": "green",
     "theme3": "#0081B4",
+    "theme4":  "#EF5B0C",
+    "admin_color": "#16FF00",
         
     "Item_prices": [
         "30",

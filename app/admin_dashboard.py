@@ -2,6 +2,7 @@ import json
 import os, sys
 import homepage
 import newframes
+import dashboard
 from tkinter import *
 import customtkinter
 from PIL import Image
@@ -40,7 +41,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_12.png')), 
+        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_05.png')), 
         size=(130, 130))
 
 
@@ -66,30 +67,24 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.rowconfigure(0, weight=1, uniform='a')
 
 
+
+
         left_frame = customtkinter.CTkFrame(master=self.admin__a, 
                                             border_color='gray10', 
                                             border_width=0.8,
-                                            fg_color='gray25', 
-                                            corner_radius=5,
-                                            # width=500
-                                            )
-        left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
+                                            fg_color='gray20', 
+                                            corner_radius=8)
+        left_frame.grid(row=0, column=0, padx=(10,0), ipadx=(10), pady=(10, 20), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
 
 
-        user_profile = customtkinter.CTkLabel(master=left_frame, 
-                                              text='\n\n\n\nProfile',      image=user_profile_logo,
+        user_profile = customtkinter.CTkLabel(master=left_frame, text='',
+                                              image=user_profile_logo,
                                               font=customtkinter.CTkFont('Roboto', 18),
                                               text_color='gray12')
         user_profile.grid(row=0, column=0, padx=20, pady=1, sticky=NSEW)
 
-
-        
-        status_label = customtkinter.CTkLabel(master=left_frame, text='Welcome,\n[00121]',
-                                              font=customtkinter.CTkFont('Roboto', 20),
-                                              text_color='#16FF00')
-        status_label.grid(row=1, column=0, padx=30, ipady=2, sticky=EW)     
 
 
 
@@ -97,30 +92,31 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                    text_color=("gray10", "gray90"), fg_color='transparent',
                                                    hover_color=("gray70", "gray30"), 
                                                    height=25, width=30, anchor='w',
-                                                   corner_radius=5, border_width=1,
+                                                   corner_radius=6, border_width=1,
                                                    image=new_frames, command=self.gotonewf)
         new_frame_button.grid(row=2, column=0, padx=10, pady=2, sticky=EW)
         ToolTip(new_frame_button, msg='Upload new frames', fg='white', bg='gray15', delay=0)
 
 
 
-        daily_sales_button = customtkinter.CTkButton(master=left_frame, text='Daily Sales',
+        daily_sales_button = customtkinter.CTkButton(master=left_frame, height=25,  
+                                                    text='User dashboard',
                                                    text_color=("gray10", "gray90"),
                                                    hover_color=("gray70", "gray30"), 
-                                                   height=25, width=30, border_width=1,fg_color='transparent',
-                                                   corner_radius=5, anchor='w',
-                                                   image=daily_sales, command=self.nothing)
+                                                   border_width=1,fg_color='transparent',
+                                                   corner_radius=6, anchor='w', width=30,
+                                                   image=daily_sales, command=self.usrnothing)
         daily_sales_button.grid(row=3, column=0, padx=10, pady=0, sticky=EW)
-        ToolTip(daily_sales_button, msg='New daily sales', fg='white', bg='gray15', delay=0)
+        ToolTip(daily_sales_button, msg='Users dashboard', fg='white', bg='gray15', delay=0)
 
 
 
         exit_button = customtkinter.CTkButton(master=left_frame, text='  Exit/Logout',
                                                    text_color=("white"), 
-                                                   fg_color=self.user_data['theme'],
+                                                   fg_color=self.user_data['theme4'],
                                                    hover_color=("gray70", "gray30"), 
                                                    height=25, width=100, anchor='S',
-                                                   corner_radius=5, border_width=1,
+                                                   corner_radius=6, border_width=1,
                                                    font=('Roboto', 14),image=back_home,
                                                    command=self.admin__aexit)
         exit_button.grid(row=4,  padx=1, pady=50, sticky='s')
@@ -132,13 +128,13 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
                                            border_color='gray10', fg_color='gray28',
                                            corner_radius=5, width=1200, height=40)
-        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(0, 12), sticky=N)
+        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(10, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
         
 
 
-        middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                           border_color='gray10', fg_color='gray28',
+        middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=1,
+                                           border_color='gray40', fg_color='gray20',
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(60, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -147,8 +143,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
-                                           border_width=1, width=400, height=40,
-                                           fg_color='gray35', corner_radius=7)
+                                           border_width=0.6, width=400, height=40,
+                                           fg_color='gray28', corner_radius=5)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,10,12), weight=1)
 
@@ -258,8 +254,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
                                               border_color='gray10', fg_color='gray24',
-                                              corner_radius=4, width=1200, height=25)
-        buttom_frame.grid(row=0, column=1, columnspan=5, pady=(0, 0), sticky=S)
+                                              corner_radius=4, width=1200, height=30)
+        buttom_frame.grid(row=0, column=1, columnspan=5, padx=(20, 20), pady=(0, 20), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
         """End of the frames"""
 
@@ -267,7 +263,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
                                                   text=self.user_data['master'],
-                                                  text_color='orange', 
+                                                  text_color=self.user_data['admin_color'], 
                                                   font=('Sans', 15),
                                                   )
         menu_frame_label.place(x=40, y=20, anchor='w')
@@ -308,7 +304,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def gotonewf(self):
-        if messagebox.askyesno('New frame', 'New frame!\nremember to save your work after you finish', icon='info'):
+        if messagebox.askyesno('New frame', 'Welcome to users dashboard\nDo you want to proceed', icon='info'):
             newframes.Newframe()
             self.admin__a.destroy()
         else:
@@ -316,9 +312,12 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
 
-    def nothing(self):
-        if messagebox.showinfo('admin__abord', 'Already hear😀😀', icon='info'):
-            return self.admin__a
+    def usrnothing(self):
+        if messagebox.askyesno('admin__abord', 'Users page', icon='info'):
+            dashboard.Dashboard()
+            self.admin__a.destroy()
+        else:
+            self.admin__a = self.admin__a
 
 
 
