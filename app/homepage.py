@@ -11,8 +11,6 @@ import login, about, admin_login
 
 
 
-
-
 class Homepage(customtkinter.CTk):
     """This is class loads the home page when it is been called"""
 
@@ -24,18 +22,18 @@ class Homepage(customtkinter.CTk):
 
     with open(file=Text, mode='r', encoding='utf-8') as rf:
         text = json.load(rf)
-
-    
-
-    image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
-    home_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_07.png")), 
-    size=(17, 17))
+        
 
 
     def __init__(self, master) -> None:
         self.master = master
         self.master.columnconfigure((0), weight = 1, uniform='a')
         self.master.rowconfigure((1,2,3,4), weight = 1, uniform='a')
+
+
+        self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
+        self.home_logo = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "logo_07.png")), 
+        size=(17, 17))
 
 
         self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
@@ -129,7 +127,7 @@ class Homepage(customtkinter.CTk):
         welcome_label = customtkinter.CTkLabel(master=middle_frame, 
                                                text=self.text['DS_Enterprise'],
                                                font=('Sans', 26),)
-        welcome_label.grid(row=0, column=1, ipadx=50, pady=10)
+        welcome_label.grid(row=0, column=1, ipadx=50, pady=0)
 
     
 

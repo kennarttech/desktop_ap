@@ -128,7 +128,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
                                            border_color='gray10', fg_color='gray28',
                                            corner_radius=5, width=1200, height=40)
-        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(10, 12), sticky=N)
+        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), pady=(10, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
         
 
@@ -136,7 +136,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=1,
                                            border_color='gray40', fg_color='gray20',
                                            corner_radius=5, width=1200, height=100)
-        middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(60, 60), sticky=NSEW)
+        middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(57, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
         middle_frame.grid_rowconfigure((1,2,3,4,5,6,7), weight=1)
 
@@ -255,7 +255,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
                                               border_color='gray10', fg_color='gray24',
                                               corner_radius=4, width=1200, height=30)
-        buttom_frame.grid(row=0, column=1, columnspan=5, padx=(20, 20), pady=(0, 20), sticky=S)
+        buttom_frame.grid(row=0, column=1, columnspan=5, padx=(19, 19), pady=(0, 20), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
         """End of the frames"""
 

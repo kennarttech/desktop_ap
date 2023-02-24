@@ -2,8 +2,8 @@ import os
 from tkinter import *
 import customtkinter
 from PIL import Image
-import admin_dashboard
-import register, forget_password, dashboard
+import register, forget_password,\
+    dashboard, custommessage
 
 
 
