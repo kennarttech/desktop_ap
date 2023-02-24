@@ -1,6 +1,5 @@
 import json
 import os, sys
-import homepage
 import newframes
 import dashboard
 from tkinter import *
@@ -11,7 +10,7 @@ from tkinter import Menu
 from tkcalendar import *
 from tktooltip import ToolTip
 from tkinter import messagebox
-from ttkthemes import themed_tk as tk
+from custommessage import Closewindowdhboard
 
 
 
@@ -294,12 +293,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def admin__aexit(self)-> None:
-        if messagebox.askyesno('Logout', 'Please remember to save\nyour works\nDo you want to exit', icon='warning'):
-            homepage.Homepage(self.admin__a)
-            self.admin__a.destroy()
-            sys.exit()
-        else:
-            self.admin__a = self.admin__a
+        Closewindowdhboard(self.admin__a)
+
 
 
 

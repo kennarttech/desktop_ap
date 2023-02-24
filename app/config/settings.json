@@ -10,9 +10,9 @@
     "admin_color": "#16FF00",
 
 
-
-    "usermessage": "'Are you sure you want to\n''close this window'",
-    "usermessage2": "'Are you sure you want to\n''close this window'",
+    "message_text_color": "white",
+    "usermessage": "Are you sure you want to\n''close this window",
+    "usermessage2": "Are you sure you want to\n''close this window",
 
 
         

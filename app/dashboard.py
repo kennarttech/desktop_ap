@@ -1,17 +1,15 @@
 import json
 import os, sys
-import homepage
 import newframes
 from tkinter import *
-import custommessage
 import customtkinter
 from PIL import Image
-from tkinter import ttk
 from tkinter import Menu
 from tkcalendar import *
 from tktooltip import ToolTip
 from tkinter import messagebox
 from ttkthemes import themed_tk as tk
+from custommessage import Closewindowdhboard
 
 
 
@@ -306,7 +304,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def dashexit(self)-> None:
-        custommessage.Closewindow(self.dash)
+        Closewindowdhboard(self.dash)
 
 
 
@@ -317,6 +315,10 @@ class Dashboard(customtkinter.CTkToplevel):
             self.dash.destroy()
         else:
             self.dash = self.dash
+
+
+    # def gotonewf(self):
+    #     Closewindowdhboard2()
 
 
 

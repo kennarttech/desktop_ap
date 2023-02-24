@@ -24,7 +24,6 @@ class Homepage(customtkinter.CTk):
         text = json.load(rf)
         
 
-
     def __init__(self, master) -> None:
         self.master = master
         self.master.columnconfigure((0), weight = 1, uniform='a')

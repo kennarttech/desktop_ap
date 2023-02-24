@@ -8,7 +8,6 @@ import customtkinter as ctk
 
 
 
-
 class Message(customtkinter.CTkFrame):
 
 
@@ -57,7 +56,7 @@ class Message(customtkinter.CTkFrame):
 
 
 
-class Closewindow(Message):
+class Closewindowdhboard(Message):
     def __init__(self, master) -> str:
         super().__init__(master)
 
@@ -66,9 +65,11 @@ class Closewindow(Message):
         self.message_icon = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "logo_02.png")), 
         size=(50, 50))
 
+
         self.main_label = customtkinter.CTkLabel(self.message, width=200,
                                                  text=self.user_message['usermessage'],image=self.message_icon, 
-                                                 compound='left')
+                                                 text_color=self.user_message['message_text_color'],
+                                                 compound='left', font=('Sans', 15))
         self.main_label.grid(row=0, column=0, columnspan=2, padx=(20, 20), pady=20)
 
 

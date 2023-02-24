@@ -1,6 +1,5 @@
 import json
 import os, sys
-import homepage
 import dashboard
 from tkinter import *
 import customtkinter
@@ -8,6 +7,7 @@ from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
 from tkinter import messagebox
+from custommessage import Closewindowdhboard
 
 
 
@@ -269,12 +269,7 @@ class Newframe(customtkinter.CTkToplevel):
 
 
     def new_frameexit(self)-> None:
-        if messagebox.askyesno('Logout', 'Please remember to save\nyour works\nDo you want to exit', icon='warning'):
-            homepage.Homepage(self.new_frame)
-            self.new_frame.destroy()
-            sys.exit()
-        else:
-            self.new_frame = self.new_frame
+        Closewindowdhboard(self.new_frame)
 
 
 
