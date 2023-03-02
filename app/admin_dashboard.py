@@ -1,24 +1,33 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
+import os
 import json
-import os, sys
-import newframes
-import dashboard
 from tkinter import *
-import customtkinter
-from PIL import Image
 from tkinter import ttk
 from tkinter import Menu
+from tkinter import messagebox
+
+
+"""this are third-party modules that need to be installed separately using pip"""
+import customtkinter
+from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
-from tkinter import messagebox
+
+
+"""This are local modules that I have created myself and are part of the project. """
+import newframes
+import dashboard
 from custommessage import Closewindowdhboard
 
 
 
 
 class Adminsuper(customtkinter.CTkToplevel):
+    """This class defines the Admin page, which is use create the GUI"""
 
-    customtkinter.set_appearance_mode('system')
-    customtkinter.set_default_color_theme('green')
+
+    default = customtkinter.set_appearance_mode('system')
+    custom = customtkinter.set_default_color_theme('green')
 
 
     """Using context manager to open the a json file"""
@@ -44,9 +53,11 @@ class Adminsuper(customtkinter.CTkToplevel):
         size=(130, 130))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
         new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_10.png')),
         size=(30, 30))
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
@@ -54,12 +65,15 @@ class Adminsuper(customtkinter.CTkToplevel):
         size=(30, 30))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_07.png')), size=(30, 30))
+
 
         
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_08.png')), size=(22, 22))
+
 
 
         self.admin__a.columnconfigure((1,2), weight=1, uniform='a')
@@ -67,11 +81,10 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
 
-
         left_frame = customtkinter.CTkFrame(master=self.admin__a, 
                                             border_color='gray10', 
                                             border_width=0.8,
-                                            fg_color='gray20', 
+                                            fg_color=self.user_data['admin_color2'], 
                                             corner_radius=8)
         left_frame.grid(row=0, column=0, padx=(10,0), ipadx=(10), pady=(10, 20), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
@@ -83,7 +96,6 @@ class Adminsuper(customtkinter.CTkToplevel):
                                               font=customtkinter.CTkFont('Roboto', 18),
                                               text_color='gray12')
         user_profile.grid(row=0, column=0, padx=20, pady=1, sticky=NSEW)
-
 
 
 
@@ -125,7 +137,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                           border_color='gray10', fg_color='gray28',
+                                           border_color='gray10', fg_color=self.user_data['admin_color2'],
                                            corner_radius=5, width=1200, height=40)
         self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), pady=(10, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -133,7 +145,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=1,
-                                           border_color='gray40', fg_color='gray20',
+                                           border_color='gray40', fg_color=self.user_data['admin_color3'],
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(57, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -143,72 +155,39 @@ class Adminsuper(customtkinter.CTkToplevel):
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
                                            border_width=0.6, width=400, height=40,
-                                           fg_color='gray28', corner_radius=5)
+                                           fg_color=self.user_data['admin_color2'], corner_radius=5)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,10,12), weight=1)
 
 
 
-
         admin_sales = customtkinter.CTkEntry(master=top_frame, height=30,
-                                               placeholder_text='My daily sales',
+                                               placeholder_text='Daily Sales',
                                                 width=120, corner_radius=9)
         admin_sales.grid(row=0, column=0, padx=(0, 0), pady=(3, 0))
-        ToolTip(admin_sales, msg='My daily sales', fg='white', bg='gray15', delay=0)
+        ToolTip(admin_sales, msg='daily sales', fg='white', bg='gray15', delay=0)
 
 
 
-        item_pendrive = customtkinter.CTkComboBox(master=top_frame, width=120, height=30,
-                                               values=['0', '1', '2', '3', '4', '5'],
-                                               corner_radius=11, border_width=2, border_color='gray50',
-                                               button_color='gray50', fg_color='gray25',
-                                               button_hover_color=('gray70', 'gray30'), 
-                                               dropdown_fg_color='gray35', justify='left')
-        item_pendrive.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
-        item_pendrive.set('Pendrive')
-        ToolTip(item_pendrive, msg='Item quantity', fg='white', bg='gray15', delay=0)
+        daily_expenses = customtkinter.CTkEntry(master=top_frame, height=30,
+                                               placeholder_text='Daily Expenses',
+                                                width=120, corner_radius=9)
+        daily_expenses.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
+        ToolTip(daily_expenses, msg='daily expenses', fg='white', bg='gray15', delay=0)
 
 
 
-        pendrive_price = customtkinter.CTkComboBox(master=top_frame, width=155, height=30,
-                                               values=self.user_data["Item_prices_drive"],
-                                               corner_radius=11, border_width=2, border_color='gray50', font=('Sans', 14),
-                                               button_color='gray50', fg_color='gray25',
-                                               button_hover_color=('gray70', 'gray30'), 
-                                               dropdown_fg_color='gray35', justify='left')
-        pendrive_price.grid(row=0, column=4, padx=(0, 0), pady=(3, 0))
-        pendrive_price.set('Pendrive price')
-        ToolTip(pendrive_price, msg='pendrive price', fg='white', bg='gray15', delay=0)
-
-
-
-        stationaries = customtkinter.CTkComboBox(master=top_frame, width=155, height=30,
-                                               values=self.user_data["stationary"],
-                                               corner_radius=11, border_width=2, border_color='gray50', font=('Sans', 14),
-                                               button_color='gray50', fg_color='gray25',
-                                               button_hover_color=('gray70', 'gray30'), 
-                                               dropdown_fg_color='gray35', justify='left')
-        stationaries.grid(row=0, column=6, padx=(0, 0), pady=(3, 0))
-        stationaries.set('Stationaries')
-        ToolTip(stationaries, msg='stationary', fg='white', bg='gray15', delay=0)
-
-
-
-
-        station_price = customtkinter.CTkComboBox(master=top_frame, width=175, height=30,
-                                               values=self.user_data["stationary_price"],
-                                               corner_radius=11, border_width=2, border_color='gray50', font=('Sans', 14),
-                                               button_color='gray50', fg_color='gray25',
-                                               button_hover_color=('gray70', 'gray30'), 
-                                               dropdown_fg_color='gray35', justify='left')
-        station_price.grid(row=0, column=8, padx=(0, 0), pady=(3, 0))
-        station_price.set('Stationaries price')
-        ToolTip(station_price, msg='item price', fg='white', bg='gray15', delay=0)
+        txt_button = customtkinter.CTkButton(master=top_frame, width=100, text='My Note',
+                                             height=29, fg_color=('gray15'), 
+                                             font=('Sans', 13), 
+                                             hover_color=('gray70', 'gray30'),
+                                             corner_radius=8, command=self.adminnote)
+        txt_button.grid(row=0, column=4, padx=(0,0), pady=(4,0))
 
 
 
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
-        date_.grid(row=0, column=10, padx=(0,0), pady=(3, 0))
+        date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
         ToolTip(date_, msg='Todays date', fg='white', bg='gray15', delay=0)
 
 
@@ -218,6 +197,7 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                 width=100, corner_radius=9)
         total.grid(row=0, column=12, padx=(0, 0), pady=(3, 0))
         ToolTip(total, msg='Total sales', fg='white', bg='gray15', delay=0)
+
 
 
         display_records = customtkinter.CTkLabel(master=middle_frame, 
@@ -252,7 +232,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                              border_color='gray10', fg_color='gray24',
+                                              border_color='gray10', fg_color=self.user_data['admin_color2'],
                                               corner_radius=4, width=1200, height=30)
         buttom_frame.grid(row=0, column=1, columnspan=5, padx=(19, 19), pady=(0, 20), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -263,8 +243,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
                                                   text=self.user_data['master'],
                                                   text_color=self.user_data['admin_color'], 
-                                                  font=('Sans', 15),
-                                                  )
+                                                  font=('Sans', 15),)
         menu_frame_label.place(x=40, y=20, anchor='w')
 
 
@@ -288,13 +267,18 @@ class Adminsuper(customtkinter.CTkToplevel):
         ToolTip(search_button, msg='Search', delay=0)
 
 
-
         # self.admin__a.mainloop()
+
 
 
     def admin__aexit(self)-> None:
         Closewindowdhboard(self.admin__a)
+    
 
+
+    def adminnote(self):
+        # admin()
+        pass
 
 
 
@@ -313,12 +297,6 @@ class Adminsuper(customtkinter.CTkToplevel):
             self.admin__a.destroy()
         else:
             self.admin__a = self.admin__a
-
-
-
-
-
-
 
 
 

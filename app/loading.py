@@ -11,6 +11,7 @@ WIDTH_CENTER_POSITION: int=416
 HEIGHT_CENTER_POSITION: int=165
 
 
+
 main_window = customtkinter.CTk()
 main_window.resizable(0, 0)
 main_window.minsize(500, 400)
@@ -19,9 +20,11 @@ customtkinter.set_appearance_mode('#241f31')
 main_window.geometry(f'{WIDTH}x{HEIGHT}+{WIDTH_CENTER_POSITION}+{HEIGHT_CENTER_POSITION}')
 
 
+
 """This script is use to set windows icons"""
 icon_image = PhotoImage(file='app/icons/logo_03.png')
 main_window.tk.call('wm', 'iconphoto', main_window._w, icon_image)
+
 
 
 """This script returns the path of the icons"""
@@ -29,7 +32,8 @@ image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
 logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo_05.png")), 
 size=(300,300))
 
-   
+
+
 """This script is use to configure the main_window"""
 main_window.columnconfigure(0, weight=1)
 main_window.columnconfigure(1, weight=0)
@@ -42,9 +46,11 @@ progress_logo = customtkinter.CTkLabel(master=main_window, text="", image=logo_i
 progress_logo.grid(row=0, column=0, padx=20, pady=20)
 
 
+
 progress_label = customtkinter.CTkLabel(master = main_window, text = '', 
                                         font = ('Sans', 16))
 progress_label.grid(row=1, column=0,  sticky=NSEW)
+
 
 
 progress_bar = customtkinter.CTkProgressBar(master = main_window, width = 480, 
@@ -56,11 +62,13 @@ progress_bar.set(0.0)
 
 
 
+
 def user_homepage()-> None:
     """This function call user_homepage after ProgressBar finish loading"""
     main_window.withdraw()
     os.system("python app/homepage.py")
     main_window.destroy()
+
 
 
 
@@ -78,6 +86,7 @@ def loading_progress_bar(value) -> str:
         user_homepage()
 
 loading_progress_bar(0)
+
 
 
 

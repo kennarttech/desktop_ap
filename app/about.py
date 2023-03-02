@@ -1,14 +1,21 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
 import json
-import homepage
-from tkinter import *
 import tkinter as tk
+from tkinter import *
+
+
+"""this are third-party modules that need to be installed separately using pip"""
 import customtkinter
+
+
+"""The are local modules that I have created myself and are part of the project. """
+import homepage
 
 
 
 
 class Aboutpage(customtkinter.CTkToplevel):
-    """This class loads the about page when it is been called"""
+    """This class defines the aboutpage, that is use create the GUI"""
     customtkinter.set_appearance_mode('system')
 
 
@@ -17,7 +24,7 @@ class Aboutpage(customtkinter.CTkToplevel):
 
     with open(file=TEXT_FILE_PATH, mode='r', encoding='utf-8') as rf:
         app_about = json.load(rf)
-        # print(long_decription, end='')
+
 
 
     def __init__(self) -> None:
@@ -39,8 +46,7 @@ class Aboutpage(customtkinter.CTkToplevel):
         top_frame = customtkinter.CTkFrame(self.about, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
-                                            corner_radius = 3,
-                                            )
+                                            corner_radius = 3,)
         top_frame.grid(row = 0, column = 0, ipady=3, sticky = NSEW)
         top_frame.grid_columnconfigure(0, weight = 1)
 
@@ -62,8 +68,7 @@ class Aboutpage(customtkinter.CTkToplevel):
                                                     scrollbar_button_hover_color=('#16FF00'))
         default_textbox.grid(row=1, column=0, padx=(30, 30), pady=(30, 40), sticky="nsew")
         default_textbox.insert(0.0, 'About the application\n*------------------------*'+ '\n\n' + 
-                               self.app_about['app_description']['appname']
-                               )
+                               self.app_about['app_description']['appname'])
         default_textbox.configure(state='disable')
 
 
@@ -71,27 +76,25 @@ class Aboutpage(customtkinter.CTkToplevel):
         footer_frame = customtkinter.CTkFrame(self.about, border_width = 0.6, 
                                             border_color ='gray10',
                                             fg_color='gray25', 
-                                            corner_radius = 3,
-                                            )
+                                            corner_radius = 3,)
         footer_frame.grid(row = 2, column = 0, ipady=1, sticky=EW)
         footer_frame.grid_columnconfigure((0,1,2), weight = 1)
 
 
 
-        footer_text = customtkinter.CTkLabel(footer_frame, text=self.app_about['statusbar']['KT'],
-                                            font=customtkinter.CTkFont('Sans', 12),
-                                            )
+        footer_text = customtkinter.CTkLabel(footer_frame, 
+                                             text=self.app_about['statusbar']['KT'],
+                                            font=customtkinter.CTkFont('Sans', 12),)
         footer_text.grid(row=0, column=1, pady=2)
 
         # self.about.mainloop()
 
 
 
-    """This methods  returns or exit the about window when the button is press"""
+    """This method exit the about window when the button is press"""
     def aboutexit(self) -> None:
         homepage.Homepage(self.about)
         self.about.destroy()
-
 
 
 

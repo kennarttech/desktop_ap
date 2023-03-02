@@ -7,7 +7,9 @@
     "theme2": "green",
     "theme3": "#0081B4",
     "theme4":  "#EF5B0C",
-    "admin_color": "#16FF00",
+    "admin_color": "#B20600",
+    "admin_color2": "#698269",
+    "admin_color3": "#2C3639",
 
 
     "message_text_color": "white",
@@ -15,7 +17,6 @@
     "usermessage2": "Are you sure you want to\n''close this window",
 
 
-        
     "Item_prices": [
         "30",
         "35",

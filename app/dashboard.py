@@ -1,21 +1,29 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
+import os
 import json
-import os, sys
-import newframes
 from tkinter import *
+from tkinter import Menu
+from tkinter import messagebox
+
+
+"""this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from PIL import Image
-from tkinter import Menu
 from tkcalendar import *
 from tktooltip import ToolTip
-from tkinter import messagebox
-from ttkthemes import themed_tk as tk
+
+
+"""The are local modules that I have created myself and are part of the project. """
+import newframes
 from custommessage import Closewindowdhboard
 
 
 
 
 
+
 class Dashboard(customtkinter.CTkToplevel):
+
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme('green')
@@ -24,6 +32,7 @@ class Dashboard(customtkinter.CTkToplevel):
     """Using context manager to open the a json file"""
     with open(file='app/config/settings.json', mode='r') as _rf:
         user_data = json.load(_rf)
+
 
 
     def __init__(self) -> None:
@@ -35,8 +44,10 @@ class Dashboard(customtkinter.CTkToplevel):
         self.dash.title('Welcome to DS Enterprise')
 
 
+
         self.icon_image = PhotoImage(file='app/icons/logo_03.png')
         self.dash.tk.call('wm', 'iconphoto', self.dash._w, self.icon_image)
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
@@ -44,9 +55,11 @@ class Dashboard(customtkinter.CTkToplevel):
         size=(130, 130))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
         new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_10.png')),
         size=(30, 30))
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
@@ -54,25 +67,27 @@ class Dashboard(customtkinter.CTkToplevel):
         size=(30, 30))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_07.png')), size=(30, 30))
 
         
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_08.png')), size=(22, 22))
+
 
 
         self.dash.columnconfigure((1,2), weight=1, uniform='a')
         self.dash.rowconfigure(0, weight=1, uniform='a')
 
 
+
         left_frame = customtkinter.CTkFrame(master=self.dash, 
                                             border_color='gray10', 
                                             border_width=0.8,
                                             fg_color='gray25', 
-                                            corner_radius=5,
-                                            # width=500
-                                            )
+                                            corner_radius=5)
         left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
@@ -229,6 +244,7 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(total, msg='Total cost', fg='white', bg='gray15', delay=0)
 
 
+
         display_records = customtkinter.CTkLabel(master=middle_frame, 
                                                  text='Nothing to display yet.....', 
                                                  font=('Sans', 12))
@@ -272,8 +288,7 @@ class Dashboard(customtkinter.CTkToplevel):
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
                                                   text='Daily Sales',
                                                   text_color='orange', 
-                                                  font=('Sans', 15),
-                                                  )
+                                                  font=('Sans', 15),)
         menu_frame_label.place(x=40, y=20, anchor='w')
 
 
@@ -297,15 +312,11 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(search_button, msg='Search', delay=0)
 
 
-
         # self.dash.mainloop()
-
-
 
 
     def dashexit(self)-> None:
         Closewindowdhboard(self.dash)
-
 
 
 
@@ -317,20 +328,10 @@ class Dashboard(customtkinter.CTkToplevel):
             self.dash = self.dash
 
 
-    # def gotonewf(self):
-    #     Closewindowdhboard2()
-
-
-
 
     def nothing(self):
         if messagebox.showinfo('Dashbord', 'Already hear😀😀', icon='info'):
             return self.dash
-
-
-
-
-
 
 
 

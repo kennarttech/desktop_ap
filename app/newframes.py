@@ -1,18 +1,27 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
+import os
 import json
-import os, sys
-import dashboard
 from tkinter import *
+from tkinter import messagebox
+
+
+"""this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
-from tkinter import messagebox
+
+
+"""The are local modules that I have created myself and are part of the project. """
+import dashboard
 from custommessage import Closewindowdhboard
 
 
 
 
 class Newframe(customtkinter.CTkToplevel):
+    """This class defines the Newframe page, that is use create the GUI"""
+
 
     customtkinter.set_appearance_mode('system')
     customtkinter.set_default_color_theme('green')
@@ -32,8 +41,10 @@ class Newframe(customtkinter.CTkToplevel):
         self.new_frame.title('Welcome to DS Enterprise')
 
 
+
         self.icon_image = PhotoImage(file='app/icons/logo_03.png')
         self.new_frame.tk.call('wm', 'iconphoto', self.new_frame._w, self.icon_image)
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
@@ -41,9 +52,11 @@ class Newframe(customtkinter.CTkToplevel):
         size=(130, 130))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
         new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_10.png')),
         size=(30, 30))
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
@@ -51,25 +64,27 @@ class Newframe(customtkinter.CTkToplevel):
         size=(30, 30))
 
 
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_07.png')), size=(30, 30))
 
         
+
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
         search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_08.png')), size=(22, 22))
+
 
 
         self.new_frame.columnconfigure((1,2), weight=1, uniform='a')
         self.new_frame.rowconfigure(0, weight=1, uniform='a')
 
 
+
         left_frame = customtkinter.CTkFrame(master=self.new_frame, 
                                             border_color='gray10', 
                                             border_width=0.8,
                                             fg_color='gray25', 
-                                            corner_radius=5,
-                                            # width=500
-                                            )
+                                            corner_radius=5,)
         left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
@@ -196,8 +211,7 @@ class Newframe(customtkinter.CTkToplevel):
 
         display_records = customtkinter.CTkLabel(master=middle_frame, 
                                                  text='Nothing to display yet.....', 
-                                                 font=('Sans', 12),
-                                                 )
+                                                 font=('Sans', 12),)
         display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
 
 
@@ -211,7 +225,6 @@ class Newframe(customtkinter.CTkToplevel):
                                                    font=('Roboto', 16),command=None)
         print_data.grid(row=7, column=3, padx=(0, 160), pady=(140, 10), sticky='e')
         ToolTip(print_data, msg='Print Record', fg='white', bg='gray15', delay=0)
-
 
 
 
@@ -239,12 +252,12 @@ class Newframe(customtkinter.CTkToplevel):
 
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
                                                   text=self.user_data["Record"],
-                                                  text_color='orange', font=('Sans', 15),
-                                                  )
+                                                  text_color='orange', 
+                                                  font=('Sans', 15))
         menu_frame_label.place(x=40, y=20, anchor='w')
 
 
-
+        self.user = StringVar()
         search_box = customtkinter.CTkEntry(master=self.menu_frame, 
                                             placeholder_text='Search for deposite/name.....',
                                             width=220, corner_radius=9)
@@ -258,14 +271,15 @@ class Newframe(customtkinter.CTkToplevel):
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('gray70', 'gray30'),
                                                 fg_color='gray15', image=search_image,
-                                                compound='left',
-                                                border_color='gray40',border_width=1,)
+                                                compound='left',border_color='gray40',
+                                                border_width=1)
         search_button.place(x=660, y=20, anchor='e')
         ToolTip(search_button, msg='Search', delay=0)
 
 
 
         # self.new_frame.mainloop()
+
 
 
     def new_frameexit(self)-> None:
@@ -279,9 +293,6 @@ class Newframe(customtkinter.CTkToplevel):
             self.new_frame.destroy()
         else:
             self.new_frame = self.new_frame
-
-            
-
 
 
 

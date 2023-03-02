@@ -1,8 +1,15 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
 import os
-import login
 from tkinter import *
+
+
+"""this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from PIL import Image
+
+
+"""The are local modules that I have created myself and are part of the project. """
+import login
 
 
 
@@ -18,8 +25,10 @@ class Passwordreset(customtkinter.CTkToplevel):
         self.password_reset.tk.call('wm', 'iconphoto', self.password_reset._w, icon_image_)
 
 
+
         self.password_reset.columnconfigure(0, weight=1, uniform='a')
         self.password_reset.rowconfigure(1, weight=0, uniform='a')
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
@@ -29,9 +38,11 @@ class Passwordreset(customtkinter.CTkToplevel):
         size=(17, 17))
         
 
+
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.password_reset, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
+
 
 
         frame = customtkinter.CTkFrame(self.password_reset, width=320, height=400, 
@@ -42,25 +53,26 @@ class Passwordreset(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
+
         title_lable = customtkinter.CTkLabel(frame, text='Reset password',
-                                            font=customtkinter.CTkFont('Sans', 20)
-                                            )
+                                            font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=75, y=30)
+
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
-                                            placeholder_text='New password',
-                                            font=('Sans', 14)
-                                            )
+                                            placeholder_text='Enter new password',
+                                            font=('Sans', 14))
         user_name.place(x=53, y=90)
         user_name.focus()
 
 
+
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
-                                            placeholder_text='Comfirm_Password',
-                                            show='....', font=('Sans', 14)
-                                            )
+                                            placeholder_text='Comfirm password',
+                                            show='....', font=('Sans', 14))
         user_name.place(x=53, y=150)
+
 
 
         login_btn = customtkinter.CTkButton(frame, text='Reset', width=220, 
@@ -70,8 +82,7 @@ class Passwordreset(customtkinter.CTkToplevel):
                                                 fg_color='transparent',
                                                 border_color='gray40',
                                                 border_width=0.6,
-                                                command=self.new_password
-                                                )
+                                                command=self.new_password)
         login_btn.place(x=54, y=210)
 
 
@@ -82,8 +93,7 @@ class Passwordreset(customtkinter.CTkToplevel):
                                                 hover_color=('#3CCF4E'), compound='left',
                                                 fg_color=('gray7', 'gray30'),
                                                 border_color='gray40',
-                                                border_width=0.6
-                                                )
+                                                border_width=0.6)
         alternative_btn.place(x=54, y=275)
 
         # self.password_reset.mainloop()

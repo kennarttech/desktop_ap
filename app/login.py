@@ -1,9 +1,20 @@
+"""This are built-in modules, which are part of the Python Standard Library"""
 import os
 from tkinter import *
+from tkinter import messagebox
+
+
+"""this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from PIL import Image
-import register, forget_password,\
-    dashboard, custommessage
+
+
+"""The are local modules that I have created myself and are part of the project."""
+import register 
+import dashboard
+import custommessage
+import forget_password
+
 
 
 
@@ -18,20 +29,24 @@ class LoginUser(customtkinter.CTkToplevel):
         self.login.tk.call('wm', 'iconphoto', self.login._w, icon_image_)
 
 
+
         self.login.columnconfigure(0, weight=1, uniform='a')
         self.login.rowconfigure(1, weight=0, uniform='a')
+
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
                                                                 'icons')
         logimage = customtkinter.CTkImage(Image.open(os.path.join(image_path,
-                                                                'Google__G__Logo.svg.webp')),
+                                                    'Google__G__Logo.svg.webp')),
         size=(17, 17))
+
 
 
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.login, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
+
 
 
         frame = customtkinter.CTkFrame(self.login, width=320, height=400, 
@@ -42,25 +57,29 @@ class LoginUser(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
+
         title_lable = customtkinter.CTkLabel(frame, text='Login into your account',
-                                            font=customtkinter.CTkFont('Sans', 20)
-                                            )
+                                            font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=45, y=30)
-
         
-        user_name = customtkinter.CTkEntry(frame, width=220, height=32,
-                                            placeholder_text='Username',
-                                            font=('Sans', 14)
-                                            )
-        user_name.place(x=53, y=90)
-        user_name.focus()
 
 
-        user_name = customtkinter.CTkEntry(frame, width=220, height=32,
-                                            placeholder_text='Password',
-                                            show='....', font=('Sans', 14)
-                                            )
-        user_name.place(x=53, y=150)
+        # self.usern_ = StringVar()
+        self.user_name = customtkinter.CTkEntry(frame, width=220, height=32,
+                                            placeholder_text='Enter your username',
+                                            font=('Sans', 14))
+        self.user_name.place(x=53, y=90)
+        self.user_name.focus()
+
+
+
+        # self.passwd_ = StringVar()
+        self.user_pass = customtkinter.CTkEntry(frame, width=220, height=32, 
+                                           #textvariable=self.passwd_,
+                                            placeholder_text='Enter your password',
+                                            show='....', font=('Sans', 14))
+        self.user_pass.place(x=53, y=150)
+
 
 
         forgot_password = customtkinter.CTkButton(frame, text='Forgot password', width=83, 
@@ -73,15 +92,16 @@ class LoginUser(customtkinter.CTkToplevel):
         forgot_password.place(x=155, y=203)
 
 
+
         signup_btn = customtkinter.CTkButton(frame, text='Signup', width=83, 
                                                 height=20,corner_radius=5,
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('gray70', 'gray30'),
                                                 fg_color='transparent',
                                                 border_color='gray40',
-                                                command=self.create_account
-                                                )
+                                                command=self.create_account)
         signup_btn.place(x=54, y=203)
+
 
 
         login_btn = customtkinter.CTkButton(frame, text='Login', width=220, 
@@ -91,8 +111,7 @@ class LoginUser(customtkinter.CTkToplevel):
                                                 fg_color='transparent',
                                                 border_color='gray40',
                                                 border_width=0.6,
-                                                command=self.admin_page
-                                                )
+                                                command=self.admin_page)
         login_btn.place(x=54, y=250)
 
 
@@ -103,11 +122,12 @@ class LoginUser(customtkinter.CTkToplevel):
                                                 hover_color=('#3CCF4E'), compound='left',
                                                 fg_color=('gray7', 'gray30'),
                                                 border_color='gray40',
-                                                border_width=0.6
-                                                )
+                                                border_width=0.6)
         alternative_btn.place(x=54, y=300)
 
+
         # self.login.mainloop()
+
 
 
 
@@ -116,14 +136,22 @@ class LoginUser(customtkinter.CTkToplevel):
         self.login.destroy()
 
 
+
     def forgot_password_(self)-> None:
         self.login.destroy()
         forget_password.Passwordreset()
 
 
+
     def admin_page(self)-> None:
-        dashboard.Dashboard()
-        self.login.destroy()
+        us = self.user_name.get().lower()
+        ps = self.user_pass.get().lower()
+        if us in ('kenneth', 'kennart') and ps in ('mmm', 'mmmmm'):
+            dashboard.Dashboard()
+            self.login.destroy()
+            messagebox.showinfo('Welcome', 'Welcome to Daily sales\nPlease remember to save your work', icon='info')
+        else:
+            messagebox.showerror('User Credentials', 'Username or Password incorrect', icon='error')
 
 
 
