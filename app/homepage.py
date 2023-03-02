@@ -49,16 +49,16 @@ class Homepage(customtkinter.CTk):
 
 
 
-        self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "icons")
-        self.home_frame = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "cc.png")), 
-        size=(3000, 3000))
-
+        self.background_image = PhotoImage(file='app/icons/logo_15.png')
+        self.background_label = Label(self.master, image=self.background_image)
+        self.background_label.place(relwidth=1, relheight=1)
 
 
         top_frame = customtkinter.CTkFrame(self.master, 
                                             border_width = 0.6, 
                                             border_color ='gray10',
                                             height = 60,
+                                            fg_color='#06283D',
                                             corner_radius = 3)
         top_frame.grid(row = 0, column = 0, ipady=(3), sticky = NSEW)
         top_frame.grid_columnconfigure((0,1,2,3,4), weight = 1)
@@ -114,26 +114,18 @@ class Homepage(customtkinter.CTk):
 
         middle_frame = customtkinter.CTkFrame(self.master, border_width=0.6,
                                               border_color='gray10', 
-                                              fg_color='gray20',
+                                              fg_color='#06283D',
                                               corner_radius=5)
-        middle_frame.grid(row=1, column=0, rowspan=4, padx=(40, 40),pady=(30, 30), sticky='nsew')
+        middle_frame.grid(row=4, column=0, padx=(0, 0), pady=(130, 0), sticky='nsew')
         middle_frame.grid_columnconfigure((0,1,2), weight=1)
         middle_frame.grid_rowconfigure((0,1,2), weight=1)
 
 
 
-        frame_profile = customtkinter.CTkLabel(master=middle_frame, 
-                                               text='', compound='center',
-                                            #   image=self.home_frame, 
-                                              font=('Roboto', 18),)
-        frame_profile.grid(row=1, column=1, padx=20, pady=(10, 10), sticky=NSEW)
-
-
-
         welcome_label = customtkinter.CTkLabel(master=middle_frame, 
-                                               text=self.text['DS_Enterprise'],
-                                               font=('Sans', 26),)
-        welcome_label.grid(row=0, column=1, ipadx=50, pady=0)
+                                               text=self.text['footer'],
+                                               font=('Sans', 15),)
+        welcome_label.grid(row=0, column=1, padx=5, pady=5)
 
 
 

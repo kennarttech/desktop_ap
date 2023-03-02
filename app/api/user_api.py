@@ -37,9 +37,6 @@ class LoginGUI:
             if response.json()["is_admin"]:
                 admin_dashboard = AdminDashboardGUI()
                 admin_dashboard.run()
-            else:
-                user_dashboard = UserDashboardGUI(response.json()["user_id"])
-                user_dashboard.run()
         else:
             self.message.config(text="Login failed", fg="red")
 
