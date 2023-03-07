@@ -18,10 +18,6 @@ import newframes
 from custommessage import Closewindowdhboard
 
 
-
-
-
-
 class Dashboard(customtkinter.CTkToplevel):
 
 
@@ -34,7 +30,6 @@ class Dashboard(customtkinter.CTkToplevel):
         user_data = json.load(_rf)
 
 
-
     def __init__(self) -> None:
         # self.dash = customtkinter.CTk()
         self.dash = customtkinter.CTkToplevel()
@@ -44,43 +39,42 @@ class Dashboard(customtkinter.CTkToplevel):
         self.dash.title('Welcome to DS Enterprise')
 
 
-
         self.icon_image = PhotoImage(file='app/icons/logo_03.png')
         self.dash.tk.call('wm', 'iconphoto', self.dash._w, self.icon_image)
 
 
-
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_12.png')), 
+        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                           'logo_12.png')), 
         size=(130, 130))
 
 
-
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
-        new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_10.png')),
+        new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                    'logo_10.png')),
         size=(30, 30))
 
 
-
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
-        daily_sales = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_14.png')),
+        daily_sales = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                     'logo_14.png')),
         size=(30, 30))
 
 
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
+        back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                                   'logo_07.png')), 
+        size=(30, 30))
+
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_07.png')), size=(30, 30))
-
-        
-
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_08.png')), size=(22, 22))
-
+        search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                                      'logo_08.png')), 
+        size=(22, 22))
 
 
         self.dash.columnconfigure((1,2), weight=1, uniform='a')
         self.dash.rowconfigure(0, weight=1, uniform='a')
-
 
 
         left_frame = customtkinter.CTkFrame(master=self.dash, 
@@ -92,20 +86,17 @@ class Dashboard(customtkinter.CTkToplevel):
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
 
 
-
         user_profile = customtkinter.CTkLabel(master=left_frame, 
                                               text='\n\n\n\nProfile',      image=user_profile_logo,
                                               font=customtkinter.CTkFont('Roboto', 18),
                                               text_color='gray12')
         user_profile.grid(row=0, column=0, padx=20, pady=1, sticky=NSEW)
 
-
         
         status_label = customtkinter.CTkLabel(master=left_frame, text='Welcome,\n[00121]',
                                               font=customtkinter.CTkFont('Roboto', 20),
                                               text_color='#16FF00')
         status_label.grid(row=1, column=0, padx=30, ipady=2, sticky=EW)     
-
 
 
         new_frame_button = customtkinter.CTkButton(master=left_frame, text='New Frames',
@@ -118,7 +109,6 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(new_frame_button, msg='Upload new frames', fg='white', bg='gray15', delay=0)
 
 
-
         daily_sales_button = customtkinter.CTkButton(master=left_frame, text='Daily Sales',
                                                    text_color=("gray10", "gray90"),
                                                    hover_color=("gray70", "gray30"), 
@@ -127,7 +117,6 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    image=daily_sales, command=self.nothing)
         daily_sales_button.grid(row=3, column=0, padx=10, pady=0, sticky=EW)
         ToolTip(daily_sales_button, msg='New daily sales', fg='white', bg='gray15', delay=0)
-
 
 
         exit_button = customtkinter.CTkButton(master=left_frame, text='  Exit/Logout',
@@ -142,7 +131,6 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(exit_button, msg='Exit the program', fg='white', bg='gray15', delay=0)
 
 
-
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
                                            border_color='gray10', fg_color='gray28',
@@ -151,7 +139,6 @@ class Dashboard(customtkinter.CTkToplevel):
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
         
 
-
         middle_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
                                            border_color='gray10', fg_color='gray28',
                                            corner_radius=5, width=1200, height=100)
@@ -159,14 +146,12 @@ class Dashboard(customtkinter.CTkToplevel):
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
         middle_frame.grid_rowconfigure((1,2,3,4,5,6,7), weight=1)
 
-
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
                                            border_width=1, width=400, height=40,
                                            fg_color='gray35', corner_radius=7)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8), weight=1)
-
 
         
         item_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
@@ -183,7 +168,6 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(item_combo, msg='Select frames', fg='white', bg='gray15', delay=0)
 
 
-
         item_quantity = customtkinter.CTkComboBox(master=top_frame, width=120, height=30,
                                                values=['0','1','2','3','4','5',
                                                        '6','7','8','9','10'],
@@ -194,7 +178,6 @@ class Dashboard(customtkinter.CTkToplevel):
         item_quantity.grid(row=0, column=1, padx=(0, 0), pady=(3, 0))
         item_quantity.set('Quantity')
         ToolTip(item_quantity, msg='Item quantity', fg='white', bg='gray15', delay=0)
-
 
 
         item_price = customtkinter.CTkComboBox(master=top_frame, width=100, height=30,
@@ -208,19 +191,16 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(item_price, msg='Item price', fg='white', bg='gray15', delay=0)
 
 
-
         deposit_amount = customtkinter.CTkEntry(master=top_frame, height=30,
                                                placeholder_text='Deposit amount',
                                                 width=110, corner_radius=9)
         deposit_amount.grid(row=0, column=3, padx=(0, 0), pady=(3, 0))
 
 
-
         deposit_name = customtkinter.CTkEntry(master=top_frame, height=30,
                                                placeholder_text='Deposit name',
                                                 width=120, corner_radius=9)
         deposit_name.grid(row=0, column=4, padx=(0, 0), pady=(3, 0))
-
 
 
         balance = customtkinter.CTkEntry(master=top_frame, height=30,
@@ -230,11 +210,9 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(balance, msg='Deposit balance', fg='white', bg='gray15', delay=0)
 
 
-
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
         date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
         ToolTip(date_, msg='Todays date', fg='white', bg='gray15', delay=0)
-
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
@@ -244,12 +222,10 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(total, msg='Total cost', fg='white', bg='gray15', delay=0)
 
 
-
         display_records = customtkinter.CTkLabel(master=middle_frame, 
                                                  text='Nothing to display yet.....', 
                                                  font=('Sans', 12))
         display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
-
 
 
         print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',
@@ -263,7 +239,6 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(print_data, msg='Print Record', fg='white', bg='gray15', delay=0)
 
 
-
         submit_button = customtkinter.CTkButton(master=middle_frame, text='Save Record',
                                                    text_color=("white"), 
                                                    fg_color=self.user_data['theme2'],
@@ -275,14 +250,12 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(submit_button, msg='Submit Record', fg='white', bg='gray15', delay=0)
 
 
-
         buttom_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
                                               border_color='gray10', fg_color='gray24',
                                               corner_radius=4, width=1200, height=25)
         buttom_frame.grid(row=0, column=1, columnspan=5, pady=(0, 0), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
         """End of the frames"""
-
 
 
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
@@ -292,14 +265,12 @@ class Dashboard(customtkinter.CTkToplevel):
         menu_frame_label.place(x=40, y=20, anchor='w')
 
 
-
         search_box = customtkinter.CTkEntry(master=self.menu_frame, 
                                             placeholder_text='Search for deposite/name.....',
                                             width=220, corner_radius=9)
         search_box.place(x=560, y=20, anchor='e')
         ToolTip(search_box, msg='Search for record', delay=0)
 
-        
         
         search_button = customtkinter.CTkButton(master=self.menu_frame, text='Search',
                                                 width=30, height=27, corner_radius=8,
@@ -319,7 +290,6 @@ class Dashboard(customtkinter.CTkToplevel):
         Closewindowdhboard(self.dash)
 
 
-
     def gotonewf(self):
         if messagebox.askyesno('New frame', 'New frame!\nremember to save your work after you finish', icon='info'):
             newframes.Newframe()
@@ -328,13 +298,9 @@ class Dashboard(customtkinter.CTkToplevel):
             self.dash = self.dash
 
 
-
     def nothing(self):
         if messagebox.showinfo('Dashbord', 'Already hear😀😀', icon='info'):
             return self.dash
-
-
-
 
 
 

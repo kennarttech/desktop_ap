@@ -14,7 +14,6 @@ import admin_forget
 import admin_dashboard
 
 
-
 class Adminlogin(customtkinter.CTkToplevel):
     """This class defines the Admin page, which is use create the GUI"""
     
@@ -29,10 +28,8 @@ class Adminlogin(customtkinter.CTkToplevel):
         self.superlogin.tk.call('wm', 'iconphoto', self.superlogin._w, icon_image_)
 
 
-
         self.superlogin.columnconfigure(0, weight=1, uniform='a')
         self.superlogin.rowconfigure(1, weight=0, uniform='a')
-
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
@@ -42,11 +39,9 @@ class Adminlogin(customtkinter.CTkToplevel):
         size=(17, 17))
 
 
-
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.superlogin, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
-
 
 
         frame = customtkinter.CTkFrame(self.superlogin, width=320, height=400, 
@@ -57,11 +52,9 @@ class Adminlogin(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-
         title_lable = customtkinter.CTkLabel(frame, text='Login.',
                                             font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=130, y=30)
-
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
@@ -71,12 +64,10 @@ class Adminlogin(customtkinter.CTkToplevel):
         user_name.focus()
 
 
-
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Enter your password',
                                             show='....', font=('Sans', 14))
         user_name.place(x=53, y=150)
-
 
 
         forgot_password = customtkinter.CTkButton(frame, text='Forgot password', width=83, 
@@ -89,7 +80,6 @@ class Adminlogin(customtkinter.CTkToplevel):
         forgot_password.place(x=155, y=203)
 
 
-
         signup_btn = customtkinter.CTkButton(frame, text='Signup', width=83, 
                                                 height=20,corner_radius=5,
                                                 font=customtkinter.CTkFont('Sans', 13),
@@ -98,7 +88,6 @@ class Adminlogin(customtkinter.CTkToplevel):
                                                 border_color='gray40',
                                                 command=self.create_account)
         signup_btn.place(x=54, y=203)
-
 
 
         superlogin_btn = customtkinter.CTkButton(frame, text='Login', width=220, 
@@ -110,7 +99,6 @@ class Adminlogin(customtkinter.CTkToplevel):
                                                 border_width=0.6,
                                                 command=self.admin_page)
         superlogin_btn.place(x=54, y=250)
-
 
 
         alternative_btn = customtkinter.CTkButton(frame, text='Google', width=220, 
@@ -125,11 +113,9 @@ class Adminlogin(customtkinter.CTkToplevel):
         # self.superlogin.mainloop()
 
 
-
     def create_account(self)-> None:
         admin_signup.Adminignup()
         self.superlogin.destroy()
-
 
 
     def forgot_password_(self)-> None:
@@ -137,12 +123,9 @@ class Adminlogin(customtkinter.CTkToplevel):
         admin_forget.Resetpassword()
 
 
-
     def admin_page(self)-> None:
         admin_dashboard.Adminsuper()
         self.superlogin.destroy()
-
-
 
 
 

@@ -38,7 +38,8 @@ class LoginGUI:
             self.message.config(text="Login successful", fg="green")
             self.master.destroy()
             if response.json()["is_admin"]:
-                admin_dashboard = AdminDashboardGUI()
+                admin_window = tk.Tk()
+                admin_dashboard = AdminDashboardGUI(admin_window)
                 admin_dashboard.run()
         else:
             self.message.config(text="Login failed", fg="red")
@@ -86,21 +87,24 @@ class SignupGUI:
 
 
 class AdminDashboardGUI:
-    def __init__(self):
-        self.window = tk.Tk()
-        self.window.title("Admin Dashboard")
+    def __init__(self, master):
+        self.master = master
+        master.title("Admin Dashboard")
 
-        self.label = tk.Label(self.window, text="Welcome Admin!")
+        self.label = tk.Label(master, text="Welcome Admin!")
         self.label.pack()
 
-        self.button = tk.Button(self.window, text="View All Data", command=self._view_all_data)
+        self.button = tk.Button(master, text="View All Data", command=self._view_all_data)
         self.button.pack()
 
-        self.label = tk.Label(self.window, text='', bg='teal')
+        self.label = tk.Label(master, text='', bg='teal')
         self.label.pack()
 
-    def run(self):
-        self.window.mainloop()
+        self.logout_btn = tk.Button(master, text="Logout", command=self._logout)
+        self.logout_btn.pack()
+
+    def _logout(self):
+        self.master.destroy()
 
     def _view_all_data(self):
         response = requests.get("http://127.0.0.1:5000/data")
@@ -112,6 +116,8 @@ class AdminDashboardGUI:
                 text += f"Name: {item['name']}, Age: {item['age']}, GPA: {item['gpa']}\n"
                 self.label.config(text=text)
 
+    def run(self):
+        self.master.mainloop()
 
 
 

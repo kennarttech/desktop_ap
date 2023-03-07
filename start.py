@@ -1,6 +1,5 @@
-from app.loading import loading_progress_bar
 """This import the loading or startup page from the package"""
-
+from app.loading import loading_progress_bar
 
 
 

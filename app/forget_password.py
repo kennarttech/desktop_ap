@@ -12,8 +12,6 @@ from PIL import Image
 import login
 
 
-
-
 class Passwordreset(customtkinter.CTkToplevel):
     def __init__(self):
         # self.password_reset = customtkinter.CTk()
@@ -25,10 +23,8 @@ class Passwordreset(customtkinter.CTkToplevel):
         self.password_reset.tk.call('wm', 'iconphoto', self.password_reset._w, icon_image_)
 
 
-
         self.password_reset.columnconfigure(0, weight=1, uniform='a')
         self.password_reset.rowconfigure(1, weight=0, uniform='a')
-
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
@@ -38,11 +34,9 @@ class Passwordreset(customtkinter.CTkToplevel):
         size=(17, 17))
         
 
-
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.password_reset, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
-
 
 
         frame = customtkinter.CTkFrame(self.password_reset, width=320, height=400, 
@@ -53,11 +47,9 @@ class Passwordreset(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-
         title_lable = customtkinter.CTkLabel(frame, text='Reset password',
                                             font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=75, y=30)
-
 
         
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
@@ -67,12 +59,10 @@ class Passwordreset(customtkinter.CTkToplevel):
         user_name.focus()
 
 
-
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Comfirm password',
                                             show='....', font=('Sans', 14))
         user_name.place(x=53, y=150)
-
 
 
         login_btn = customtkinter.CTkButton(frame, text='Reset', width=220, 
@@ -84,7 +74,6 @@ class Passwordreset(customtkinter.CTkToplevel):
                                                 border_width=0.6,
                                                 command=self.new_password)
         login_btn.place(x=54, y=210)
-
 
 
         alternative_btn = customtkinter.CTkButton(frame, text='Reset password using Google', width=220, 
@@ -99,12 +88,9 @@ class Passwordreset(customtkinter.CTkToplevel):
         # self.password_reset.mainloop()
 
 
-
     def new_password(self)-> None:
         login.LoginUser()
         self.password_reset.destroy()
-
-
 
 
 if __name__ == "__main__":

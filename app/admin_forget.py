@@ -26,10 +26,8 @@ class Resetpassword(customtkinter.CTkToplevel):
         self.password_reset.tk.call('wm', 'iconphoto', self.password_reset._w, icon_image_)
 
 
-
         self.password_reset.columnconfigure(0, weight=1, uniform='a')
         self.password_reset.rowconfigure(1, weight=0, uniform='a')
-
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
@@ -44,7 +42,6 @@ class Resetpassword(customtkinter.CTkToplevel):
         self.background_label.place(relwidth=1, relheight=1)
 
 
-
         frame = customtkinter.CTkFrame(self.password_reset, width=320, height=400, 
                                         corner_radius=10, 
                                         border_color='gray50')
@@ -53,12 +50,10 @@ class Resetpassword(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-
         title_lable = customtkinter.CTkLabel(frame, text='Reset password.',
                                             font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=75, y=30)
 
-        
 
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Enter new password',
@@ -67,12 +62,10 @@ class Resetpassword(customtkinter.CTkToplevel):
         user_name.focus()
 
 
-
         user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Comfirm password',
                                             show='....', font=('Sans', 14))
         user_name.place(x=53, y=150)
-
 
 
         login_btn = customtkinter.CTkButton(frame, text='Reset', width=220, 
@@ -84,7 +77,6 @@ class Resetpassword(customtkinter.CTkToplevel):
                                                 border_width=0.6,
                                                 command=self.new_password)
         login_btn.place(x=54, y=210)
-
 
 
         alternative_btn = customtkinter.CTkButton(frame, height=32, width=220, 
@@ -100,11 +92,9 @@ class Resetpassword(customtkinter.CTkToplevel):
         # self.password_reset.mainloop()
 
 
-
     def new_password(self)-> None:
         admin_login.Adminlogin()
         self.password_reset.destroy()
-
 
 
 

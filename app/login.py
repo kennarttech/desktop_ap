@@ -16,8 +16,6 @@ import custommessage
 import forget_password
 
 
-
-
 class LoginUser(customtkinter.CTkToplevel):
     def __init__(self):
         # self.login = customtkinter.CTk()
@@ -29,10 +27,8 @@ class LoginUser(customtkinter.CTkToplevel):
         self.login.tk.call('wm', 'iconphoto', self.login._w, icon_image_)
 
 
-
         self.login.columnconfigure(0, weight=1, uniform='a')
         self.login.rowconfigure(1, weight=0, uniform='a')
-
 
 
         image_path = os.path.join(os.path.dirname(os.path.relpath(__file__)), 
@@ -42,11 +38,9 @@ class LoginUser(customtkinter.CTkToplevel):
         size=(17, 17))
 
 
-
         self.background_image = PhotoImage(file='app/icons/pattern.png')
         self.background_label = Label(self.login, image=self.background_image)
         self.background_label.place(relwidth=1, relheight=1)
-
 
 
         frame = customtkinter.CTkFrame(self.login, width=320, height=400, 
@@ -57,14 +51,11 @@ class LoginUser(customtkinter.CTkToplevel):
         frame.grid_rowconfigure((0,1,2), weight=1)
 
 
-
         title_lable = customtkinter.CTkLabel(frame, text='Login into your account',
                                             font=customtkinter.CTkFont('Sans', 20))
         title_lable.place(x=45, y=30)
         
 
-
-        # self.usern_ = StringVar()
         self.user_name = customtkinter.CTkEntry(frame, width=220, height=32,
                                             placeholder_text='Enter your username',
                                             font=('Sans', 14))
@@ -72,14 +63,11 @@ class LoginUser(customtkinter.CTkToplevel):
         self.user_name.focus()
 
 
-
-        # self.passwd_ = StringVar()
         self.user_pass = customtkinter.CTkEntry(frame, width=220, height=32, 
                                            #textvariable=self.passwd_,
                                             placeholder_text='Enter your password',
                                             show='....', font=('Sans', 14))
         self.user_pass.place(x=53, y=150)
-
 
 
         forgot_password = customtkinter.CTkButton(frame, text='Forgot password', width=83, 
@@ -92,7 +80,6 @@ class LoginUser(customtkinter.CTkToplevel):
         forgot_password.place(x=155, y=203)
 
 
-
         signup_btn = customtkinter.CTkButton(frame, text='Signup', width=83, 
                                                 height=20,corner_radius=5,
                                                 font=customtkinter.CTkFont('Sans', 13),
@@ -101,7 +88,6 @@ class LoginUser(customtkinter.CTkToplevel):
                                                 border_color='gray40',
                                                 command=self.create_account)
         signup_btn.place(x=54, y=203)
-
 
 
         login_btn = customtkinter.CTkButton(frame, text='Login', width=220, 
@@ -113,7 +99,6 @@ class LoginUser(customtkinter.CTkToplevel):
                                                 border_width=0.6,
                                                 command=self.admin_page)
         login_btn.place(x=54, y=250)
-
 
 
         alternative_btn = customtkinter.CTkButton(frame, text='Google', width=220, 
@@ -129,18 +114,14 @@ class LoginUser(customtkinter.CTkToplevel):
         # self.login.mainloop()
 
 
-
-
     def create_account(self)-> None:
         register.UserSignup()
         self.login.destroy()
 
 
-
     def forgot_password_(self)-> None:
         self.login.destroy()
         forget_password.Passwordreset()
-
 
 
     def admin_page(self)-> None:
@@ -152,7 +133,6 @@ class LoginUser(customtkinter.CTkToplevel):
             messagebox.showinfo('Welcome', 'Welcome to Daily sales\nPlease remember to save your work', icon='info')
         else:
             messagebox.showerror('User Credentials', 'Username or Password incorrect', icon='error')
-
 
 
 
