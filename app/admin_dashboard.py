@@ -1,7 +1,6 @@
 """This are built-in modules, which are part of the Python Standard Library"""
 import os
 import json
-import sched
 from tkinter import *
 from tkinter import ttk
 from tkinter import Menu
@@ -16,10 +15,11 @@ from tktooltip import ToolTip
 
 
 """This are local modules that I have created myself and are part of the project. """
+import about
 import newframes
 import dashboard
-import about
 import customnote
+import edit__data
 from custommessage import Closewindowdhboard
 
 
@@ -37,9 +37,9 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        # self.admin__a = customtkinter.CTk()
-        self.admin__a = customtkinter.CTkToplevel()
-        self.admin__a.minsize(400, 430)
+        self.admin__a = customtkinter.CTk()
+        # self.admin__a = customtkinter.CTkToplevel()
+        self.admin__a.minsize(920, 530)
         self.admin__a.attributes('-zoomed', True)
         self.admin__a.geometry('1000x600+155+50')
         self.admin__a.title('Welcome to DS Enterprise')
@@ -162,23 +162,52 @@ class Adminsuper(customtkinter.CTkToplevel):
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(57, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
-        middle_frame.grid_rowconfigure((1,2,3,4,5,6,7), weight=1)
+        middle_frame.grid_rowconfigure((1,2,3,4,5,6,7,8), weight=1)
+        
+
+        style = ttk.Style()
+        style.configure("Custom.Treeview", foreground="red", background="white")
+
+
+        TABEL_CONTENTS = ('daily sales', 'daily expenses', 'note title', 
+                        'note content', 'date')
+        
+
+        self.tree = ttk.Treeview(master=middle_frame, style="Custom.Treeview", 
+                                 columns=TABEL_CONTENTS, show='headings')
+
+
+        self.tree.heading('daily sales', text='Daily Sales')
+        self.tree.heading('daily expenses', text='Daily Expenses')
+        self.tree.heading('note title', text='Note Title')
+        self.tree.heading('note content', text='Note Content')
+        self.tree.heading('date', text='Data')
+
+
+        self.tree.bind('<<TreeviewSelect>>', self.admin__a)
+        self.tree.grid(row=1, column=0, rowspan=7, columnspan=4, sticky='nsew')
+
+
+        # scrollbar = customtkinter.CTkScrollbar(master=self.tree, orientation='vertical', 
+        #                                        command=self.tree.yview)
+        # self.tree.configure(yscroll=scrollbar.set)
+        # scrollbar.grid(row=0, column=1, sticky='ns')
 
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
                                            border_width=0.6, width=400, height=40,
                                            fg_color=self.user_data['admin_color3'], corner_radius=5)
-        top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
+        top_frame.grid(row=0, column=0, columnspan=4, padx=(2, 2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,10,12), weight=1)
 
 
-        admin_sales = customtkinter.CTkEntry(master=top_frame, height=30,
+        admin_sales = customtkinter.CTkEntry(master=top_frame, height=28,
                                                placeholder_text='Daily Sales $',
                                                 width=125, corner_radius=10)
         admin_sales.grid(row=0, column=0, padx=(0, 0), pady=(3, 0))
 
 
-        daily_expenses = customtkinter.CTkEntry(master=top_frame, height=30,
+        daily_expenses = customtkinter.CTkEntry(master=top_frame, height=28,
                                                placeholder_text='Daily Expenses $',
                                                 width=125, corner_radius=10)
         daily_expenses.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
@@ -198,21 +227,22 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         data_modify = customtkinter.CTkButton(master=top_frame, text='Modify Data',
                                               width=80, height=26, corner_radius=4,
-                                              hover_color=('gray70', 'gray30'))
+                                              hover_color=('gray70', 'gray30'),
+                                              command=self.modify_dt)
         data_modify.grid(row=0, column=8, padx=(0, 0), pady=(3, 0))
         ToolTip(data_modify, msg='Edit saved data', fg='white', bg='gray15', delay=0)
 
 
-        total = customtkinter.CTkEntry(master=top_frame, height=30,
+        total = customtkinter.CTkEntry(master=top_frame, height=28,
                                                placeholder_text='Total sales',
                                                 width=125, corner_radius=10)
         total.grid(row=0, column=11, padx=(0, 0), pady=(3, 0))
 
 
-        display_records = customtkinter.CTkLabel(master=middle_frame, 
-                                                 text='Nothing to display yet.....', 
-                                                 font=('Sans', 12))
-        display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
+        # display_records = customtkinter.CTkLabel(master=middle_frame, 
+        #                                          text='Nothing to display yet.....', 
+        #                                          font=('Sans', 12))
+        # display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
 
 
         print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',
@@ -222,7 +252,7 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                    height=30, width=106, anchor='S',
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
-        print_data.grid(row=7, column=3, padx=(0, 130), pady=(140, 10), sticky='e')
+        print_data.grid(row=8, column=3, padx=(0, 130), pady=(0, 0), sticky='e')
 
 
         submit_button = customtkinter.CTkButton(master=middle_frame, text='Save Record',
@@ -232,7 +262,7 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                    height=30, width=106, anchor='S',
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
-        submit_button.grid(row=7, column=3, padx=(30, 10), pady=(140, 10), sticky='e')
+        submit_button.grid(row=8, column=3, padx=(30, 10), pady=(0, 0), sticky='e')
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
@@ -275,7 +305,11 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.bind('<Control-e>', self.admin__aexit)
 
 
-        # self.admin__a.mainloop()
+        self.admin__a.mainloop()
+
+    
+    def modify_dt(self):
+        edit__data.EditData()
 
 
     def about(self, *args):

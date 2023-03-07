@@ -284,7 +284,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
         menu_frame_label = customtkinter.CTkLabel(master=self.menu_frame, 
                                                   text='Daily Sales',
-                                                  text_color='orange', 
+                                                  text_color='#16FF00', 
                                                   font=('Sans', 15),)
         menu_frame_label.place(x=40, y=20, anchor='w')
 

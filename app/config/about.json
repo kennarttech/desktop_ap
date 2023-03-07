@@ -5,5 +5,9 @@
 
     "statusbar":{
         "KT":"Develop by [Kennart Tech]"
-    }
+    },
+
+    "entry_search": "Enter data ID"
+
+
 }

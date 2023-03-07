@@ -41,16 +41,16 @@ class CustomNote(BaseCustomNote):
         default = customtkinter.set_default_color_theme('green')
 
 
-        self.notetitle = customtkinter.CTkEntry(self.topframe, width=400, 
+        self.notetitle = customtkinter.CTkEntry(self.topframe, width=495, 
                                                 height=35, font=(('Sans'), 16),
                                                 placeholder_text='Note title',
-                                                corner_radius=15)
-        self.notetitle.grid(row=0, column=0, padx=(0,40), pady=(5, 0))
+                                                corner_radius=10)
+        self.notetitle.grid(row=0, column=0, padx=(0,10), pady=(5, 0))
         # self.notetitle.focus()
 
 
-        self.textbox = customtkinter.CTkTextbox(self.topframe, width=600, 
-                                               height=400, corner_radius=10,
+        self.textbox = customtkinter.CTkTextbox(self.topframe, width=500, 
+                                               height=320, corner_radius=10,
                                                border_width=1, font=(('Sans'), 17),
                                                scrollbar_button_hover_color='#16FF00')
         self.textbox.grid(row=1, column=0, padx=(15, 22), pady=(20, 15))

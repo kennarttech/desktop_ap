@@ -82,26 +82,28 @@ class UserSignup(customtkinter.CTkToplevel):
         register_btn.place(x=54, y=245)
 
 
-        forgot_password = customtkinter.CTkButton(frame, text='Already have account? Login.', 
+        forgot_password = customtkinter.CTkButton(frame, border_color='gray40',
                                                 height=20, width=100, corner_radius=5,
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('gray70', 'gray30'),
                                                 fg_color='transparent',
-                                                border_color='gray40',
+                                                text='Already have account? Login.',
                                                 command=self.login_function)
         forgot_password.place(x=65, y=285)
 
 
-        alternative_btn = customtkinter.CTkButton(frame, text='Register using google', width=220, 
+        alternative_btn = customtkinter.CTkButton(frame,  width=220, border_width=0.6,
                                                 height=30,corner_radius=5, image=logimage,
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('#3CCF4E'), compound='left',
                                                 fg_color=('gray7', 'gray30'),
-                                                border_color='gray40',
-                                                border_width=0.6)
+                                                text='Register using google',
+                                                border_color='gray40')
         alternative_btn.place(x=54, y=320)
 
+
         # self.register.mainloop()
+
 
     def login_function(self)-> None:
         login.LoginUser()
