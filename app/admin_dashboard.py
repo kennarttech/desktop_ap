@@ -79,7 +79,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.menu = Menu(self.admin__a)
         self.admin__a.config(menu = self.menu)
         self.filename = Menu(self.menu, tearoff=0, 
-                             activebackground=self.user_data['admin_color2'])
+                             activebackground='gray20', activeforeground='white')
         self.menu.add_cascade(label='File', menu=self.filename)
         self.filename.add_command(label='Save       ', accelerator='Ctrl+S', command=None)
         self.filename.add_separator()
@@ -88,13 +88,13 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         self.help = Menu(self.menu, tearoff=0, 
-                         activebackground=self.user_data['admin_color2'], activeborderwidth=0)
+                         activebackground='gray20', activeforeground='white', activeborderwidth=0)
         self.menu.add_cascade(label='Help', menu = self.help)
         self.help.add_command(label='About      ', accelerator='Ctrl+A', command=self.about)
 
 
         self.option_menu = Menu(self.menu, tearoff=0, 
-                                activebackground=self.user_data['admin_color2'])
+                                activebackground='gray20', activeforeground='white')
         self.menu.add_cascade(label='Options', menu = self.option_menu)
         self.option_menu.add_command(label='Print       ', accelerator='Ctrl+P', command=None)
         self.option_menu.add_command(label='View All Data', accelerator='Ctrl+I', command=None)
@@ -151,7 +151,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                           border_color='gray10', fg_color=self.user_data['admin_color2'],
+                                           border_color='gray10', fg_color=self.user_data['admin_color3'],
                                            corner_radius=5, width=1200, height=40)
         self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), pady=(10, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -167,43 +167,46 @@ class Adminsuper(customtkinter.CTkToplevel):
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
                                            border_width=0.6, width=400, height=40,
-                                           fg_color=self.user_data['admin_color2'], corner_radius=5)
+                                           fg_color=self.user_data['admin_color3'], corner_radius=5)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,10,12), weight=1)
 
 
         admin_sales = customtkinter.CTkEntry(master=top_frame, height=30,
-                                               placeholder_text='Daily Sales',
-                                                width=120, corner_radius=9)
+                                               placeholder_text='Daily Sales $',
+                                                width=125, corner_radius=10)
         admin_sales.grid(row=0, column=0, padx=(0, 0), pady=(3, 0))
-        ToolTip(admin_sales, msg='daily sales', fg='white', bg='gray15', delay=0)
 
 
         daily_expenses = customtkinter.CTkEntry(master=top_frame, height=30,
-                                               placeholder_text='Daily Expenses',
-                                                width=120, corner_radius=9)
+                                               placeholder_text='Daily Expenses $',
+                                                width=125, corner_radius=10)
         daily_expenses.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
-        ToolTip(daily_expenses, msg='daily expenses', fg='white', bg='gray15', delay=0)
 
 
         txt_note = customtkinter.CTkButton(master=top_frame, width=100, text='New Note',
-                                             height=29, fg_color=('gray15'), 
-                                             font=('Sans', 13), 
-                                             hover_color=('gray70', 'gray30'),
-                                             corner_radius=8, command=self.adminnote)
+                                            hover_color=('gray70', 'gray30'),
+                                            font=('Sans', 13), height=26,
+                                            corner_radius=4, command=self.adminnote)
         txt_note.grid(row=0, column=4, padx=(0,0), pady=(4,0))
+        ToolTip(txt_note, msg='Daily note', fg='white', bg='gray15', delay=0)
 
 
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
         date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
-        ToolTip(date_, msg='Todays date', fg='white', bg='gray15', delay=0)
+
+
+        data_modify = customtkinter.CTkButton(master=top_frame, text='Modify Data',
+                                              width=80, height=26, corner_radius=4,
+                                              hover_color=('gray70', 'gray30'))
+        data_modify.grid(row=0, column=8, padx=(0, 0), pady=(3, 0))
+        ToolTip(data_modify, msg='Edit saved data', fg='white', bg='gray15', delay=0)
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
                                                placeholder_text='Total sales',
-                                                width=100, corner_radius=9)
-        total.grid(row=0, column=12, padx=(0, 0), pady=(3, 0))
-        ToolTip(total, msg='Total sales', fg='white', bg='gray15', delay=0)
+                                                width=125, corner_radius=10)
+        total.grid(row=0, column=11, padx=(0, 0), pady=(3, 0))
 
 
         display_records = customtkinter.CTkLabel(master=middle_frame, 
@@ -220,7 +223,6 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
         print_data.grid(row=7, column=3, padx=(0, 130), pady=(140, 10), sticky='e')
-        ToolTip(print_data, msg='Print Record', fg='white', bg='gray15', delay=0)
 
 
         submit_button = customtkinter.CTkButton(master=middle_frame, text='Save Record',
@@ -231,11 +233,10 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
         submit_button.grid(row=7, column=3, padx=(30, 10), pady=(140, 10), sticky='e')
-        ToolTip(submit_button, msg='Submit Record', fg='white', bg='gray15', delay=0)
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                              border_color='gray10', fg_color=self.user_data['admin_color2'],
+                                              border_color='gray10', fg_color=self.user_data['admin_color3'],
                                               corner_radius=4, width=1200, height=30)
         buttom_frame.grid(row=0, column=1, columnspan=5, padx=(19, 19), pady=(0, 20), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)

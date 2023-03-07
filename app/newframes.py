@@ -77,6 +77,33 @@ class Newframe(customtkinter.CTkToplevel):
         self.new_frame.rowconfigure(0, weight=1, uniform='a')
 
 
+        self.menu = Menu(self.new_frame)
+        self.new_frame.config(menu = self.menu)
+        self.filename = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                             ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label='File', menu = self.filename)
+        self.filename.add_command(label = 'Save', accelerator = 'Ctrl+S', command=None)
+        self.filename.add_separator()
+        self.filename.add_command(label = 'Exit', image = None, compound = LEFT, 
+                                  accelerator = 'Ctrl+E', command = self.usr_exit)
+
+
+        self.help = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                         ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label = "Help", menu = self.help)
+        self.help.add_command(label = 'About ', accelerator="Ctrl+A", command=None)
+
+
+        self.option_menu = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                                ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label = "Options", menu = self.option_menu)
+        self.option_menu.add_command(label = 'Print', accelerator='Ctrl+P', command=None)
+        self.option_menu.add_command(label = 'View All Data', 
+                                     accelerator='Ctrl+I', command=None)
+        self.option_menu.add_command(label = 'Modify Saved Data', accelerator='Ctrl+M',
+                                     command=None)
+
+
         left_frame = customtkinter.CTkFrame(master=self.new_frame, 
                                             border_color='gray10', 
                                             border_width=0.8,
@@ -117,7 +144,7 @@ class Newframe(customtkinter.CTkToplevel):
                                                    height=25, width=100, anchor='S',
                                                    corner_radius=5, border_width=1,
                                                    font=('Roboto', 14),image=back_home,
-                                                   command=self.new_frameexit)
+                                                   command=self.usr_exit)
         exit_button.grid(row=4,  padx=1, pady=50, sticky='s')
         ToolTip(exit_button, msg='Exit the program', fg='white', bg='gray15', delay=0)
 
@@ -255,10 +282,14 @@ class Newframe(customtkinter.CTkToplevel):
         ToolTip(search_button, msg='Search', delay=0)
 
 
+        self.new_frame.bind('<Control-E>', self.usr_exit)
+        self.new_frame.bind('<Control-e>', self.usr_exit)
+
+
         # self.new_frame.mainloop()
 
 
-    def new_frameexit(self)-> None:
+    def usr_exit(self, *event)-> None:
         Closewindowdhboard(self.new_frame)
 
 

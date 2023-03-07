@@ -8,9 +8,11 @@
     "theme2": "green",
     "theme3": "#0081B4",
     "theme4":  "#EF5B0C",
-    "admin_color": "#B20600",
-    "admin_color2": "#698269",
-    "admin_color3": "#2C3639",
+    "admin_color": "#16FF00",
+    "admin_color2": "#00425A",
+    "admin_color3": "gray20",
+    "menu_background_color": "gray20",
+    "menu_foreground_color": "white",
     "file_menu_color": "#2E3840",
 
 

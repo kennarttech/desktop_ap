@@ -77,6 +77,33 @@ class Dashboard(customtkinter.CTkToplevel):
         self.dash.rowconfigure(0, weight=1, uniform='a')
 
 
+        self.menu = Menu(self.dash)
+        self.dash.config(menu = self.menu)
+        self.filename = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                             ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label='File', menu = self.filename)
+        self.filename.add_command(label = 'Save', accelerator = 'Ctrl+S', command=None)
+        self.filename.add_separator()
+        self.filename.add_command(label = 'Exit', image = None, compound = LEFT, 
+                                  accelerator = 'Ctrl+E', command = self.usr_exit)
+
+
+        self.help = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                         ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label = "Help", menu = self.help)
+        self.help.add_command(label = 'About ', accelerator="Ctrl+A", command=None)
+
+
+        self.option_menu = Menu(self.menu, tearoff=0, activebackground=self.user_data
+                                ['menu_background_color'], activeforeground='white')
+        self.menu.add_cascade(label = "Options", menu = self.option_menu)
+        self.option_menu.add_command(label = 'Print', accelerator='Ctrl+P', command=None)
+        self.option_menu.add_command(label = 'View All Data', 
+                                     accelerator='Ctrl+I', command=None)
+        self.option_menu.add_command(label = 'Modify Saved Data', accelerator='Ctrl+M',
+                                     command=None)
+        
+
         left_frame = customtkinter.CTkFrame(master=self.dash, 
                                             border_color='gray10', 
                                             border_width=0.8,
@@ -126,7 +153,7 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    height=25, width=100, anchor='S',
                                                    corner_radius=5, border_width=1,
                                                    font=('Roboto', 14),image=back_home,
-                                                   command=self.dashexit)
+                                                   command=self.usr_exit)
         exit_button.grid(row=4,  padx=1, pady=50, sticky='s')
         ToolTip(exit_button, msg='Exit the program', fg='white', bg='gray15', delay=0)
 
@@ -156,7 +183,8 @@ class Dashboard(customtkinter.CTkToplevel):
         
         item_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
                                                values=['Local A4', 'Local A3', 'Foreign A3',
-                                                       'Foreign A5', 'Foreign A4', 'Arwork   A3', 'Artwork A2', 'Artwork A4', 
+                                                       'Foreign A5', 'Foreign A4', 'Arwork   A3', 
+                                                       'Artwork A2', 'Artwork A4', 
                                                        'Canvas A3', 'Canvas A3', 'Canvas A2',
                                                         'Canvas A4', "Mug"],
                                                corner_radius=11, border_width=2, border_color='gray50',
@@ -177,7 +205,6 @@ class Dashboard(customtkinter.CTkToplevel):
                                                dropdown_fg_color='gray35', justify='left')
         item_quantity.grid(row=0, column=1, padx=(0, 0), pady=(3, 0))
         item_quantity.set('Quantity')
-        ToolTip(item_quantity, msg='Item quantity', fg='white', bg='gray15', delay=0)
 
 
         item_price = customtkinter.CTkComboBox(master=top_frame, width=100, height=30,
@@ -188,7 +215,6 @@ class Dashboard(customtkinter.CTkToplevel):
                                                dropdown_fg_color='gray35', justify='left')
         item_price.grid(row=0, column=2, padx=(0, 0), pady=(3, 0))
         item_price.set('price')
-        ToolTip(item_price, msg='Item price', fg='white', bg='gray15', delay=0)
 
 
         deposit_amount = customtkinter.CTkEntry(master=top_frame, height=30,
@@ -212,7 +238,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
         date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
-        ToolTip(date_, msg='Todays date', fg='white', bg='gray15', delay=0)
+        ToolTip(date_, msg="Today's date", fg='white', bg='gray15', delay=0)
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
@@ -236,7 +262,6 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
         print_data.grid(row=7, column=3, padx=(0, 130), pady=(140, 10), sticky='e')
-        ToolTip(print_data, msg='Print Record', fg='white', bg='gray15', delay=0)
 
 
         submit_button = customtkinter.CTkButton(master=middle_frame, text='Save Record',
@@ -247,7 +272,6 @@ class Dashboard(customtkinter.CTkToplevel):
                                                    corner_radius=4, border_width=1,
                                                    font=('Roboto', 16),command=None)
         submit_button.grid(row=7, column=3, padx=(30, 10), pady=(140, 10), sticky='e')
-        ToolTip(submit_button, msg='Submit Record', fg='white', bg='gray15', delay=0)
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
@@ -283,10 +307,17 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(search_button, msg='Search', delay=0)
 
 
+        """This code takes tuple from a user as in 'Shortcut' to perform task"""
+        # self.dash.bind('<Control-a>', self.about)
+        # self.dash.bind('<Control-A>', self.about)
+        self.dash.bind('<Control-E>', self.usr_exit)
+        self.dash.bind('<Control-e>', self.usr_exit)
+
+
         # self.dash.mainloop()
 
 
-    def dashexit(self)-> None:
+    def usr_exit(self, *event)-> None:
         Closewindowdhboard(self.dash)
 
 

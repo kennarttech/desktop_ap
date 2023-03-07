@@ -3,6 +3,7 @@ import os
 import sys
 import json
 from tkinter import * 
+from tkinter import messagebox
 
 
 """This are third-party modules that need to be installed separately using pip"""
@@ -11,7 +12,7 @@ from PIL import Image
 
 
 """This are local modules that i have created myself and are part of the project"""
-from custommessage import Message
+from custommessage import Closewindowdhboard
 
 
 class BaseCustomNote(customtkinter.CTkFrame):
@@ -25,7 +26,7 @@ class BaseCustomNote(customtkinter.CTkFrame):
 
 
         self.topframe = customtkinter.CTkFrame(self, width=700, height=40,
-                                               corner_radius=15, border_width=2,)
+                                               corner_radius=15, border_width=4)
         self.topframe.grid(row=0, column=0)
         self.topframe.grid_columnconfigure((2), weight=1, uniform='a')
         self.topframe.grid_rowconfigure((1), weight=1, uniform='a')
@@ -40,17 +41,21 @@ class CustomNote(BaseCustomNote):
         default = customtkinter.set_default_color_theme('green')
 
 
-        self.notetitle = customtkinter.CTkEntry(self.topframe, width=450, 
+        self.notetitle = customtkinter.CTkEntry(self.topframe, width=400, 
                                                 height=35, font=(('Sans'), 16),
-                                                placeholder_text='Note title')
-        self.notetitle.grid(row=0, column=0, padx=(0,0), pady=(5, 0))
+                                                placeholder_text='Note title',
+                                                corner_radius=15)
+        self.notetitle.grid(row=0, column=0, padx=(0,40), pady=(5, 0))
+        # self.notetitle.focus()
 
 
         self.textbox = customtkinter.CTkTextbox(self.topframe, width=600, 
-                                               height=400, corner_radius=8,
-                                               border_width=2, font=(('Sans'), 17))
+                                               height=400, corner_radius=10,
+                                               border_width=1, font=(('Sans'), 17),
+                                               scrollbar_button_hover_color='#16FF00')
         self.textbox.grid(row=1, column=0, padx=(15, 22), pady=(20, 15))
         self.textbox.insert(0.0, 'Please enter your note here')
+        self.textbox.focus()
 
 
         self.button = customtkinter.CTkButton(self.topframe, text='Close',
@@ -66,7 +71,13 @@ class CustomNote(BaseCustomNote):
 
 
     def syclos(self):
-        self.destroy()
+        # Closewindowdhboard(self.topframe)
+        if messagebox.askyesno('Close Notebook', 
+                               'Save your data before closing\n'
+                               "Do you want to close the notepad",icon='info'):
+            self.destroy()
+        else:
+            return self.master
 
 
 
