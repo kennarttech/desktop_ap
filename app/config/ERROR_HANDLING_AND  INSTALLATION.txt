@@ -1,0 +1,915 @@
+open the shell in the download folder
+/usr/share/virtualbox-ext-pack
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to change kali hostname or username
+
+*hostname
+*cat /etc/hostname
+*hostnamectl set-hostname to (any name, e.g ben)
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install postman on kali
+*(Download the Postman AppImage package using the following command:)
+wget https://dl.pstmn.io/download/latest/linux64 -O postman-linux-x64-latest.tar.gz
+
+*(Extract the downloaded package using the following command:)
+tar -xzf postman-linux-x64-latest.tar.gz
+
+*(Move the extracted directory to /opt using the following command:)
+sudo mv Postman /opt/
+
+*(Create a symlink of the postman executable file to /usr/bin using the following command:)
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+*(lunch)
+postman
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to create new user
+
+root mod first
+*useradd -m test (<-------username)
+*passwd (<-------any random password)
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+read more about linux
+
+https://phoenixnap.com/kb/category/sysadmin
+https://www.edureka.co/blog/category/operating-systems/
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install remote desktop and connect to windows
+sudo apt install freerdp2-x11 freerdp2-shadow-x11
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to achive a zip file
+tar -xvf (filename)
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to remove or uninstall files from the system
+1 sudo apt-get purge tor
+
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install visual studio code
+1 apt-get update
+** dpkg -i 'then visual studio filename'
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install figlet
+sudo nano /home/kenneth/.zshrc
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install figlet color terminal
+sudo apt-get install figlet lolcat
+nano .zshrc  
+
+*figlet -c Kennartfoundation
+or
+*figlet -f mono9 "Kennart" | lolcat
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install zenmap
+* sudo apt install kaboxer -y
+sudo apt install zenmap-kbx
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install andriod studio
+download the file 
+* navigate tothe file folder
+** copy & paste the tar.gz filename 
+tar -xvzf android-studio-2021.1.1.20-linux.tar.gz
+***extract the tarfile
+****navigate inside the ('folder/bin')
+chmod +x studio.sh
+./studio.sh
+
+
+
+https://thehackernews.com/2016/12/kickass-torrents-site.html
+www.kickass.cd
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install or enable bluetooth
+# sudo lsmod | grep blue
+systemctl enable bluetooth.service 
+systemctl start bluetooth.service 
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+use to share files or folder
+simplehttp -d ~/downloads/
+
+or
+
+./simplehttp -d ~/downloads/
+http://192.168.0.108:8080
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install xdm_youtube downloader
+download setup and extract it, open terminal in the folder and type
+sudo ./install.sh
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install microsoft visio  or diagram
+sudo apt
+sudo apt-get install di
+sudo apt-get install dia
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install qbttorent torrent5
+
+sudo apt update
+sudo apt install qbittorrent
+sudo apt install gimp
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to check ip address
+# ifconfig | grep -w inet | awk '{ print $2}'
+OR
+# ip a s | grep -w inet | awk '{ print $2}'
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install gns3
+git clone https://github.com/GNS3/gns3-gui.git
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install vs sublime text
+https://www.sublimetext.com/3
+
+* sudo apt-get update
+* sudo apt-get install sublime-text  
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install flask websocket
+WebSocket transport
+pip install eventlet gevent gevent-websocket
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* configure
+* make
+* make install
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to connect using python http server
+python -m http.server
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install characters or emojis on kali
+sudo apt-get install gnome-characters
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install tor on kali
+sudo apt install tor
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+system working check
+bpytop    =this shows the system performance
+neofetch  = this shows the system info hardware, software
+bpython    = this helps by giving u autho suggestions
+cmus  = music player
+nload =
+aria2c = use to download 
+speedtest   = check the internet speed
+sudo lshw | less = this script populate the system info
+sudo apt-get install httrack =this install httrack
+sudo htop = gives to you the ability to views system performance
+tilix = is a terminal
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to remote control 
+sudo apt install xrdp -y
+sudo service xrdp start 
+sudo service xrdp-sesman start
+sudo update-rc.d xrdp enable  
+sudo service xrdp status   
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install packettracer one kali
+sudo dpkg -i PacketTracer_800_amd64_build212_final.deb
+
+*error trigger*
+sudo apt install -f 
+
+re-ran the installation again
+sudo dpkg -i PacketTracer_800_amd64_build212_final.deb
+lunch on terminal=(packettracer)
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to remove or uninstall app
+apt-get remove ....
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install youtubedownloader
+apt-get install youtube-dl 
+youtube-dl    = url
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install youtubedownloader
+https://xtremedownloadmanager.com/
+extract the package and install it the folder
+sudo ./filename
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install play on linux
+apt-get install playonlinux
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to check system info
+cat /proc/cpuinfo
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to check hardware info
+sudo dmidecode --type 17   
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to set root pass
+su root
+......
+sudo passwd root
+enter a new password
+enter another on again
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* how to install visual studio code
+1 apt-get update
+** dpkg -i 'then visual studio filename'
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+1* how to install google chrome
+cd Desktop
+* dpkg -i file name
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install virtualbox
+sudo apt-get install virtualbox
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+### how to install vlc media player
+* sudo apt install vlc
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install fix bad zbad shell on kali linux
+cd ~
+mv .zsh_history .zsh_history_bad
+strings -eS .zsh_history_bad > .zsh_history
+fc -R .zsh_history
+
+mv ~/.zsh_history ~/.zsh_history_bad
+strings -eS ~/.zsh_history_bad > ~/.zsh_history
+#R in capital gives an error so the solution
+fc -r ~/.zsh_history
+rm ~/.zsh_history_bad
+
+
+⚙️ ⚙️ 
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to uninstall python3 on kali linux
+* sudo apt remove python3 python3-pip python3-dev build-essential
+*
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install python on kali linux
+* sudo apt install wget software-properties-common (It allows you to easily manage your distribution)
+
+^^tar -xvf filename(use to extract achive file)
+*download the file and extract it (navigate to the extracted folder)
+*sudo ./configure --with-ensurepip==install
+*sudo apt install build-essential
+*make
+*sudo make install
+python --version
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+## how to install pip 
+sudo apt update
+*sudo apt install python3-pip
+*sudo apt install python3-pip
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install microsoft edge
+*use root to install it(dpkg)
+sudo dpkg -i filename
+Note:(file system/usr//share/applications/
+*right click on the microsoft edge
+*change %u >> --no-sandbox 
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+How To Set Up Port Forwarding in Kali Linux Without Router Access | Kali Linux 
+$ sudo apt update && sudo apt full-upgrade -y
+$ sudo apt install npm =this is a package manager for javascript language
+$ sudo npm install -g localtunnel
+$ lt --port 80
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+How to Forward Any Port in Kali Linux Without Router Access
+*ssh -R 80:localhost:8080 nokey@localhost.run
+*sudo apt install apache2  
+*sudo service apache2 start =this script start the server
+*sudo service apache2 status
+
+
+//*change the apache server port number
+*sudo nano /etc/apache2/ports.conf
+*sudo ssh -R 80:localhost:8989 nokey@localhost.run
+d58922fa527df6.localhost.run  ==run the link
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to remove google chrome
+Debian-based systems: Enter sudo dpkg -r google-chrome-stable.
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+## how to install tor browser on kali
+sudo apt install -y torbrowser-launcher
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to reset right click or icons disapear
+
+** terminal
+* rm -r .cache .config .local
+*** then 
+sudo reboot
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to fix busybox v1.30.1
+*  exit = hit enter
+* fsck.ext4 /dev/sda1
+* y and enter
+* hit y and enter
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+sudo apt install git
+git clone [paste the link her]
+sudo apt install tilix = this is to install another terminal
+sudo apt-get install libreoffice = this is how to install microsoft office
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+Making multiple directories–> mkdir dir1 dire2 dir3
+Creating Multiple files–>touch filea fileb
+Help Commands such as man, info and pinfo: man commandname
+
+info commandname
+
+pinfo commandname
+Editor: it is used to edit existing files or creating a file
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+In short executing “sudo apt-get update” fetches you a list of packages for all of your repositories
+ and PPA’s and make sure it is up to date. While “sudo apt-get upgrade” does an actual software upgrade. 
+Hence, it recommended option is always to run update command before upgrade command to update installed 
+packages for an Ubuntu or Debian system:
+$ sudo apt-get update && sudo apt-get upgrade
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+
+how to configure inRelease is not valid yet(invalid for another ...
+* su root 
+* sudo date -s "08/18/2021 04:7 PM"
+* sudo dpkg-reconfigure tzdata 
+
+	or
+how to change the timezone
+su root
+****
+dpkg-reconfigure tzdata
+
+after ==
+
+timedatectl status
+timedatectl set-
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+# for set date
+* sudo date -s "08/18/2021 04:7 PM"
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+# for image processing
+# sudo apt-get install python3-pil python3-pil.imagetk
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install vitualbox
+
+* sudo apt full-upgrade
+sudo apt install linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,_')
+               $(uname -r | sed 's, [^ -] * - [^ -] * - ,,') 
+
+# sudo apt install linux-image-$(uname -r | sed 's, [^ -] * - [^ -] * - ,,') 
+
+** restart
+
+$ sudo apt install build-essential dkms
+$ sudo apt install virtualbox virtualbox-ext-pack
+
+# sudo apt remove virtualbox-dkms
+# sudo apt install virtualbox-dkms
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+man uname 
+uname --help
+apropos cat
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install wine32
+https://github.com/sudo-give-me-coffee/wine32-deploy.git
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install wine____
+sudo dpkg --add-architecture i386
+sudo apt update && sudo apt full-upgrade -y
+sudo apt install wine wine64 wine32 winbind winetricks
+
+wget https://git...
+
+wine npp.7.9.5.Installer.x64.exe
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install font__manager
+$ sudo sudo apt update && sudo apt full-upgrade -y
+$ unzip xxxxxx.zip
+$ sudo apt install font-manager -y
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to make bootable with linux
+link __ https://unetbootin.github.io/
+
+sudo add-apt-repository ppa:gezakovacs/ppa
+sudo apt-get update
+sudo apt-get install unetbootin
+after the download 
+
+*terminal = apt-get install mtools
+*chmod +x unetbootin-linux64-702.bin
+*mount the pendrive 
+*sudo QT_X11_NO_MITSHM=1 /home/kenneth/Desktop/unetbootin-linux64-702.bin (in order to open)
+search and locate the iso place 
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+==been in root==
+how to install wine on linux
+
+apt-get update
+dpkg --add-architecture i386
+apt-get update
+apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386    (select yes ht ent)
+apt-get install flex bison
+apt-get install wine
+dpkg --add-architecture i386
+apt-get install wine32    (select yes ht ent)
+apt-get install mingw-w64
+
+()
+cd Desktop
+photoshine.exe
+wine photoshine.exe (hit enter)
+next__next
+
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install libreoffice
+download
+https://www.libreoffice.org/
+
+sudo dpkg -i *.deb
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install balena and make bootable
+sudo apt update
+sudo apt install zenity
+Terminal commands:
+1.sudo apt update
+2.sudo apt install zenity
+3.cd ~/Downloads
+4.unzip balena-etcher-electron-1.5.120-linux-x64.zip 
+5.sudo mv balenaEtcher-1.5.120-x64.AppImage /opt 
+6.sudo /opt/balenaEtcher-1.5.120-x64.AppImage
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install vmware playstation
+download the setup
+sudo chmod a+x VMware-Player-16.1.2-17966106.x86_64.bundle
+./VMware-Player-16.1.2-17966106.x86_64.bundle
+sudo ./VMware-Player-16.1.2-17966106.x86_64.bundle
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+How to Setup Remote Desktop in Kali Linux Using XRDP
+💻 Terminal Commands:
+
+⌨ # sudo apt update
+⌨ # sudo apt install xrdp
+
+After XRDP is installed you can start the services with the following command:
+
+⌨ # sudo service xrdp start
+⌨ # sudo service xrdp-sesman start
+⌨ # sudo update-rc.d xrdp enable     
+⌨ # sudo service xrdp status
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+How to install ipcalc
+sudo apt install ipcalc
+
+192.168.43
+ipcalc 192.168.43.164
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+sudo apt-get install phpmyadmin
+How to install xampsever on kali
+Step 1: Download the installation package
+
+Step 2: Make the installation package executable
+
+$ cd /home/[username]/Downloads
+$ chmod 755 [package name]
+
+Example:
+$ chmod 755 xampp-linux-*-installer.run
+
+Step 3: Confirm execute permission
+$ ls -l [package name]
+
+Example:
+$ ls -l xampp-linux-x64-8.0.3-0-installer.run
+
+Step 4: Launch the Setup Wizard
+$ sudo ./[package name]
+
+Example:
+sudo ./xampp-linux-x64-8.0.3-0-installer.run
+
+Step 5: Work through the graphical setup wizard
+
+
+Step 6: Launch XAMPP through the Terminal
+In order to launch XAMPP through your Ubuntu Terminal, enter the following command as root:
+$ sudo /opt/lampp/lampp start
+
+
+In order to install Net Tools, run the following command as root:
+$ sudo apt install net-tools
+
+Step 7: Verify Installation
+http://localhost
+http://localhost/phpmyadmin
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦🔦🔦🔦COMMANDS:🔦🔦🔦🔦🔦🔦COMMANDS:🔦🔦🔦🔦🔦🔦COMMANDS:🔦🔦🔦
+🔦🔦🔦COMMANDS:🔦🔦🔦
+How to start system apache2 server
+* service apache2 start  
+* service apache2 stop
+* service apache2 status
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* whatis = use to find what more info about how a command work or does
+e.g = whatis neofetch
+
+* alias = these help in by customizing shortcut way of opening a command
+* ~/.bashrc: these help in customizing it permarnet
+* unalias foobar: this is use to remove it
+e.g alias kart="ifconfig"
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+*grep: these command is use to search for a text or file in files 
+e.g grep me name.txt
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+stdin (Standard In)
+cat < peanuts.txt > banana.txt  : these command helps us to redirect our output to another file
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+pipe and tee
+*ls -la /etc
+*ls -la /etc | less 
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+echo $USER  : these show the current user
+env : these shows the environment 
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+*expand and unexpand
+expand sample.txt
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+*tr a-z A-Z use to translate lower case to caps
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+5. changing Vim line number
+set number.
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to hide secret information in env file
+* vim .bash_profile
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+5. Vim Appending Text
+i - insert text before the cursor
+O - insert text on the previous line
+o - insert text on the next line
+a - append text after the cursor
+A - append text at the end of the line
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+7. Vim Editing
+x - used to cut the selected text also used for deleting characters
+dd - used to delete the current line
+y - yank or copy whatever is selected
+yy - yank or copy the current line
+p - paste the copied text before the cursor
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+
+8. Vim Saving and Exiting
+    :w - writes or saves the file
+    :q - quit out of vim
+    :wq - write and then quit
+    :q! - quit out of vim without saving the file
+    ZZ - equivalent of :wq, but one character faster
+
+    u - undo your last action
+    Ctrl-r - redo your last action
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to fix corrupt history file
+zsh: corrupt history file /home/kenneth/.zsh_history
+
+cd ~
+mv .zsh_history .zsh_history_bad
+strings -eS .zsh_history_bad > .zsh_history
+fc -R .zsh_history
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+1. File Permissions
+d | rwx | r-x | r-x 
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+2. Modifying Permissions
+
+chmod u+x myfile
+chmod u-x myfile
+chmod ug+w
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+The numerical representations are seen below:
+4: read permission
+2: write permission
+1: execute permission
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+3. Ownership Permissions
+sudo chown patty myfile
+sudo chgrp whales myfile
+sudo chown patty:whales myfile
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to extract achive file in command line
+tar -xvf Full_flk_project.tar.gz 
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to zip a file
+tar and gzip
+gunzip mycoolfile.gz
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to encrypt anything in zip
+zip -e password_protected.zip filename
+unzip password_protected.zip
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to create new user and asign him
+* sudo adduser = any name >===(tech)
+* su tec
+* sudo nano /etc/sudoers
+* tech ALL=(ALL:ALL) ALL
+* sudo usermod -aG sudo =this gives permision to the new user
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to convert python to debian base
+(requirements to install before)
+
+* pip install stdeb
+* pip install stdeb3
+* sudo apt-get install python3-stdeb 
+* sudo apt-get install dh-python
+* python3 setup.py --command-packages=stdeb.command bdist_deb
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install python requests
+pip freeze | grep requests\n
+pip uninstall requests
+pip freeze | grep requests\n
+which python
+pip install requests
+pip install --upgrade requests\n
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install python flask_jwt
+pip install Flask-JWT
+pip install --upgrade jwt
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+** Very dangerous (rm -rf /)*
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+Sudo (su “do”) allows a system administrator to give certain users (or groups of users) the ability to run some (or all) commands as root while logging
+* pwd = print working directory
+* ls = to list the items inside
+* ls -l to see everything inside
+*cd = change working directory
+* touch = to create new txt file (Note)  touch myname.txt
+* ls to list the item again
+* ls -a to list hidden items in the directory contents.
+* echo 'i love linux' >myname.txt    == to add something on the txt file
+* echo 'i love linux' >>myname.txt  (to append >>) something on the txt file
+* cat to see what is on the txt file   (myname)
+* rm – use to remove file
+* rm -r use to remove directory
+*tar -xvf use to extract achieve file
+* cp is use to copy directory or file
+*cp -R use to copy directory
+* mkdir = make new directory
+* xdg-open = use to open video or file
+* mv use to move a file or rename a file or directory
+*  sudo -s this open the root user without login
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+* grep – Find text in a file. The grep command searches through many files at a time to find a piece of text you are looking for.
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+chmod – To change mode of a file system object. Files can have r – read, w- write and x-execute permissions.
+For example:
+
+    • chmod mode FILE 
+    • chmod 744 script.sh 
+    • The first number stands for the user who is associated with the file 
+    • The second number is for the group associated with the file 
+    • The third number is associated with everyone else who is not a part of the user or group 
+    
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+1. 4 = r (Read) 
+2. 2 = w (Write) 
+3. 1 = x (eXecute) 
+
+• To represent rwx triplet use 4+2+1=7 
+• To represent rw- triplet use 4+2+0=6 
+• To represent r– triplet use 4+0+0=4 
+• To represent r-x triplet use 4+0+1=5 
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+how to install Veil framework
+* ./setup.sh --silent --force
+** silent this will install everything silentily without attending to
+** forece this will overide the first installation incase there is a problem installing the first one
+
+
+*** in order to run the veil after installation 
+1. change the privilage to root before running it
+
+2. use (./ Veil.py)
+
+install this module when vail fail to start (pip install pycrypto / pip3 install pycryptodome)
+
+
+
+🔦🔦🔦COMMANDS:🔦🔦🔦
+
+** Very dangerous (rm -rf /)*

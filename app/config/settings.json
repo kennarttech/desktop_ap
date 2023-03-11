@@ -18,7 +18,6 @@
 
     "message_text_color": "white",
     "usermessage": "Are you sure you want to\n''close this window",
-    "usermessage2": "Are you sure you want to\n''close this window",
 
 
     "Item_prices": [
@@ -36,6 +35,7 @@
         "150"
     ],
 
+
     "Item_prices_drive": [
         "8gig = 35",
         "16gig = 40",
@@ -45,6 +45,7 @@
         "None 60",
         "None 65"
     ],
+
 
     "stationary":[
         "Pen",
@@ -63,6 +64,7 @@
         "Calculator"
     ],
 
+    
     "stationary_price":[
         "20p",
         "30p",

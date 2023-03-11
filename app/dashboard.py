@@ -1,6 +1,7 @@
 """This are built-in modules, which are part of the Python Standard Library"""
 import os
 import json
+import requests
 from tkinter import *
 from tkinter import Menu
 from tkinter import messagebox
@@ -11,6 +12,7 @@ import customtkinter
 from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
+from CTkMessagebox import CTkMessagebox
 
 
 """The are local modules that I have created myself and are part of the project. """
@@ -107,7 +109,8 @@ class Dashboard(customtkinter.CTkToplevel):
         left_frame = customtkinter.CTkFrame(master=self.dash, 
                                             border_color='gray10', 
                                             border_width=0.8,
-                                            fg_color='gray25', 
+                                            fg_color='transparent', 
+                                            # fg_color='#2C3333',
                                             corner_radius=5)
         left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
@@ -178,7 +181,7 @@ class Dashboard(customtkinter.CTkToplevel):
                                            border_width=1, width=400, height=40,
                                            fg_color='gray35', corner_radius=7)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
-        top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8), weight=1)
+        top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,9), weight=1)
 
         
         item_combo = customtkinter.CTkComboBox(master=top_frame, width=150, height=30,
@@ -229,29 +232,38 @@ class Dashboard(customtkinter.CTkToplevel):
         deposit_name.grid(row=0, column=4, padx=(0, 0), pady=(3, 0))
 
 
+        deposit_contact = customtkinter.CTkEntry(master=top_frame, height=30,
+                                               placeholder_text='Contact',
+                                                width=120, corner_radius=9)
+        deposit_contact.grid(row=0, column=5, padx=(0, 0), pady=(3, 0))
+
+
         balance = customtkinter.CTkEntry(master=top_frame, height=30,
                                                placeholder_text='Balance left',
                                                 width=100, corner_radius=9)
-        balance.grid(row=0, column=5, padx=(0, 0), pady=(3, 0))
+        balance.grid(row=0, column=6, padx=(0, 0), pady=(3, 0))
         ToolTip(balance, msg='Deposit balance', fg='white', bg='gray15', delay=0)
 
 
         date_ = DateEntry(master=top_frame, height=58, width=10, justify='center')
-        date_.grid(row=0, column=6, padx=(0,0), pady=(3, 0))
+        date_.grid(row=0, column=7, padx=(0,0), pady=(3, 0))
         ToolTip(date_, msg="Today's date", fg='white', bg='gray15', delay=0)
 
 
         total = customtkinter.CTkEntry(master=top_frame, height=30,
                                                placeholder_text='Total cost',
                                                 width=100, corner_radius=9)
-        total.grid(row=0, column=7, padx=(0, 0), pady=(3, 0))
+        total.grid(row=0, column=8, padx=(0, 0), pady=(3, 0))
         ToolTip(total, msg='Total cost', fg='white', bg='gray15', delay=0)
 
 
         display_records = customtkinter.CTkLabel(master=middle_frame, 
                                                  text='Nothing to display yet.....', 
                                                  font=('Sans', 12))
-        display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
+        display_records.grid(row=9, column=2, padx=(5, 0), pady=(2, 2))
+
+
+        response = requests.get('http://127.0.0.1:4000/store', json={'store': self.stores})
 
 
         print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',
@@ -322,7 +334,10 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def gotonewf(self):
-        if messagebox.askyesno('New frame', 'New frame!\nremember to save your work after you finish', icon='info'):
+        msg = CTkMessagebox(title="Exit?", message="Do you want to close the program?",
+                        icon="question", option_1="Cancel", option_2="No", option_3="Yes")
+        response = msg.get()
+        if response == 'Yes':
             newframes.Newframe()
             self.dash.destroy()
         else:

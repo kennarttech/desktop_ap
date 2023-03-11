@@ -55,6 +55,8 @@ class CustomNote(BaseCustomNote):
                                                scrollbar_button_hover_color='#16FF00')
         self.textbox.grid(row=1, column=0, padx=(15, 22), pady=(20, 15))
         self.textbox.insert(0.0, 'Please enter your note here')
+        self.textbox.tag_add('start', '1.0', '2.5')
+        self.textbox.tag_config('start', foreground='#16FF00')
         self.textbox.focus()
 
 

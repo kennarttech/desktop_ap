@@ -33,7 +33,7 @@ class Message(customtkinter.CTkFrame):
                                               bg_color='gray25',
                                               border_color='gray40',
                                               corner_radius=15)
-        self.message.grid(row=0, columnspan=2)
+        self.message.grid(row=0, columnspan=4)
         self.message.grid_columnconfigure(2)
 
 

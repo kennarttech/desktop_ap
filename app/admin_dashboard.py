@@ -12,6 +12,7 @@ import customtkinter
 from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
+from CTkMessagebox import CTkMessagebox
 
 
 """This are local modules that I have created myself and are part of the project. """
@@ -50,26 +51,33 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_05.png')), 
+        user_profile_logo = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                           'logo_05.png')), 
         size=(130, 130))
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
-        new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_10.png')),
+        new_frames = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                    'logo_10.png')),
         size=(30, 30))
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'icons')
-        daily_sales = customtkinter.CTkImage(Image.open(os.path.join(image_path,'logo_14.png')),
+        daily_sales = customtkinter.CTkImage(Image.open(os.path.join(image_path,
+                                                                     'logo_14.png')),
         size=(30, 30))
 
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_07.png')), size=(30, 30))
+        back_home = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                                   'logo_07.png')), 
+        size=(30, 30))
 
         
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'icons')
-        search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 'logo_08.png')), size=(22, 22))
+        search_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
+                                                                      'logo_08.png')), 
+        size=(22, 22))
 
 
         self.admin__a.columnconfigure((1,2), weight=1, uniform='a')
@@ -153,14 +161,16 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
                                            border_color='gray10', fg_color=self.user_data['admin_color3'],
                                            corner_radius=5, width=1200, height=40)
-        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), pady=(10, 12), sticky=N)
+        self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), 
+                             pady=(10, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
 
 
         middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=1,
                                            border_color='gray40', fg_color=self.user_data['admin_color3'],
                                            corner_radius=5, width=1200, height=100)
-        middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(57, 60), sticky=NSEW)
+        middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), 
+                          pady=(57, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
         middle_frame.grid_rowconfigure((1,2,3,4,5,6,7,8), weight=1)
         
@@ -181,7 +191,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.tree.heading('daily expenses', text='Daily Expenses')
         self.tree.heading('note title', text='Note Title')
         self.tree.heading('note content', text='Note Content')
-        self.tree.heading('date', text='Data')
+        self.tree.heading('date', text='Date')
 
 
         self.tree.bind('<<TreeviewSelect>>', self.admin__a)
@@ -194,10 +204,12 @@ class Adminsuper(customtkinter.CTkToplevel):
         # scrollbar.grid(row=0, column=1, sticky='ns')
 
         
-        top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
+        top_frame = customtkinter.CTkFrame(master=middle_frame, corner_radius=5, 
                                            border_width=0.6, width=400, height=40,
-                                           fg_color=self.user_data['admin_color3'], corner_radius=5)
-        top_frame.grid(row=0, column=0, columnspan=4, padx=(2, 2), pady=(0, 0), ipady=3, sticky='ew')
+                                           fg_color=self.user_data['admin_color3'], 
+                                           border_color='gray50')
+        top_frame.grid(row=0, column=0, columnspan=4, padx=(2, 2), pady=(0, 0), 
+                       ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,10,12), weight=1)
 
 
@@ -237,12 +249,6 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                placeholder_text='Total sales',
                                                 width=125, corner_radius=10)
         total.grid(row=0, column=11, padx=(0, 0), pady=(3, 0))
-
-
-        # display_records = customtkinter.CTkLabel(master=middle_frame, 
-        #                                          text='Nothing to display yet.....', 
-        #                                          font=('Sans', 12))
-        # display_records.grid(row=5, column=2, padx=(5, 0), pady=(2, 2))
 
 
         print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',

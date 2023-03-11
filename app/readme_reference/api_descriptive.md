@@ -20,8 +20,6 @@
 When you run the curl command, it sends a POST request to the Flask server with the JSON payload specified in the -d option. The server then processes the request and returns a response, which is printed to the console.
 
 
-
-
 4. ----------------------------------------------------------------------
 4.  This code defines three classes: LoginGUI, AdminDashboardGUI, and UserDashboardGUI. It also imports the tkinter and requests modules.
 

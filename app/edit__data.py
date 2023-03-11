@@ -53,7 +53,7 @@ class EditData(customtkinter.CTkToplevel):
 
 
         top_frame_label = customtkinter.CTkLabel(master=top_frame, 
-                                                text='Record ID', 
+                                                text='Enter record ID =>>', 
                                                 font=('TImes', 22))
         top_frame_label.grid(row=0, column=0, padx=(18, 0), pady=(7, 0))
 
