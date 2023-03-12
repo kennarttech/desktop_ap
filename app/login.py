@@ -1,18 +1,17 @@
 """This are built-in modules, which are part of the Python Standard Library"""
 import os
 from tkinter import *
-from tkinter import messagebox
 
 
 """this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from PIL import Image
+from CTkMessagebox import CTkMessagebox
 
 
 """The are local modules that I have created myself and are part of the project."""
 import register 
 import dashboard
-import custommessage
 import forget_password
 
 
@@ -125,14 +124,20 @@ class LoginUser(customtkinter.CTkToplevel):
 
 
     def admin_page(self)-> None:
-        us = self.user_name.get().lower()
-        ps = self.user_pass.get().lower()
-        if us in ('kenneth', 'kennart') and ps in ('mmm', 'mmmmm'):
+        usr = self.user_name.get().lower()
+        psd = self.user_pass.get().lower()
+        if usr in ('kenneth') and psd in ('mmmmm', 'mmm'):
             dashboard.Dashboard()
             self.login.destroy()
-            messagebox.showinfo('Welcome', 'Welcome to Daily sales\nPlease remember to save your work', icon='info')
+            CTkMessagebox(title='Welcome', message='Welcome to Daily Sales\n'
+                            'Please remember to save your work', icon='check', 
+                            option_1='Thanks')
         else:
-            messagebox.showerror('User Credentials', 'Username or Password incorrect', icon='error')
+            CTkMessagebox(title='Error', message='Username or password incorrect', 
+                          icon='cancel', option_1='Ok')
+            # if msg.get() == 'Yes':
+            #     print('try again')
+        
 
 
 
