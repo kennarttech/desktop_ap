@@ -4,7 +4,6 @@ import json
 import requests
 from tkinter import *
 from tkinter import Menu
-from tkinter import messagebox
 
 
 """this are third-party modules that need to be installed separately using pip"""
@@ -17,7 +16,7 @@ from CTkMessagebox import CTkMessagebox
 
 """The are local modules that I have created myself and are part of the project. """
 import newframes
-from custommessage import CustomMessagebox
+from custommessage import CKTMessagebox
 
 
 class Dashboard(customtkinter.CTkToplevel):
@@ -35,7 +34,7 @@ class Dashboard(customtkinter.CTkToplevel):
     def __init__(self) -> None:
         # self.dash = customtkinter.CTk()
         self.dash = customtkinter.CTkToplevel()
-        self.dash.minsize(400, 430)
+        self.dash.minsize(900, 500)
         self.dash.attributes('-zoomed', True)
         self.dash.geometry('1000x600+155+50')
         self.dash.title('Welcome to DS Enterprise')
@@ -109,8 +108,7 @@ class Dashboard(customtkinter.CTkToplevel):
         left_frame = customtkinter.CTkFrame(master=self.dash, 
                                             border_color='gray10', 
                                             border_width=0.8,
-                                            fg_color='transparent', 
-                                            # fg_color='#2C3333',
+                                            fg_color='#06283D',
                                             corner_radius=5)
         left_frame.grid(row=0, column=0, ipadx=(10), pady=(0,0), sticky=NSEW)
         left_frame.grid_rowconfigure((0,1,2,3,4,5), weight=1)
@@ -163,14 +161,14 @@ class Dashboard(customtkinter.CTkToplevel):
 
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
-                                           border_color='gray10', fg_color='gray28',
+                                           border_color='gray10', fg_color='#06283D',
                                            corner_radius=5, width=1200, height=40)
         self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(0, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
         
 
         middle_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
-                                           border_color='gray10', fg_color='gray28',
+                                           border_color='gray10', fg_color='#2C3333',
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(60, 60), sticky=NSEW)
         middle_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -179,7 +177,7 @@ class Dashboard(customtkinter.CTkToplevel):
         
         top_frame = customtkinter.CTkFrame(master=middle_frame, border_color='gray50', 
                                            border_width=1, width=400, height=40,
-                                           fg_color='gray35', corner_radius=7)
+                                           fg_color='gray28', corner_radius=7)
         top_frame.grid(row=0, column=0, columnspan=4, padx=(2,2), pady=(0, 0), ipady=3, sticky='ew')
         top_frame.grid_columnconfigure((0,1,2,3,4,5,6,7,8,9), weight=1)
 
@@ -287,7 +285,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.dash, border_width=0.6,
-                                              border_color='gray10', fg_color='gray24',
+                                              border_color='gray10', fg_color='#06283D',
                                               corner_radius=4, width=1200, height=25)
         buttom_frame.grid(row=0, column=1, columnspan=5, pady=(0, 0), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -330,12 +328,14 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def usr_exit(self, *event)-> None:
-        CustomMessagebox(self.dash)
+        CKTMessagebox(self.dash)
 
 
     def gotonewf(self):
-        msg = CTkMessagebox(title="Exit?", message="Do you want to close the program?",
-                        icon="question", option_1="Cancel", option_2="No", option_3="Yes")
+        msg = CTkMessagebox(title="Logout", message="Do you want to switch to New-Record?",
+                        icon="info", 
+                        option_1="Yes", 
+                        option_2="No")
         response = msg.get()
         if response == 'Yes':
             newframes.Newframe()
@@ -345,7 +345,8 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def nothing(self):
-        if messagebox.showinfo('Dashbord', 'Already hear😀😀', icon='info'):
+        if CTkMessagebox(title='Dashboard', message='Option not available yet', 
+                         icon='info'):
             return self.dash
 
 
