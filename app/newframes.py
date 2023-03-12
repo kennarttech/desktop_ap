@@ -14,7 +14,7 @@ from tktooltip import ToolTip
 
 """The are local modules that I have created myself and are part of the project. """
 import dashboard
-from custommessage import Closewindowdhboard
+from custommessage import CustomMessagebox
 
 
 class Newframe(customtkinter.CTkToplevel):
@@ -290,7 +290,7 @@ class Newframe(customtkinter.CTkToplevel):
 
 
     def usr_exit(self, *event)-> None:
-        Closewindowdhboard(self.new_frame)
+        CustomMessagebox(self.new_frame)
 
 
     def Dsales(self):

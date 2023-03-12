@@ -9,6 +9,7 @@ from tkinter import messagebox
 """this are third-party modules that need to be installed separately using pip"""
 import customtkinter
 from tktooltip import ToolTip
+from CTkMessagebox import CTkMessagebox
 
 
 """This are local modules that I have created myself and are part of the project."""
@@ -116,12 +117,14 @@ class Homepage(customtkinter.CTk):
 
 
     def dsales(self)-> None:
-        if messagebox.showinfo('Login', 'Please Signup/Login \nto acess this page', 
-                               icon='info'):
+        msg = CTkMessagebox(title='Login', message='Please Signup/Login \n'
+                            'to access this page', icon='warning', option_1='Ok',
+                            option_2='Cancel')
+        if msg.get() == 'Ok':
             self.master.withdraw()
             login.LoginUser()
         else:
-            return self.master 
+            return self.master
         
 
     def create_account(self)-> None:
@@ -131,8 +134,6 @@ class Homepage(customtkinter.CTk):
         
     def about_page(self)-> None:
         about.Aboutpage()
-
-
 
 
 

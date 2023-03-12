@@ -17,7 +17,7 @@ from CTkMessagebox import CTkMessagebox
 
 """The are local modules that I have created myself and are part of the project. """
 import newframes
-from custommessage import Closewindowdhboard
+from custommessage import CustomMessagebox
 
 
 class Dashboard(customtkinter.CTkToplevel):
@@ -257,13 +257,13 @@ class Dashboard(customtkinter.CTkToplevel):
         ToolTip(total, msg='Total cost', fg='white', bg='gray15', delay=0)
 
 
-        display_records = customtkinter.CTkLabel(master=middle_frame, 
-                                                 text='Nothing to display yet.....', 
-                                                 font=('Sans', 12))
-        display_records.grid(row=9, column=2, padx=(5, 0), pady=(2, 2))
+        # display_records = customtkinter.CTkLabel(master=middle_frame, 
+        #                                          text='Nothing to display yet.....', 
+        #                                          font=('Sans', 12))
+        # display_records.grid(row=9, column=2, padx=(5, 0), pady=(2, 2))
 
 
-        response = requests.get('http://127.0.0.1:4000/store', json={'store': self.stores})
+        # response = requests.get('http://127.0.0.1:4000/store', json={'store': self.stores})
 
 
         print_data = customtkinter.CTkButton(master=middle_frame, text='Print Data',
@@ -330,7 +330,7 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
     def usr_exit(self, *event)-> None:
-        Closewindowdhboard(self.dash)
+        CustomMessagebox(self.dash)
 
 
     def gotonewf(self):

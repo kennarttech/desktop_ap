@@ -12,7 +12,7 @@ from PIL import Image
 
 
 """This are local modules that i have created myself and are part of the project"""
-from custommessage import Closewindowdhboard
+from custommessage import CustomMessagebox
 
 
 class BaseCustomNote(customtkinter.CTkFrame):

@@ -21,7 +21,7 @@ import newframes
 import dashboard
 import customnote
 import edit__data
-from custommessage import Closewindowdhboard
+from custommessage import CustomMessagebox
 
 
 class Adminsuper(customtkinter.CTkToplevel):
@@ -38,8 +38,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        self.admin__a = customtkinter.CTk()
-        # self.admin__a = customtkinter.CTkToplevel()
+        # self.admin__a = customtkinter.CTk()
+        self.admin__a = customtkinter.CTkToplevel()
         self.admin__a.minsize(920, 530)
         self.admin__a.attributes('-zoomed', True)
         self.admin__a.geometry('1000x600+155+50')
@@ -311,7 +311,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.bind('<Control-e>', self.admin__aexit)
 
 
-        self.admin__a.mainloop()
+        # self.admin__a.mainloop()
 
     
     def modify_dt(self):
@@ -323,7 +323,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def admin__aexit(self, *event)-> None:
-        Closewindowdhboard(self.admin__a)
+        CustomMessagebox(self.admin__a)
     
 
     def adminnote(self):
