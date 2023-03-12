@@ -4,7 +4,6 @@ import json
 from tkinter import *
 from tkinter import ttk
 from tkinter import Menu
-from tkinter import messagebox
 
 
 """this are third-party modules that need to be installed separately using pip"""
@@ -21,7 +20,7 @@ import newframes
 import dashboard
 import customnote
 import edit__data
-from custommessage import CustomMessagebox
+from custommessage import CKTMessagebox
 
 
 class Adminsuper(customtkinter.CTkToplevel):
@@ -38,8 +37,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        # self.admin__a = customtkinter.CTk()
-        self.admin__a = customtkinter.CTkToplevel()
+        self.admin__a = customtkinter.CTk()
+        # self.admin__a = customtkinter.CTkToplevel()
         self.admin__a.minsize(920, 530)
         self.admin__a.attributes('-zoomed', True)
         self.admin__a.geometry('1000x600+155+50')
@@ -159,7 +158,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                           border_color='gray10', fg_color=self.user_data['admin_color3'],
+                                           border_color='gray10', fg_color=self.user_data['admin_color2'],
                                            corner_radius=5, width=1200, height=40)
         self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(19,19), 
                              pady=(10, 12), sticky=N)
@@ -167,7 +166,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         middle_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=1,
-                                           border_color='gray40', fg_color=self.user_data['admin_color3'],
+                                           border_color='gray40', fg_color=self.user_data['admin_color2'],
                                            corner_radius=5, width=1200, height=100)
         middle_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), 
                           pady=(57, 60), sticky=NSEW)
@@ -204,7 +203,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         # scrollbar.grid(row=0, column=1, sticky='ns')
 
         
-        top_frame = customtkinter.CTkFrame(master=middle_frame, corner_radius=5, 
+        top_frame = customtkinter.CTkFrame(master=middle_frame, corner_radius=3, 
                                            border_width=0.6, width=400, height=40,
                                            fg_color=self.user_data['admin_color3'], 
                                            border_color='gray50')
@@ -272,7 +271,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
         buttom_frame = customtkinter.CTkFrame(master=self.admin__a, border_width=0.6,
-                                              border_color='gray10', fg_color=self.user_data['admin_color3'],
+                                              border_color='gray10', fg_color=self.user_data['admin_color2'],
                                               corner_radius=4, width=1200, height=30)
         buttom_frame.grid(row=0, column=1, columnspan=5, padx=(19, 19), pady=(0, 20), sticky=S)
         buttom_frame.grid_columnconfigure((0,1,2,3), weight=1)
@@ -311,7 +310,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.bind('<Control-e>', self.admin__aexit)
 
 
-        # self.admin__a.mainloop()
+        self.admin__a.mainloop()
 
     
     def modify_dt(self):
@@ -323,7 +322,7 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def admin__aexit(self, *event)-> None:
-        CustomMessagebox(self.admin__a)
+        CKTMessagebox(self.admin__a)
     
 
     def adminnote(self):
@@ -331,7 +330,12 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def gotonewf(self):
-        if messagebox.askyesno('New frame', 'Welcome to users dashboard\nDo you want to proceed', icon='info'):
+        msg = CTkMessagebox(title='New frame', 
+                            message='Switch to New Frame\n'
+                            'Do you want to proceed', 
+                            option_1='Yes', 
+                            option_2='No', icon='warning')
+        if msg.get() == 'Yes':
             newframes.Newframe()
             self.admin__a.destroy()
         else:
@@ -339,7 +343,12 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def usrnothing(self):
-        if messagebox.askyesno('admin__abord', 'Users page', icon='info'):
+        msg = CTkMessagebox(title='User Record', 
+                            message='Switch to User dashboard\n'
+                            'Remember to save your work', 
+                            option_1='Yes', 
+                            option_2='No', icon='warning')
+        if msg.get() == 'Yes':
             dashboard.Dashboard()
             self.admin__a.destroy()
         else:
