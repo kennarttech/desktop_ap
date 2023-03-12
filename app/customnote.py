@@ -1,18 +1,10 @@
 """This are built-in modules, which are part of the Python standard Library"""
-import os
-import sys
-import json
 from tkinter import * 
-from tkinter import messagebox
 
 
 """This are third-party modules that need to be installed separately using pip"""
 import customtkinter
-from PIL import Image
-
-
-"""This are local modules that i have created myself and are part of the project"""
-from custommessage import CustomMessagebox
+from CTkMessagebox import CTkMessagebox
 
 
 class BaseCustomNote(customtkinter.CTkFrame):
@@ -73,13 +65,20 @@ class CustomNote(BaseCustomNote):
 
 
     def syclos(self):
-        # Closewindowdhboard(self.topframe)
-        if messagebox.askyesno('Close Notebook', 
-                               'Save your data before closing\n'
-                               "Do you want to close the notepad",icon='info'):
+        msg = CTkMessagebox(title='Close Notebook', 
+                          message='Save your data\n'
+                          'Do you want to close the notepad', icon='info', option_1='Yes', option_2='No')
+        if msg.get() == 'Yes':
             self.destroy()
         else:
             return self.master
+        
+        # else:Closewindowdhboard(self.topframe)
+        # if messagebox.askyesno('Close Notebook', 
+        #                        'Save your data before closing\n'
+        #                        "Do you want to close the notepad",icon='info'):
+        #     self.destroy()
+        #     return self.master
 
 
 
