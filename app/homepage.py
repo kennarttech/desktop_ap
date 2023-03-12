@@ -3,7 +3,6 @@ import os
 import json
 from tkinter import *
 from PIL import Image
-from tkinter import messagebox
 
 
 """this are third-party modules that need to be installed separately using pip"""
@@ -140,7 +139,7 @@ class Homepage(customtkinter.CTk):
 def main():
     """this function define the attribute of the GUI and also create the the GUI"""
     home = customtkinter.CTk()
-    app = Homepage(home)
+    Homepage(home)
     home.title('Home Page')
     home.minsize(900, 500)
     home.geometry('500x500+200+100')
