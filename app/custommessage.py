@@ -56,7 +56,7 @@ class Message(customtkinter.CTkFrame):
         sys.exit()
 
 
-class CustomMessagebox(Message):
+class CKTMessagebox(Message):
     """This class inherit from Message class (base class), which is use to msg popup"""
 
 
