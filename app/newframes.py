@@ -2,7 +2,6 @@
 import os
 import json
 from tkinter import *
-from tkinter import messagebox
 
 
 """this are third-party modules that need to be installed separately using pip"""
@@ -10,11 +9,12 @@ import customtkinter
 from PIL import Image
 from tkcalendar import *
 from tktooltip import ToolTip
+from CTkMessagebox import CTkMessagebox
 
 
 """The are local modules that I have created myself and are part of the project. """
 import dashboard
-from custommessage import CustomMessagebox
+from custommessage import CKTMessagebox
 
 
 class Newframe(customtkinter.CTkToplevel):
@@ -33,7 +33,7 @@ class Newframe(customtkinter.CTkToplevel):
     def __init__(self) -> None:
         # self.new_frame = customtkinter.CTk()
         self.new_frame = customtkinter.CTkToplevel()
-        self.new_frame.minsize(400, 430)
+        self.new_frame.minsize(900, 500)
         self.new_frame.attributes('-zoomed', True)
         self.new_frame.geometry('1000x600+155+50')
         self.new_frame.title('Welcome to DS Enterprise')
@@ -152,7 +152,7 @@ class Newframe(customtkinter.CTkToplevel):
         """This column downwards defines top, middle and down frames"""
         self.menu_frame = customtkinter.CTkFrame(master=self.new_frame, border_width=0.6,
                                            border_color='gray10', fg_color='gray28',
-                                           corner_radius=5, width=1200, height=40)
+                                           corner_radius=2, width=1200, height=40)
         self.menu_frame.grid(row=0, column=1, columnspan=2, padx=(20,20), pady=(0, 12), sticky=N)
         self.menu_frame.grid_columnconfigure((0,1,2,3), weight=1)
         
@@ -290,11 +290,14 @@ class Newframe(customtkinter.CTkToplevel):
 
 
     def usr_exit(self, *event)-> None:
-        CustomMessagebox(self.new_frame)
+        CKTMessagebox(self.new_frame)
 
 
     def Dsales(self):
-        if messagebox.askyesno('Logout', 'Are you sure you want to exit', icon='info'):
+        msg = CTkMessagebox(title='Logout', 
+                         message='Do you want to Switch to Daily Sales', 
+                         icon='info', option_1='Yes', option_2='No')
+        if msg.get() == 'Yes':
             dashboard.Dashboard()
             self.new_frame.destroy()
         else:
