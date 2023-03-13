@@ -39,8 +39,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        # self.admin__a = customtkinter.CTk()
-        self.admin__a = customtkinter.CTkToplevel()
+        self.admin__a = customtkinter.CTk()
+        # self.admin__a = customtkinter.CTkToplevel()
         self.admin__a.minsize(920, 530)
         self.admin__a.attributes('-zoomed', True)
         self.admin__a.geometry('1000x600+155+50')
@@ -312,7 +312,7 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.bind('<Control-e>', self.admin__aexit)
 
 
-        # self.admin__a.mainloop()
+        self.admin__a.mainloop()
 
     def get_data(self):
         ResultTable(self.admin__a)
