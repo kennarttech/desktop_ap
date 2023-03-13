@@ -19,8 +19,10 @@ import about
 import newframes
 import dashboard
 import customnote
-import edit__data
+from edit__data import EditData
+from result_table import ResultTable
 from custommessage import CKTMessagebox
+
 
 
 class Adminsuper(customtkinter.CTkToplevel):
@@ -37,8 +39,8 @@ class Adminsuper(customtkinter.CTkToplevel):
 
 
     def __init__(self) -> None:
-        self.admin__a = customtkinter.CTk()
-        # self.admin__a = customtkinter.CTkToplevel()
+        # self.admin__a = customtkinter.CTk()
+        self.admin__a = customtkinter.CTkToplevel()
         self.admin__a.minsize(920, 530)
         self.admin__a.attributes('-zoomed', True)
         self.admin__a.geometry('1000x600+155+50')
@@ -297,8 +299,8 @@ class Adminsuper(customtkinter.CTkToplevel):
                                                 font=customtkinter.CTkFont('Sans', 13),
                                                 hover_color=('gray70', 'gray30'),
                                                 fg_color='gray15', image=search_image,
-                                                compound='left',
-                                                border_color='gray40',border_width=1,)
+                                                compound='left', border_color='gray40',
+                                                border_width=1, command=self.get_data)
         search_button.place(x=660, y=20, anchor='e')
         ToolTip(search_button, msg='Search', delay=0)
 
@@ -310,11 +312,14 @@ class Adminsuper(customtkinter.CTkToplevel):
         self.admin__a.bind('<Control-e>', self.admin__aexit)
 
 
-        self.admin__a.mainloop()
+        # self.admin__a.mainloop()
+
+    def get_data(self):
+        ResultTable(self.admin__a)
 
     
     def modify_dt(self):
-        edit__data.EditData()
+        EditData()
 
 
     def about(self, *args):
