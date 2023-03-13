@@ -16,6 +16,7 @@ from CTkMessagebox import CTkMessagebox
 
 """The are local modules that I have created myself and are part of the project. """
 import newframes
+from edit__data import EditData
 from custommessage import CKTMessagebox
 
 
@@ -102,7 +103,7 @@ class Dashboard(customtkinter.CTkToplevel):
         self.option_menu.add_command(label = 'View All Data', 
                                      accelerator='Ctrl+I', command=None)
         self.option_menu.add_command(label = 'Modify Saved Data', accelerator='Ctrl+M',
-                                     command=None)
+                                     command=self.dtmodify)
         
 
         left_frame = customtkinter.CTkFrame(master=self.dash, 
@@ -318,8 +319,8 @@ class Dashboard(customtkinter.CTkToplevel):
 
 
         """This code takes tuple from a user as in 'Shortcut' to perform task"""
-        # self.dash.bind('<Control-a>', self.about)
-        # self.dash.bind('<Control-A>', self.about)
+        self.dash.bind('<Control-M>', self.dtmodify)
+        self.dash.bind('<Control-m>', self.dtmodify)
         self.dash.bind('<Control-E>', self.usr_exit)
         self.dash.bind('<Control-e>', self.usr_exit)
 
@@ -327,7 +328,11 @@ class Dashboard(customtkinter.CTkToplevel):
         # self.dash.mainloop()
 
 
-    def usr_exit(self, *event)-> None:
+    def dtmodify(self, *event) -> None:
+        EditData()
+
+
+    def usr_exit(self, *event) -> None:
         CKTMessagebox(self.dash)
 
 
