@@ -27,7 +27,7 @@ image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
                           "icons")
 logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, 
                                                             "logo_05.png")), 
-size=(300,300))
+size=(200,200))
 
 
 """This script is use to configure the main_window"""
