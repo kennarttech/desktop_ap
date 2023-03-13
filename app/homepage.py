@@ -34,7 +34,7 @@ class Homepage(customtkinter.CTk):
 
     def __init__(self, master) -> None:
         self.master = master
-        self.master.columnconfigure((0), weight = 1, uniform='a')
+        self.master.columnconfigure(0, weight = 1, uniform='a')
         self.master.rowconfigure((1,2,3,4), weight = 1, uniform='a')
 
 
